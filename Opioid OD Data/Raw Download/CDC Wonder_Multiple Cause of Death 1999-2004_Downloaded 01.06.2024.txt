@@ -1,0 +1,1749 @@
+"Notes"	"State"	"State Code"	"Single-Year Ages"	"Single-Year Ages Code"	"Gender"	"Gender Code"	"Race"	"Race Code"	"Year"	"Year Code"	Deaths	Population	Crude Rate
+	"Arizona"	"04"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	34261	Unreliable
+	"Arizona"	"04"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	34095	Unreliable
+	"Arizona"	"04"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	35335	Unreliable
+	"Arizona"	"04"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	35558	Unreliable
+	"Arizona"	"04"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	35165	Unreliable
+	"Arizona"	"04"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	33091	Unreliable
+	"Arizona"	"04"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	34977	Unreliable
+	"Arizona"	"04"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	35812	Unreliable
+	"Arizona"	"04"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	19	35704	Unreliable
+	"Arizona"	"04"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	36599	Unreliable
+	"Arizona"	"04"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	33142	Unreliable
+	"Arizona"	"04"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	33376	Unreliable
+	"Arizona"	"04"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	36530	Unreliable
+	"Arizona"	"04"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	33643	Unreliable
+	"Arizona"	"04"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	36805	Unreliable
+	"Arizona"	"04"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	34244	Unreliable
+	"Arizona"	"04"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	35503	Unreliable
+	"Arizona"	"04"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	31877	Unreliable
+	"Arizona"	"04"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	34396	Unreliable
+	"Arizona"	"04"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	34264	Unreliable
+	"Arizona"	"04"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	34724	Unreliable
+	"Arizona"	"04"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	31435	Unreliable
+	"Arizona"	"04"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	33450	Unreliable
+	"Arizona"	"04"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	18	34318	Unreliable
+	"Arizona"	"04"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	29080	Unreliable
+	"Arizona"	"04"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	29934	Unreliable
+	"Arizona"	"04"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	32344	Unreliable
+	"Arizona"	"04"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	33578	Unreliable
+	"Arizona"	"04"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	34644	Unreliable
+	"Arizona"	"04"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	28652	Unreliable
+	"Arizona"	"04"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	30640	Unreliable
+	"Arizona"	"04"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	18	32457	Unreliable
+	"Arizona"	"04"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	33868	Unreliable
+	"Arizona"	"04"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	28595	Unreliable
+	"Arizona"	"04"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	29532	Unreliable
+	"Arizona"	"04"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	30809	Unreliable
+	"Arizona"	"04"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	32645	Unreliable
+	"Arizona"	"04"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	27727	Unreliable
+	"Arizona"	"04"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	28850	Unreliable
+	"Arizona"	"04"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	33258	Unreliable
+	"Arizona"	"04"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	28760	Unreliable
+	"California"	"06"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	208057	Unreliable
+	"California"	"06"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	205641	Unreliable
+	"California"	"06"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	188131	Unreliable
+	"California"	"06"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	211615	Unreliable
+	"California"	"06"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	207089	Unreliable
+	"California"	"06"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	189741	Unreliable
+	"California"	"06"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	211206	Unreliable
+	"California"	"06"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	185154	Unreliable
+	"California"	"06"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	205087	Unreliable
+	"California"	"06"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	214357	Unreliable
+	"California"	"06"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	215923	Unreliable
+	"California"	"06"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	202484	Unreliable
+	"California"	"06"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	205982	Unreliable
+	"California"	"06"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	216025	Unreliable
+	"California"	"06"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	194295	Unreliable
+	"California"	"06"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	201275	Unreliable
+	"California"	"06"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	204087	Unreliable
+	"California"	"06"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	208942	Unreliable
+	"California"	"06"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	194042	Unreliable
+	"California"	"06"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	197674	Unreliable
+	"California"	"06"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	201967	Unreliable
+	"California"	"06"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	17	205982	Unreliable
+	"California"	"06"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	203202	Unreliable
+	"California"	"06"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	197088	Unreliable
+	"California"	"06"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	199219	Unreliable
+	"California"	"06"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	20	219884	9.1
+	"California"	"06"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	208288	Unreliable
+	"California"	"06"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	196881	Unreliable
+	"California"	"06"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	202321	Unreliable
+	"California"	"06"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	196701	Unreliable
+	"California"	"06"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	25	226289	11.0
+	"California"	"06"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	223418	Unreliable
+	"California"	"06"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	199830	Unreliable
+	"California"	"06"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	195069	Unreliable
+	"California"	"06"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	200346	Unreliable
+	"California"	"06"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	234143	Unreliable
+	"California"	"06"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	235065	Unreliable
+	"California"	"06"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	208456	Unreliable
+	"California"	"06"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	201085	Unreliable
+	"California"	"06"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	197229	Unreliable
+	"California"	"06"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	22	214341	10.3
+	"California"	"06"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	215489	Unreliable
+	"California"	"06"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	23	218437	10.5
+	"California"	"06"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	203902	Unreliable
+	"California"	"06"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	195607	Unreliable
+	"California"	"06"	"32 years"	"32"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	204384	Unreliable
+	"California"	"06"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	32	219507	14.6
+	"California"	"06"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	25	215093	11.6
+	"California"	"06"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	20	233412	8.6
+	"California"	"06"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	218255	Unreliable
+	"California"	"06"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	204285	Unreliable
+	"California"	"06"	"33 years"	"33"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	195251	Unreliable
+	"California"	"06"	"33 years"	"33"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	200432	Unreliable
+	"California"	"06"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	33	216021	15.3
+	"California"	"06"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	19	211984	Unreliable
+	"California"	"06"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	215227	Unreliable
+	"California"	"06"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	23	217538	10.6
+	"California"	"06"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	232205	Unreliable
+	"California"	"06"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	216967	Unreliable
+	"California"	"06"	"34 years"	"34"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	198749	Unreliable
+	"California"	"06"	"34 years"	"34"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	200602	Unreliable
+	"California"	"06"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	52	225850	23.0
+	"California"	"06"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	19	217154	Unreliable
+	"California"	"06"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	27	213523	12.6
+	"California"	"06"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	215765	9.3
+	"California"	"06"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	34	230006	14.8
+	"California"	"06"	"35 years"	"35"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	11	219313	Unreliable
+	"California"	"06"	"35 years"	"35"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	215584	Unreliable
+	"California"	"06"	"35 years"	"35"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	15	195636	Unreliable
+	"California"	"06"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	38	236396	16.1
+	"California"	"06"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	32	232392	13.8
+	"California"	"06"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	215046	Unreliable
+	"California"	"06"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	210224	10.5
+	"California"	"06"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	28	213137	13.1
+	"California"	"06"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	19	215795	Unreliable
+	"California"	"06"	"36 years"	"36"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	11	216435	Unreliable
+	"California"	"06"	"36 years"	"36"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	196959	Unreliable
+	"California"	"06"	"36 years"	"36"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	196542	Unreliable
+	"California"	"06"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	37	229326	16.1
+	"California"	"06"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	32	226285	14.1
+	"California"	"06"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	21	212977	9.9
+	"California"	"06"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	29	207755	14.0
+	"California"	"06"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	210516	Unreliable
+	"California"	"06"	"37 years"	"37"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	11	214953	Unreliable
+	"California"	"06"	"37 years"	"37"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	196121	Unreliable
+	"California"	"06"	"37 years"	"37"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	15	194162	Unreliable
+	"California"	"06"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	51	227234	22.4
+	"California"	"06"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	34	224524	15.1
+	"California"	"06"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	226497	Unreliable
+	"California"	"06"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	25	226190	11.1
+	"California"	"06"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	24	210359	11.4
+	"California"	"06"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	32	205280	15.6
+	"California"	"06"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	17	214810	Unreliable
+	"California"	"06"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	10	213373	Unreliable
+	"California"	"06"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	211753	Unreliable
+	"California"	"06"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	194945	Unreliable
+	"California"	"06"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	54	226911	23.8
+	"California"	"06"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	39	226306	17.2
+	"California"	"06"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	22	223554	9.8
+	"California"	"06"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	34	224766	15.1
+	"California"	"06"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	30	224318	13.4
+	"California"	"06"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	208300	10.1
+	"California"	"06"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	10	213186	Unreliable
+	"California"	"06"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	19	211907	Unreliable
+	"California"	"06"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	19	212922	Unreliable
+	"California"	"06"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	210695	Unreliable
+	"California"	"06"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	46	223219	20.6
+	"California"	"06"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	20	224246	8.9
+	"California"	"06"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	224559	Unreliable
+	"California"	"06"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	31	221424	14.0
+	"California"	"06"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	45	222399	20.2
+	"California"	"06"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	29	221872	13.1
+	"California"	"06"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	12	214908	Unreliable
+	"California"	"06"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	16	212441	Unreliable
+	"California"	"06"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	211022	Unreliable
+	"California"	"06"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	211345	Unreliable
+	"California"	"06"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	49	226946	21.6
+	"California"	"06"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	40	232054	17.2
+	"California"	"06"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	222791	Unreliable
+	"California"	"06"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	35	222724	15.7
+	"California"	"06"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	37	219560	16.9
+	"California"	"06"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	36	220526	16.3
+	"California"	"06"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	19	202780	Unreliable
+	"California"	"06"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	13	203193	Unreliable
+	"California"	"06"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	18	213199	Unreliable
+	"California"	"06"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	19	210410	Unreliable
+	"California"	"06"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	52	210376	24.7
+	"California"	"06"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	24	210547	11.4
+	"California"	"06"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	230383	Unreliable
+	"California"	"06"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	43	221114	19.4
+	"California"	"06"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	38	221096	17.2
+	"California"	"06"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	35	217477	16.1
+	"California"	"06"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	18	205519	Unreliable
+	"California"	"06"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	207791	Unreliable
+	"California"	"06"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	23	217515	10.6
+	"California"	"06"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	212089	Unreliable
+	"California"	"06"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	29	210403	13.8
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	12	20693	Unreliable
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	41	213047	19.2
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	33	215773	15.3
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	20	212523	9.4
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	58	229113	25.3
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	42	219454	19.1
+	"California"	"06"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	34	219427	15.5
+	"California"	"06"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	21	204432	10.3
+	"California"	"06"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	19	217235	Unreliable
+	"California"	"06"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	211300	Unreliable
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	10	21816	Unreliable
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	43	202070	21.3
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	26	206207	12.6
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	212934	Unreliable
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	35	211144	16.6
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	48	228002	21.1
+	"California"	"06"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	33	217738	15.2
+	"California"	"06"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	19	194150	Unreliable
+	"California"	"06"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	196945	Unreliable
+	"California"	"06"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	21	204567	10.3
+	"California"	"06"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	13	203014	Unreliable
+	"California"	"06"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	17	214940	Unreliable
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	11	19545	Unreliable
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	55	198349	27.7
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	41	200739	20.4
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	208073	Unreliable
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	43	210952	20.4
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	35	209074	16.7
+	"California"	"06"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	40	225055	17.8
+	"California"	"06"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	10	192229	Unreliable
+	"California"	"06"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	23	202731	11.3
+	"California"	"06"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	23	203321	11.3
+	"California"	"06"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	201025	Unreliable
+	"California"	"06"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	61	196002	31.1
+	"California"	"06"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	43	203066	21.2
+	"California"	"06"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	27	199154	13.6
+	"California"	"06"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	42	206199	20.4
+	"California"	"06"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	37	209005	17.7
+	"California"	"06"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	36	206495	17.4
+	"California"	"06"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	11	182190	Unreliable
+	"California"	"06"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	29	195227	14.9
+	"California"	"06"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	16	201981	Unreliable
+	"California"	"06"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	26	202020	12.9
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	11	17760	Unreliable
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	18931	Unreliable
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	64	182718	35.0
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	24	187299	12.8
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	201716	Unreliable
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	44	198012	22.2
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	54	205240	26.3
+	"California"	"06"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	47	207633	22.6
+	"California"	"06"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	11	178171	Unreliable
+	"California"	"06"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	183239	Unreliable
+	"California"	"06"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	14	196786	Unreliable
+	"California"	"06"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	14	194696	Unreliable
+	"California"	"06"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	23	201117	11.4
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	13	17870	Unreliable
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	40	178012	22.5
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	31	182787	17.0
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	189229	Unreliable
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	37	200378	18.5
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	43	196669	21.9
+	"California"	"06"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	33	203498	16.2
+	"California"	"06"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	16	169742	Unreliable
+	"California"	"06"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	26	188212	13.8
+	"California"	"06"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	195950	Unreliable
+	"California"	"06"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	18	193124	Unreliable
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	14	16216	Unreliable
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	12	17792	Unreliable
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	48	167975	28.6
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	31	174769	17.7
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	181791	Unreliable
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	39	187633	20.8
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	40	198376	20.2
+	"California"	"06"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	50	194141	25.8
+	"California"	"06"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	11	169734	Unreliable
+	"California"	"06"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	18	182332	Unreliable
+	"California"	"06"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	19	187717	Unreliable
+	"California"	"06"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	27	195127	13.8
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	10	14297	Unreliable
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	13	14393	Unreliable
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	13	16172	Unreliable
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	10	17765	Unreliable
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	37	169434	21.8
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	26	169551	15.3
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	22	173879	12.7
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	30	180615	16.6
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	46	186801	24.6
+	"California"	"06"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	33	197427	16.7
+	"California"	"06"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	14	174550	Unreliable
+	"California"	"06"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	25	181065	13.8
+	"California"	"06"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	20	185803	10.8
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	11	14309	Unreliable
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	12	16049	Unreliable
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	19	170261	Unreliable
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	25	173988	14.4
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	170203	Unreliable
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	41	172178	23.8
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	42	178640	23.5
+	"California"	"06"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	34	184040	18.5
+	"California"	"06"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	171070	Unreliable
+	"California"	"06"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	18	174139	Unreliable
+	"California"	"06"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	15	180218	Unreliable
+	"California"	"06"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	33	159066	20.7
+	"California"	"06"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	25	159936	15.6
+	"California"	"06"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	172454	Unreliable
+	"California"	"06"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	37	169384	21.8
+	"California"	"06"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	34	171731	19.8
+	"California"	"06"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	32	178072	18.0
+	"California"	"06"	"52 years"	"52"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	172268	Unreliable
+	"California"	"06"	"52 years"	"52"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	169879	Unreliable
+	"California"	"06"	"52 years"	"52"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	16	172427	Unreliable
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	11	14824	Unreliable
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	27	176282	15.3
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	165023	Unreliable
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	160992	Unreliable
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	36	170882	21.1
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	28	167560	16.7
+	"California"	"06"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	28	169380	16.5
+	"California"	"06"	"53 years"	"53"	"Female"	"F"	"Black or African American"	"2054-5"	"2004"	"2004"	11	15454	Unreliable
+	"California"	"06"	"53 years"	"53"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	163530	Unreliable
+	"California"	"06"	"53 years"	"53"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	171480	Unreliable
+	"California"	"06"	"53 years"	"53"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	168646	Unreliable
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	10	14668	Unreliable
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	124145	Unreliable
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	21	163196	12.9
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	160328	Unreliable
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	29	159933	18.1
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	28	170050	16.5
+	"California"	"06"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	33	166200	19.9
+	"California"	"06"	"54 years"	"54"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	15	170548	Unreliable
+	"California"	"06"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	133092	Unreliable
+	"California"	"06"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	169563	Unreliable
+	"California"	"06"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	29	158749	18.3
+	"California"	"06"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	35	158619	22.1
+	"California"	"06"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	23	168272	13.7
+	"California"	"06"	"55 years"	"55"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	14	171414	Unreliable
+	"California"	"06"	"55 years"	"55"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	12629	Unreliable
+	"California"	"06"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	125252	Unreliable
+	"California"	"06"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	128362	Unreliable
+	"California"	"06"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	23	167735	13.7
+	"California"	"06"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	27	156424	17.3
+	"California"	"06"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	155489	Unreliable
+	"California"	"06"	"56 years"	"56"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	14	159378	Unreliable
+	"California"	"06"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	128210	Unreliable
+	"California"	"06"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	127742	Unreliable
+	"California"	"06"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	18	166740	Unreliable
+	"California"	"06"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	154956	Unreliable
+	"California"	"06"	"57 years"	"57"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	131459	Unreliable
+	"California"	"06"	"57 years"	"57"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	11	169346	Unreliable
+	"California"	"06"	"57 years"	"57"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	105962	Unreliable
+	"California"	"06"	"57 years"	"57"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	125875	Unreliable
+	"California"	"06"	"57 years"	"57"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	126274	Unreliable
+	"California"	"06"	"57 years"	"57"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	164523	12.8
+	"California"	"06"	"58 years"	"58"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	103127	Unreliable
+	"California"	"06"	"58 years"	"58"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	119359	Unreliable
+	"California"	"06"	"58 years"	"58"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	124522	Unreliable
+	"California"	"06"	"59 years"	"59"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	128515	Unreliable
+	"California"	"06"	"59 years"	"59"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	120957	Unreliable
+	"California"	"06"	"59 years"	"59"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	122185	Unreliable
+	"California"	"06"	"60 years"	"60"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	118492	Unreliable
+	"Colorado"	"08"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	34631	Unreliable
+	"Colorado"	"08"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	34714	Unreliable
+	"Colorado"	"08"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	35935	Unreliable
+	"Colorado"	"08"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	36209	Unreliable
+	"Colorado"	"08"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	35007	Unreliable
+	"Colorado"	"08"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	34681	Unreliable
+	"Colorado"	"08"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	34430	Unreliable
+	"Colorado"	"08"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	31774	Unreliable
+	"Colorado"	"08"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	34037	Unreliable
+	"Colorado"	"08"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	32069	Unreliable
+	"Connecticut"	"09"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	25866	Unreliable
+	"Connecticut"	"09"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	25910	Unreliable
+	"Connecticut"	"09"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	24058	Unreliable
+	"Connecticut"	"09"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	25546	Unreliable
+	"Florida"	"12"	"18 years"	"18"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	86206	Unreliable
+	"Florida"	"12"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	77675	Unreliable
+	"Florida"	"12"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	81687	24.5
+	"Florida"	"12"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	86917	Unreliable
+	"Florida"	"12"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	79700	Unreliable
+	"Florida"	"12"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	82792	Unreliable
+	"Florida"	"12"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	84970	Unreliable
+	"Florida"	"12"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	81142	Unreliable
+	"Florida"	"12"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	82350	Unreliable
+	"Florida"	"12"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	82962	Unreliable
+	"Florida"	"12"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	86033	Unreliable
+	"Florida"	"12"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	72373	Unreliable
+	"Florida"	"12"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	76749	Unreliable
+	"Florida"	"12"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	85417	23.4
+	"Florida"	"12"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	86251	23.2
+	"Florida"	"12"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	70066	Unreliable
+	"Florida"	"12"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	72409	Unreliable
+	"Florida"	"12"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	18	75720	Unreliable
+	"Florida"	"12"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	79186	Unreliable
+	"Florida"	"12"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	86284	Unreliable
+	"Florida"	"12"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	24	89078	26.9
+	"Florida"	"12"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	71754	Unreliable
+	"Florida"	"12"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	75741	Unreliable
+	"Florida"	"12"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	78155	Unreliable
+	"Florida"	"12"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	81401	Unreliable
+	"Florida"	"12"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	23	89496	25.7
+	"Florida"	"12"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	73224	Unreliable
+	"Florida"	"12"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	77610	Unreliable
+	"Florida"	"12"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	80072	Unreliable
+	"Florida"	"12"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	83999	Unreliable
+	"Florida"	"12"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	76407	Unreliable
+	"Florida"	"12"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	74634	Unreliable
+	"Florida"	"12"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	78419	Unreliable
+	"Florida"	"12"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	25	81472	30.7
+	"Florida"	"12"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	79933	Unreliable
+	"Florida"	"12"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	78223	Unreliable
+	"Florida"	"12"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	76299	32.8
+	"Florida"	"12"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	19	80593	Unreliable
+	"Florida"	"12"	"28 years"	"28"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	73835	Unreliable
+	"Florida"	"12"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	78290	Unreliable
+	"Florida"	"12"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	76899	Unreliable
+	"Florida"	"12"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	24	79544	30.2
+	"Florida"	"12"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	78652	Unreliable
+	"Florida"	"12"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	88620	Unreliable
+	"Florida"	"12"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	89753	Unreliable
+	"Florida"	"12"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	83696	Unreliable
+	"Florida"	"12"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	78967	Unreliable
+	"Florida"	"12"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	77179	Unreliable
+	"Florida"	"12"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	80042	25.0
+	"Florida"	"12"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	89793	Unreliable
+	"Florida"	"12"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	85659	Unreliable
+	"Florida"	"12"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	18	81137	Unreliable
+	"Florida"	"12"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	80260	Unreliable
+	"Florida"	"12"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	93374	Unreliable
+	"Florida"	"12"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	90599	24.3
+	"Florida"	"12"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	86329	24.3
+	"Florida"	"12"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	82098	24.4
+	"Florida"	"12"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	87657	Unreliable
+	"Florida"	"12"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	95089	Unreliable
+	"Florida"	"12"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	92389	21.6
+	"Florida"	"12"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	23	88991	25.8
+	"Florida"	"12"	"33 years"	"33"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	92227	Unreliable
+	"Florida"	"12"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	88077	Unreliable
+	"Florida"	"12"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	87296	Unreliable
+	"Florida"	"12"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	20	89331	22.4
+	"Florida"	"12"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	96496	25.9
+	"Florida"	"12"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	24	94555	25.4
+	"Florida"	"12"	"34 years"	"34"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	86393	Unreliable
+	"Florida"	"12"	"34 years"	"34"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	94480	Unreliable
+	"Florida"	"12"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	89349	Unreliable
+	"Florida"	"12"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	88797	Unreliable
+	"Florida"	"12"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	90700	22.1
+	"Florida"	"12"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	24	98500	24.4
+	"Florida"	"12"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	103619	Unreliable
+	"Florida"	"12"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	94202	Unreliable
+	"Florida"	"12"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	90758	Unreliable
+	"Florida"	"12"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	90226	Unreliable
+	"Florida"	"12"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	35	92883	37.7
+	"Florida"	"12"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	103207	Unreliable
+	"Florida"	"12"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	23	103256	22.3
+	"Florida"	"12"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	95577	Unreliable
+	"Florida"	"12"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	24	91689	26.2
+	"Florida"	"12"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	91802	Unreliable
+	"Florida"	"12"	"37 years"	"37"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	18	92552	Unreliable
+	"Florida"	"12"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	104313	Unreliable
+	"Florida"	"12"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	103737	Unreliable
+	"Florida"	"12"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	27	105223	25.7
+	"Florida"	"12"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	26	104600	24.9
+	"Florida"	"12"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	96970	Unreliable
+	"Florida"	"12"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	19	93686	Unreliable
+	"Florida"	"12"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	10	101675	Unreliable
+	"Florida"	"12"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	97456	Unreliable
+	"Florida"	"12"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	17	103932	Unreliable
+	"Florida"	"12"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	19	104782	Unreliable
+	"Florida"	"12"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	22	105192	20.9
+	"Florida"	"12"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	30	106341	28.2
+	"Florida"	"12"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	22	105806	20.8
+	"Florida"	"12"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	98783	Unreliable
+	"Florida"	"12"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	14	103616	Unreliable
+	"Florida"	"12"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	105060	Unreliable
+	"Florida"	"12"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	14	107097	Unreliable
+	"Florida"	"12"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	105715	Unreliable
+	"Florida"	"12"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	103283	Unreliable
+	"Florida"	"12"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	20	105077	19.0
+	"Florida"	"12"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	24	105926	22.7
+	"Florida"	"12"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	23	106708	21.6
+	"Florida"	"12"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	26	107746	24.1
+	"Florida"	"12"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	31	108375	28.6
+	"Florida"	"12"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	105391	Unreliable
+	"Florida"	"12"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	106767	Unreliable
+	"Florida"	"12"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	14	109135	Unreliable
+	"Florida"	"12"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	105341	Unreliable
+	"Florida"	"12"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	18	107671	Unreliable
+	"Florida"	"12"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	34	106253	32.0
+	"Florida"	"12"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	106886	Unreliable
+	"Florida"	"12"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	107402	23.3
+	"Florida"	"12"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	32	109117	29.3
+	"Florida"	"12"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	10	99459	Unreliable
+	"Florida"	"12"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	14	106880	Unreliable
+	"Florida"	"12"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	20	106710	18.7
+	"Florida"	"12"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	18	108492	Unreliable
+	"Florida"	"12"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	98768	Unreliable
+	"Florida"	"12"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	24	100192	24.0
+	"Florida"	"12"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	20	108585	18.4
+	"Florida"	"12"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	38	107792	35.3
+	"Florida"	"12"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	29	108453	26.7
+	"Florida"	"12"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	24	109832	21.9
+	"Florida"	"12"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	11	101286	Unreliable
+	"Florida"	"12"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	21	107897	19.5
+	"Florida"	"12"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	20	108313	18.5
+	"Florida"	"12"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	19	108580	Unreliable
+	"Florida"	"12"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	99554	Unreliable
+	"Florida"	"12"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	21	101543	20.7
+	"Florida"	"12"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	30	102665	29.2
+	"Florida"	"12"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	31	109672	28.3
+	"Florida"	"12"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	36	108670	33.1
+	"Florida"	"12"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	33	109816	30.1
+	"Florida"	"12"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	14	102282	Unreliable
+	"Florida"	"12"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	103683	Unreliable
+	"Florida"	"12"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	109431	Unreliable
+	"Florida"	"12"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	16	110498	Unreliable
+	"Florida"	"12"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	17	94713	Unreliable
+	"Florida"	"12"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	97729	Unreliable
+	"Florida"	"12"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	28	102037	27.4
+	"Florida"	"12"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	25	103807	24.1
+	"Florida"	"12"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	30	110689	27.1
+	"Florida"	"12"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	34	110414	30.8
+	"Florida"	"12"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	15	101498	Unreliable
+	"Florida"	"12"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	22	103406	21.3
+	"Florida"	"12"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	104259	Unreliable
+	"Florida"	"12"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	26	110509	23.5
+	"Florida"	"12"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	93228	Unreliable
+	"Florida"	"12"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	94925	Unreliable
+	"Florida"	"12"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	28	100319	27.9
+	"Florida"	"12"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	20	102750	19.5
+	"Florida"	"12"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	44	104022	42.3
+	"Florida"	"12"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	31	111421	27.8
+	"Florida"	"12"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	15	97405	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	16	102910	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	13	104667	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	19	106294	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	10	16572	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	19	93068	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	19	96593	Unreliable
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	36	96021	37.5
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	31	101432	30.6
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	29	103698	28.0
+	"Florida"	"12"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	31	105776	29.3
+	"Florida"	"12"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	10	90095	Unreliable
+	"Florida"	"12"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	18	99077	Unreliable
+	"Florida"	"12"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	99082	Unreliable
+	"Florida"	"12"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	19	104475	Unreliable
+	"Florida"	"12"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	15	106791	Unreliable
+	"Florida"	"12"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	20	87328	22.9
+	"Florida"	"12"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	89821	Unreliable
+	"Florida"	"12"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	26	97527	26.7
+	"Florida"	"12"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	29	97167	29.8
+	"Florida"	"12"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	34	102641	33.1
+	"Florida"	"12"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	41	105623	38.8
+	"Florida"	"12"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	15	100764	Unreliable
+	"Florida"	"12"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	23	106319	21.6
+	"Florida"	"12"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	85889	Unreliable
+	"Florida"	"12"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	19	88756	Unreliable
+	"Florida"	"12"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	23	92454	24.9
+	"Florida"	"12"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	26	98675	26.3
+	"Florida"	"12"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	30	98129	30.6
+	"Florida"	"12"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	30	104013	28.8
+	"Florida"	"12"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	11	93363	Unreliable
+	"Florida"	"12"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	14	102207	Unreliable
+	"Florida"	"12"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	15	102283	Unreliable
+	"Florida"	"12"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	81545	Unreliable
+	"Florida"	"12"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	23	85617	26.9
+	"Florida"	"12"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	89945	Unreliable
+	"Florida"	"12"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	93241	23.6
+	"Florida"	"12"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	26	99437	26.1
+	"Florida"	"12"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	31	99307	31.2
+	"Florida"	"12"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	16	98380	Unreliable
+	"Florida"	"12"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	24	104122	23.0
+	"Florida"	"12"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	83187	Unreliable
+	"Florida"	"12"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	22	87088	25.3
+	"Florida"	"12"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	25	91084	27.4
+	"Florida"	"12"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	28	94286	29.7
+	"Florida"	"12"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	34	100922	33.7
+	"Florida"	"12"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	17	96213	Unreliable
+	"Florida"	"12"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	18	99936	Unreliable
+	"Florida"	"12"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	85453	Unreliable
+	"Florida"	"12"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	85243	Unreliable
+	"Florida"	"12"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	87824	Unreliable
+	"Florida"	"12"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	26	91304	28.5
+	"Florida"	"12"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	94870	21.1
+	"Florida"	"12"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	91820	Unreliable
+	"Florida"	"12"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	18	98619	Unreliable
+	"Florida"	"12"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	82292	Unreliable
+	"Florida"	"12"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	82569	Unreliable
+	"Florida"	"12"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	86426	Unreliable
+	"Florida"	"12"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	86599	Unreliable
+	"Florida"	"12"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	23	89029	25.8
+	"Florida"	"12"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	45	93122	48.3
+	"Florida"	"12"	"52 years"	"52"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	11	95594	Unreliable
+	"Florida"	"12"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	86504	Unreliable
+	"Florida"	"12"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	87428	Unreliable
+	"Florida"	"12"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	87531	Unreliable
+	"Florida"	"12"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	27	90157	29.9
+	"Florida"	"12"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	86115	Unreliable
+	"Florida"	"12"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	88631	Unreliable
+	"Florida"	"12"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	89070	Unreliable
+	"Florida"	"12"	"54 years"	"54"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	96865	Unreliable
+	"Florida"	"12"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	87975	Unreliable
+	"Florida"	"12"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	87543	Unreliable
+	"Florida"	"12"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	19	90242	Unreliable
+	"Florida"	"12"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	70849	Unreliable
+	"Florida"	"12"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	89445	Unreliable
+	"Florida"	"12"	"55 years"	"55"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	88580	Unreliable
+	"Florida"	"12"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	94843	Unreliable
+	"Florida"	"12"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	92357	Unreliable
+	"Georgia"	"13"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	48101	Unreliable
+	"Georgia"	"13"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	47626	Unreliable
+	"Georgia"	"13"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	46009	Unreliable
+	"Georgia"	"13"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	47653	Unreliable
+	"Illinois"	"17"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	73398	Unreliable
+	"Illinois"	"17"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	72435	Unreliable
+	"Illinois"	"17"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	70699	Unreliable
+	"Illinois"	"17"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	71623	Unreliable
+	"Illinois"	"17"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	66909	Unreliable
+	"Illinois"	"17"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	71217	Unreliable
+	"Illinois"	"17"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	68354	Unreliable
+	"Illinois"	"17"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	72232	Unreliable
+	"Illinois"	"17"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	67887	Unreliable
+	"Illinois"	"17"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	68228	Unreliable
+	"Illinois"	"17"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	72992	Unreliable
+	"Illinois"	"17"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	68530	Unreliable
+	"Illinois"	"17"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	69092	Unreliable
+	"Illinois"	"17"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	68699	Unreliable
+	"Illinois"	"17"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	72167	Unreliable
+	"Illinois"	"17"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	67099	Unreliable
+	"Illinois"	"17"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	67986	Unreliable
+	"Illinois"	"17"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	68496	Unreliable
+	"Illinois"	"17"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	68334	Unreliable
+	"Illinois"	"17"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	66110	Unreliable
+	"Illinois"	"17"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	69044	Unreliable
+	"Illinois"	"17"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	76285	Unreliable
+	"Illinois"	"17"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	68647	Unreliable
+	"Illinois"	"17"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	73045	Unreliable
+	"Illinois"	"17"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	79165	Unreliable
+	"Illinois"	"17"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	75876	Unreliable
+	"Illinois"	"17"	"32 years"	"32"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	10	12477	Unreliable
+	"Illinois"	"17"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	79213	Unreliable
+	"Illinois"	"17"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	71545	Unreliable
+	"Illinois"	"17"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	73480	Unreliable
+	"Illinois"	"17"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	72553	Unreliable
+	"Illinois"	"17"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	73438	Unreliable
+	"Illinois"	"17"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	78512	Unreliable
+	"Illinois"	"17"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	79561	Unreliable
+	"Illinois"	"17"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	72802	Unreliable
+	"Illinois"	"17"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	72000	Unreliable
+	"Illinois"	"17"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	77601	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	10	14098	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	10	13792	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	19	83690	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	81763	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	74541	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	72368	Unreliable
+	"Illinois"	"17"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	72255	Unreliable
+	"Illinois"	"17"	"36 years"	"36"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	10	13183	Unreliable
+	"Illinois"	"17"	"36 years"	"36"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	12	13379	Unreliable
+	"Illinois"	"17"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	80248	Unreliable
+	"Illinois"	"17"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	79732	Unreliable
+	"Illinois"	"17"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	74111	Unreliable
+	"Illinois"	"17"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	71054	Unreliable
+	"Illinois"	"17"	"37 years"	"37"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	10	13135	Unreliable
+	"Illinois"	"17"	"37 years"	"37"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	12	12196	Unreliable
+	"Illinois"	"17"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	82477	Unreliable
+	"Illinois"	"17"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	80735	Unreliable
+	"Illinois"	"17"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	80043	Unreliable
+	"Illinois"	"17"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	79066	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	13	13290	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	10	13086	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	82492	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	82031	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	80148	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	79562	Unreliable
+	"Illinois"	"17"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	72846	Unreliable
+	"Illinois"	"17"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	83725	Unreliable
+	"Illinois"	"17"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	83015	Unreliable
+	"Illinois"	"17"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	18	81358	Unreliable
+	"Illinois"	"17"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	79649	Unreliable
+	"Illinois"	"17"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	77915	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	13	14376	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	11	13608	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	14	13331	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	84663	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	82212	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	80497	Unreliable
+	"Illinois"	"17"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	78002	26.9
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	13	13119	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	12	14408	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	13	13425	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	20	80908	24.7
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	80640	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	84517	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	81842	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	80134	Unreliable
+	"Illinois"	"17"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	22	78430	28.1
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	12	13106	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	15	13354	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	10	13160	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	81171	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	81844	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	80936	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	84085	Unreliable
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	81259	25.8
+	"Illinois"	"17"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	79551	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	21	11967	175.5
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	12	12544	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	16	13122	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	14	13017	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	13205	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	77361	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	79110	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	80684	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	80442	Unreliable
+	"Illinois"	"17"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	27	80467	33.6
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	15	12203	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	10	12116	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	13	12617	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	12	12828	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	13927	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	76600	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	22	77250	28.5
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	79676	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	79947	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	79734	Unreliable
+	"Illinois"	"17"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	82640	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Female"	"F"	"Black or African American"	"2054-5"	"2002"	"2002"	13	14975	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Female"	"F"	"Black or African American"	"2054-5"	"2004"	"2004"	10	15363	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	15	11808	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	12	12344	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	15	11850	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	15	12346	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	10	12559	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	76172	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	78163	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	20	76405	26.2
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	21	78960	26.6
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	79098	Unreliable
+	"Illinois"	"17"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	78864	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	17	10133	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	12	11787	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	13	12302	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	71154	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	72125	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	77273	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	75861	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	78459	Unreliable
+	"Illinois"	"17"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	78609	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	11	10529	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	12	10616	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	11	11062	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	12	11653	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	12192	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	71157	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	71874	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	72821	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	76856	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	75330	Unreliable
+	"Illinois"	"17"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	22	77995	28.2
+	"Illinois"	"17"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	14	10051	Unreliable
+	"Illinois"	"17"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	12	10215	Unreliable
+	"Illinois"	"17"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	14	10988	Unreliable
+	"Illinois"	"17"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	11610	Unreliable
+	"Illinois"	"17"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	71098	Unreliable
+	"Illinois"	"17"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	72067	Unreliable
+	"Illinois"	"17"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	10	10249	Unreliable
+	"Illinois"	"17"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	11	10472	Unreliable
+	"Illinois"	"17"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	11	10149	Unreliable
+	"Illinois"	"17"	"51 years"	"51"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	10	10075	Unreliable
+	"Illinois"	"17"	"51 years"	"51"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	11	10378	Unreliable
+	"Illinois"	"17"	"52 years"	"52"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	11	8970	Unreliable
+	"Illinois"	"17"	"52 years"	"52"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	12	9075	Unreliable
+	"Illinois"	"17"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	67527	Unreliable
+	"Illinois"	"17"	"53 years"	"53"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	10	9794	Unreliable
+	"Illinois"	"17"	"54 years"	"54"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	10	8905	Unreliable
+	"Illinois"	"17"	"55 years"	"55"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	15	8658	Unreliable
+	"Illinois"	"17"	"55 years"	"55"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	10	8611	Unreliable
+	"Kentucky"	"21"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	29160	Unreliable
+	"Maryland"	"24"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	25808	Unreliable
+	"Maryland"	"24"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	24892	Unreliable
+	"Maryland"	"24"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	26750	Unreliable
+	"Maryland"	"24"	"37 years"	"37"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	13	12253	Unreliable
+	"Maryland"	"24"	"37 years"	"37"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	12	12828	Unreliable
+	"Maryland"	"24"	"37 years"	"37"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	11	13122	Unreliable
+	"Maryland"	"24"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	29591	Unreliable
+	"Maryland"	"24"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	29306	Unreliable
+	"Maryland"	"24"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	26481	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	14	11944	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	13	12887	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	30441	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	30607	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	29458	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	30356	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	29134	Unreliable
+	"Maryland"	"24"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	26364	Unreliable
+	"Maryland"	"24"	"39 years"	"39"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	14	12807	Unreliable
+	"Maryland"	"24"	"39 years"	"39"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	12	12285	Unreliable
+	"Maryland"	"24"	"39 years"	"39"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	11	12679	Unreliable
+	"Maryland"	"24"	"39 years"	"39"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	12	13365	Unreliable
+	"Maryland"	"24"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	30800	Unreliable
+	"Maryland"	"24"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	28919	Unreliable
+	"Maryland"	"24"	"40 years"	"40"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	19	12927	Unreliable
+	"Maryland"	"24"	"40 years"	"40"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	14	12487	Unreliable
+	"Maryland"	"24"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	31371	Unreliable
+	"Maryland"	"24"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	31500	Unreliable
+	"Maryland"	"24"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	30212	Unreliable
+	"Maryland"	"24"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	29213	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	17	11913	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"Black or African American"	"2054-5"	"2002"	"2002"	10	12696	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	19	30200	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	30265	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	31130	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	30537	Unreliable
+	"Maryland"	"24"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	30071	Unreliable
+	"Maryland"	"24"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	13	11627	Unreliable
+	"Maryland"	"24"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	13	12234	Unreliable
+	"Maryland"	"24"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	30424	Unreliable
+	"Maryland"	"24"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	30402	Unreliable
+	"Maryland"	"24"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	30407	Unreliable
+	"Maryland"	"24"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	11	11789	Unreliable
+	"Maryland"	"24"	"43 years"	"43"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	11	13192	Unreliable
+	"Maryland"	"24"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	29462	Unreliable
+	"Maryland"	"24"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	30896	Unreliable
+	"Maryland"	"24"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	30273	Unreliable
+	"Maryland"	"24"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	12	10166	Unreliable
+	"Maryland"	"24"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	17	11316	Unreliable
+	"Maryland"	"24"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	10	12237	Unreliable
+	"Maryland"	"24"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	28755	Unreliable
+	"Maryland"	"24"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	30187	66.3
+	"Maryland"	"24"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	30612	Unreliable
+	"Maryland"	"24"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	28549	Unreliable
+	"Maryland"	"24"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	29795	Unreliable
+	"Maryland"	"24"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	12	9000	Unreliable
+	"Maryland"	"24"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	29137	Unreliable
+	"Maryland"	"24"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	13	10545	Unreliable
+	"Maryland"	"24"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	28079	Unreliable
+	"Maryland"	"24"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	12	9091	Unreliable
+	"Maryland"	"24"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	11	9683	Unreliable
+	"Maryland"	"24"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	26638	Unreliable
+	"Maryland"	"24"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	26824	Unreliable
+	"Massachusetts"	"25"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	34510	Unreliable
+	"Massachusetts"	"25"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	33483	Unreliable
+	"Massachusetts"	"25"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	34975	Unreliable
+	"Massachusetts"	"25"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	33831	Unreliable
+	"Massachusetts"	"25"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	34767	Unreliable
+	"Massachusetts"	"25"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	34042	Unreliable
+	"Massachusetts"	"25"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	34268	Unreliable
+	"Massachusetts"	"25"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	33826	Unreliable
+	"Massachusetts"	"25"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	33260	Unreliable
+	"Massachusetts"	"25"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	41577	Unreliable
+	"Massachusetts"	"25"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	37457	Unreliable
+	"Massachusetts"	"25"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	34445	Unreliable
+	"Massachusetts"	"25"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	32790	Unreliable
+	"Massachusetts"	"25"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	37314	Unreliable
+	"Massachusetts"	"25"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	34176	Unreliable
+	"Massachusetts"	"25"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	40862	Unreliable
+	"Massachusetts"	"25"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	39777	Unreliable
+	"Massachusetts"	"25"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	36457	57.6
+	"Massachusetts"	"25"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	40477	Unreliable
+	"Massachusetts"	"25"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	39327	Unreliable
+	"Massachusetts"	"25"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	41043	Unreliable
+	"Massachusetts"	"25"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	41356	Unreliable
+	"Massachusetts"	"25"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	46454	Unreliable
+	"Massachusetts"	"25"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	40749	Unreliable
+	"Massachusetts"	"25"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	39289	Unreliable
+	"Massachusetts"	"25"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	40938	Unreliable
+	"Massachusetts"	"25"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	20	43551	45.9
+	"Massachusetts"	"25"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	41791	Unreliable
+	"Massachusetts"	"25"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	40316	Unreliable
+	"Massachusetts"	"25"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	38911	Unreliable
+	"Massachusetts"	"25"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	47102	Unreliable
+	"Massachusetts"	"25"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	46447	Unreliable
+	"Massachusetts"	"25"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	43319	Unreliable
+	"Massachusetts"	"25"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	41404	Unreliable
+	"Massachusetts"	"25"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	39802	Unreliable
+	"Massachusetts"	"25"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	25	46600	53.6
+	"Massachusetts"	"25"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	46033	Unreliable
+	"Massachusetts"	"25"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	42686	Unreliable
+	"Massachusetts"	"25"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	46616	Unreliable
+	"Massachusetts"	"25"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	47425	Unreliable
+	"Massachusetts"	"25"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	46523	Unreliable
+	"Massachusetts"	"25"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	46289	Unreliable
+	"Massachusetts"	"25"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	45652	Unreliable
+	"Massachusetts"	"25"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	42125	Unreliable
+	"Massachusetts"	"25"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	10	48498	Unreliable
+	"Massachusetts"	"25"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	47797	Unreliable
+	"Massachusetts"	"25"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	46842	Unreliable
+	"Massachusetts"	"25"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	46259	Unreliable
+	"Massachusetts"	"25"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	18	45696	Unreliable
+	"Massachusetts"	"25"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	45066	Unreliable
+	"Massachusetts"	"25"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	48061	Unreliable
+	"Massachusetts"	"25"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	48308	Unreliable
+	"Massachusetts"	"25"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	47617	Unreliable
+	"Massachusetts"	"25"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	46507	Unreliable
+	"Massachusetts"	"25"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	24	45710	52.5
+	"Massachusetts"	"25"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	45072	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"1999"	"1999"	10	48022	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	46391	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	46216	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	46329	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	18	47673	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	47454	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	46326	Unreliable
+	"Massachusetts"	"25"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	45589	Unreliable
+	"Massachusetts"	"25"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	46964	Unreliable
+	"Massachusetts"	"25"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	47353	Unreliable
+	"Massachusetts"	"25"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	47044	44.6
+	"Massachusetts"	"25"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	43379	Unreliable
+	"Massachusetts"	"25"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	44669	Unreliable
+	"Massachusetts"	"25"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	46303	Unreliable
+	"Massachusetts"	"25"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	46008	Unreliable
+	"Massachusetts"	"25"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	46674	Unreliable
+	"Massachusetts"	"25"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	46328	Unreliable
+	"Massachusetts"	"25"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	43999	Unreliable
+	"Massachusetts"	"25"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	44988	Unreliable
+	"Massachusetts"	"25"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	45894	Unreliable
+	"Massachusetts"	"25"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	45585	54.8
+	"Massachusetts"	"25"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	46273	Unreliable
+	"Massachusetts"	"25"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	21	43555	48.2
+	"Massachusetts"	"25"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	44590	Unreliable
+	"Massachusetts"	"25"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	45347	Unreliable
+	"Massachusetts"	"25"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	44953	Unreliable
+	"Massachusetts"	"25"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	41584	Unreliable
+	"Massachusetts"	"25"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	43738	Unreliable
+	"Massachusetts"	"25"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	44250	45.2
+	"Massachusetts"	"25"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	45117	Unreliable
+	"Massachusetts"	"25"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	45134	Unreliable
+	"Massachusetts"	"25"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	41852	Unreliable
+	"Massachusetts"	"25"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	43372	Unreliable
+	"Massachusetts"	"25"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	42866	Unreliable
+	"Massachusetts"	"25"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	43818	Unreliable
+	"Massachusetts"	"25"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	41369	Unreliable
+	"Massachusetts"	"25"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	42818	Unreliable
+	"Massachusetts"	"25"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	42186	Unreliable
+	"Massachusetts"	"25"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	40391	Unreliable
+	"Massachusetts"	"25"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	41061	Unreliable
+	"Massachusetts"	"25"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	42562	Unreliable
+	"Massachusetts"	"25"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	39043	Unreliable
+	"Massachusetts"	"25"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	39882	Unreliable
+	"Massachusetts"	"25"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	39759	Unreliable
+	"Massachusetts"	"25"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	37906	Unreliable
+	"Michigan"	"26"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	61910	Unreliable
+	"Michigan"	"26"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	64857	Unreliable
+	"Michigan"	"26"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	64711	Unreliable
+	"Michigan"	"26"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	66410	Unreliable
+	"Michigan"	"26"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	69212	Unreliable
+	"Michigan"	"26"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	66513	Unreliable
+	"Michigan"	"26"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	67814	Unreliable
+	"Michigan"	"26"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	66726	Unreliable
+	"Michigan"	"26"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	68020	Unreliable
+	"Michigan"	"26"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	66939	Unreliable
+	"Michigan"	"26"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	68511	Unreliable
+	"Michigan"	"26"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	67979	Unreliable
+	"Michigan"	"26"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	64933	Unreliable
+	"Michigan"	"26"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	64715	Unreliable
+	"Michigan"	"26"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	62435	Unreliable
+	"Missouri"	"29"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	39933	Unreliable
+	"Missouri"	"29"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	38664	Unreliable
+	"Missouri"	"29"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	36810	Unreliable
+	"Missouri"	"29"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	36806	Unreliable
+	"Nevada"	"32"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	14496	Unreliable
+	"Nevada"	"32"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	15601	Unreliable
+	"Nevada"	"32"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	15559	Unreliable
+	"Nevada"	"32"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	15141	Unreliable
+	"Nevada"	"32"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	13528	Unreliable
+	"Nevada"	"32"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	15540	Unreliable
+	"Nevada"	"32"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	15679	Unreliable
+	"Nevada"	"32"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	14411	Unreliable
+	"Nevada"	"32"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	14731	Unreliable
+	"Nevada"	"32"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	12575	Unreliable
+	"Nevada"	"32"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	14450	Unreliable
+	"Nevada"	"32"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	14796	Unreliable
+	"Nevada"	"32"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	12197	Unreliable
+	"Nevada"	"32"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	12458	Unreliable
+	"New Jersey"	"34"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	39000	Unreliable
+	"New Jersey"	"34"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	37009	Unreliable
+	"New Jersey"	"34"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	38470	Unreliable
+	"New Jersey"	"34"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	38221	Unreliable
+	"New Jersey"	"34"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	39151	Unreliable
+	"New Jersey"	"34"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	38699	Unreliable
+	"New Jersey"	"34"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	42404	Unreliable
+	"New Jersey"	"34"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	47480	Unreliable
+	"New Jersey"	"34"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	47137	Unreliable
+	"New Jersey"	"34"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	48987	Unreliable
+	"New Jersey"	"34"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	47436	Unreliable
+	"New Jersey"	"34"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	46853	Unreliable
+	"New Jersey"	"34"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	48615	Unreliable
+	"New Jersey"	"34"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	47221	Unreliable
+	"New Jersey"	"34"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	48016	Unreliable
+	"New Jersey"	"34"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	56126	Unreliable
+	"New Jersey"	"34"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	55663	Unreliable
+	"New Jersey"	"34"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	51854	Unreliable
+	"New Jersey"	"34"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	49000	Unreliable
+	"New Jersey"	"34"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	57098	Unreliable
+	"New Jersey"	"34"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	55826	Unreliable
+	"New Jersey"	"34"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	51550	Unreliable
+	"New Jersey"	"34"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	58086	Unreliable
+	"New Jersey"	"34"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	57547	Unreliable
+	"New Jersey"	"34"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	55636	Unreliable
+	"New Jersey"	"34"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	55084	Unreliable
+	"New Jersey"	"34"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	57901	Unreliable
+	"New Jersey"	"34"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	57634	Unreliable
+	"New Jersey"	"34"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	57100	Unreliable
+	"New Jersey"	"34"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	55551	Unreliable
+	"New Jersey"	"34"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	55300	Unreliable
+	"New Jersey"	"34"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	54705	Unreliable
+	"New Jersey"	"34"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	58483	Unreliable
+	"New Jersey"	"34"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	58960	Unreliable
+	"New Jersey"	"34"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	57533	Unreliable
+	"New Jersey"	"34"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	55133	Unreliable
+	"New Jersey"	"34"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	56050	Unreliable
+	"New Jersey"	"34"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	56218	Unreliable
+	"New Jersey"	"34"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	58462	Unreliable
+	"New Jersey"	"34"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	57491	Unreliable
+	"New Jersey"	"34"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	55900	Unreliable
+	"New Jersey"	"34"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	56665	Unreliable
+	"New Jersey"	"34"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	58279	Unreliable
+	"New Jersey"	"34"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	57211	Unreliable
+	"New Jersey"	"34"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	53346	Unreliable
+	"New Jersey"	"34"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	56468	Unreliable
+	"New Jersey"	"34"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	57877	Unreliable
+	"New Jersey"	"34"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	53221	Unreliable
+	"New Jersey"	"34"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	55003	Unreliable
+	"New Jersey"	"34"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	55641	Unreliable
+	"New Jersey"	"34"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	51862	Unreliable
+	"New Jersey"	"34"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	54604	Unreliable
+	"New Jersey"	"34"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	55107	Unreliable
+	"New Jersey"	"34"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	53210	Unreliable
+	"New Jersey"	"34"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	52494	Unreliable
+	"New Jersey"	"34"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	54410	Unreliable
+	"New Jersey"	"34"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	52811	Unreliable
+	"New Jersey"	"34"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	51997	Unreliable
+	"New Jersey"	"34"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	46741	Unreliable
+	"New Jersey"	"34"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	45925	Unreliable
+	"New Mexico"	"35"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	11043	Unreliable
+	"New Mexico"	"35"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	12526	Unreliable
+	"New Mexico"	"35"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	12370	Unreliable
+	"New Mexico"	"35"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	11463	Unreliable
+	"New Mexico"	"35"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	12163	Unreliable
+	"New Mexico"	"35"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	12082	Unreliable
+	"New Mexico"	"35"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	12173	Unreliable
+	"New Mexico"	"35"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	11822	Unreliable
+	"New Mexico"	"35"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	12027	Unreliable
+	"New Mexico"	"35"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	11702	Unreliable
+	"New Mexico"	"35"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	12113	Unreliable
+	"New Mexico"	"35"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	12218	Unreliable
+	"New Mexico"	"35"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	11917	Unreliable
+	"New Mexico"	"35"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	11376	Unreliable
+	"New York"	"36"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	89795	Unreliable
+	"New York"	"36"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	90071	Unreliable
+	"New York"	"36"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	92433	Unreliable
+	"New York"	"36"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	91165	Unreliable
+	"New York"	"36"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	91399	Unreliable
+	"New York"	"36"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	94854	Unreliable
+	"New York"	"36"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	106090	Unreliable
+	"New York"	"36"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	109722	Unreliable
+	"New York"	"36"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	111214	Unreliable
+	"New York"	"36"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	104404	Unreliable
+	"New York"	"36"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	101016	Unreliable
+	"New York"	"36"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	110091	Unreliable
+	"New York"	"36"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	106465	Unreliable
+	"New York"	"36"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	103277	Unreliable
+	"New York"	"36"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	109411	Unreliable
+	"New York"	"36"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	108004	Unreliable
+	"New York"	"36"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	102818	Unreliable
+	"New York"	"36"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	102311	Unreliable
+	"New York"	"36"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	108249	Unreliable
+	"New York"	"36"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	114342	Unreliable
+	"New York"	"36"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	109674	Unreliable
+	"New York"	"36"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	103975	Unreliable
+	"New York"	"36"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	101823	Unreliable
+	"New York"	"36"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	101514	Unreliable
+	"New York"	"36"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	21	120343	17.5
+	"New York"	"36"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	118378	Unreliable
+	"New York"	"36"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	21	108083	19.4
+	"New York"	"36"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	104134	Unreliable
+	"New York"	"36"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	102554	Unreliable
+	"New York"	"36"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	102480	Unreliable
+	"New York"	"36"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	22	116652	18.9
+	"New York"	"36"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	114902	Unreliable
+	"New York"	"36"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	115548	Unreliable
+	"New York"	"36"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	106728	Unreliable
+	"New York"	"36"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	102491	Unreliable
+	"New York"	"36"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	100453	Unreliable
+	"New York"	"36"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	23	117642	19.6
+	"New York"	"36"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	114438	Unreliable
+	"New York"	"36"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	114441	Unreliable
+	"New York"	"36"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	105449	Unreliable
+	"New York"	"36"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	100929	Unreliable
+	"New York"	"36"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	104826	Unreliable
+	"New York"	"36"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	24	117408	20.4
+	"New York"	"36"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	115275	Unreliable
+	"New York"	"36"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	25	113718	22.0
+	"New York"	"36"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	113855	Unreliable
+	"New York"	"36"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	113842	Unreliable
+	"New York"	"36"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	104667	Unreliable
+	"New York"	"36"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	20	116950	17.1
+	"New York"	"36"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	18	116800	Unreliable
+	"New York"	"36"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	114035	Unreliable
+	"New York"	"36"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	112835	Unreliable
+	"New York"	"36"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	112508	Unreliable
+	"New York"	"36"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	119600	Unreliable
+	"New York"	"36"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	121309	Unreliable
+	"New York"	"36"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	21	116013	18.1
+	"New York"	"36"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	21	113274	18.5
+	"New York"	"36"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	111990	Unreliable
+	"New York"	"36"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	112086	Unreliable
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	11	26504	Unreliable
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	112155	Unreliable
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	112675	Unreliable
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	22	119870	18.4
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	115034	Unreliable
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	112329	17.8
+	"New York"	"36"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	111008	Unreliable
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	12	24276	Unreliable
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	21	112239	18.7
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	114082	Unreliable
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	112808	Unreliable
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	118940	Unreliable
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	113972	17.5
+	"New York"	"36"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	111119	Unreliable
+	"New York"	"36"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	25	108599	23.0
+	"New York"	"36"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	109161	Unreliable
+	"New York"	"36"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	26	112434	23.1
+	"New York"	"36"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	23	111987	20.5
+	"New York"	"36"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	118173	17.8
+	"New York"	"36"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	112893	Unreliable
+	"New York"	"36"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	107128	Unreliable
+	"New York"	"36"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	107700	Unreliable
+	"New York"	"36"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	26	109854	23.7
+	"New York"	"36"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	111295	Unreliable
+	"New York"	"36"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	110855	Unreliable
+	"New York"	"36"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	116724	Unreliable
+	"New York"	"36"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	17	106201	Unreliable
+	"New York"	"36"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	109615	Unreliable
+	"New York"	"36"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	106589	Unreliable
+	"New York"	"36"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	108878	Unreliable
+	"New York"	"36"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	110296	Unreliable
+	"New York"	"36"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	109540	Unreliable
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	10	18606	Unreliable
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	100276	Unreliable
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	101468	Unreliable
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	108303	Unreliable
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	24	105744	22.7
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	108003	Unreliable
+	"New York"	"36"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	109471	Unreliable
+	"New York"	"36"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	100220	Unreliable
+	"New York"	"36"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	100962	Unreliable
+	"New York"	"36"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	102015	Unreliable
+	"New York"	"36"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	104715	Unreliable
+	"New York"	"36"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	106979	Unreliable
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	12	20824	Unreliable
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	96406	Unreliable
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	98687	Unreliable
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	100014	Unreliable
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	101100	Unreliable
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	106296	23.5
+	"New York"	"36"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	103587	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"1999"	"1999"	14	17784	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	14	17899	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	13	21296	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	97054	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	96162	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	99046	Unreliable
+	"New York"	"36"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	100160	21.0
+	"New York"	"36"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2000"	"2000"	10	19056	Unreliable
+	"New York"	"36"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	96801	Unreliable
+	"New York"	"36"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	96381	Unreliable
+	"New York"	"36"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	98763	Unreliable
+	"New York"	"36"	"51 years"	"51"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	10	19059	Unreliable
+	"New York"	"36"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	92648	Unreliable
+	"New York"	"36"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	17	96800	Unreliable
+	"New York"	"36"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	97757	Unreliable
+	"New York"	"36"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	92670	Unreliable
+	"New York"	"36"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	95748	Unreliable
+	"New York"	"36"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	94702	Unreliable
+	"New York"	"36"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	95048	Unreliable
+	"New York"	"36"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	91892	Unreliable
+	"New York"	"36"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	94973	Unreliable
+	"New York"	"36"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	100698	Unreliable
+	"New York"	"36"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	90902	Unreliable
+	"New York"	"36"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	98311	Unreliable
+	"New York"	"36"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	90142	Unreliable
+	"North Carolina"	"37"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	47379	Unreliable
+	"North Carolina"	"37"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	44588	Unreliable
+	"North Carolina"	"37"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	39303	Unreliable
+	"North Carolina"	"37"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	41045	Unreliable
+	"North Carolina"	"37"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	45324	Unreliable
+	"North Carolina"	"37"	"33 years"	"33"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	12	48249	Unreliable
+	"North Carolina"	"37"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	50999	Unreliable
+	"North Carolina"	"37"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	46719	Unreliable
+	"North Carolina"	"37"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	46337	Unreliable
+	"North Carolina"	"37"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	50803	Unreliable
+	"North Carolina"	"37"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	46387	Unreliable
+	"North Carolina"	"37"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	48125	Unreliable
+	"North Carolina"	"37"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	46544	Unreliable
+	"North Carolina"	"37"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	45936	Unreliable
+	"North Carolina"	"37"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	46559	Unreliable
+	"North Carolina"	"37"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	49530	Unreliable
+	"North Carolina"	"37"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	46170	Unreliable
+	"North Carolina"	"37"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	48010	Unreliable
+	"North Carolina"	"37"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	49726	Unreliable
+	"North Carolina"	"37"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	50086	Unreliable
+	"North Carolina"	"37"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	46374	Unreliable
+	"North Carolina"	"37"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	49643	Unreliable
+	"North Carolina"	"37"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	50115	Unreliable
+	"North Carolina"	"37"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	49613	Unreliable
+	"North Carolina"	"37"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	11	49045	Unreliable
+	"North Carolina"	"37"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	50676	Unreliable
+	"North Carolina"	"37"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	49258	Unreliable
+	"North Carolina"	"37"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	49994	Unreliable
+	"North Carolina"	"37"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	49559	Unreliable
+	"North Carolina"	"37"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	47464	Unreliable
+	"North Carolina"	"37"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	50417	Unreliable
+	"North Carolina"	"37"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	49857	Unreliable
+	"North Carolina"	"37"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	49959	Unreliable
+	"North Carolina"	"37"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	48105	Unreliable
+	"North Carolina"	"37"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	50393	Unreliable
+	"North Carolina"	"37"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	50291	Unreliable
+	"North Carolina"	"37"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	50172	Unreliable
+	"North Carolina"	"37"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	50343	Unreliable
+	"North Carolina"	"37"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	48205	Unreliable
+	"North Carolina"	"37"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	50429	Unreliable
+	"North Carolina"	"37"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	50358	Unreliable
+	"North Carolina"	"37"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	48442	Unreliable
+	"North Carolina"	"37"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	48197	Unreliable
+	"North Carolina"	"37"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	47943	Unreliable
+	"North Carolina"	"37"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	45717	Unreliable
+	"North Carolina"	"37"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	47742	Unreliable
+	"North Carolina"	"37"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	48214	Unreliable
+	"North Carolina"	"37"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	47867	Unreliable
+	"North Carolina"	"37"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	48212	Unreliable
+	"North Carolina"	"37"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	14	48966	Unreliable
+	"North Carolina"	"37"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	43935	Unreliable
+	"North Carolina"	"37"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	45937	Unreliable
+	"North Carolina"	"37"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	47920	Unreliable
+	"North Carolina"	"37"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	11	48436	Unreliable
+	"North Carolina"	"37"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	46204	Unreliable
+	"North Carolina"	"37"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	47934	Unreliable
+	"North Carolina"	"37"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	46047	Unreliable
+	"North Carolina"	"37"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	43090	Unreliable
+	"Ohio"	"39"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	68867	Unreliable
+	"Ohio"	"39"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	65622	Unreliable
+	"Ohio"	"39"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	66762	Unreliable
+	"Ohio"	"39"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	64928	Unreliable
+	"Ohio"	"39"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	56513	Unreliable
+	"Ohio"	"39"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	57469	Unreliable
+	"Ohio"	"39"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	61896	Unreliable
+	"Ohio"	"39"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	66212	Unreliable
+	"Ohio"	"39"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	64707	Unreliable
+	"Ohio"	"39"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	68176	Unreliable
+	"Ohio"	"39"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	66342	Unreliable
+	"Ohio"	"39"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	67222	Unreliable
+	"Ohio"	"39"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	72222	Unreliable
+	"Ohio"	"39"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	65906	Unreliable
+	"Ohio"	"39"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	72093	Unreliable
+	"Ohio"	"39"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	66980	Unreliable
+	"Ohio"	"39"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	78907	Unreliable
+	"Ohio"	"39"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	77057	Unreliable
+	"Ohio"	"39"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	74896	Unreliable
+	"Ohio"	"39"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	74617	Unreliable
+	"Ohio"	"39"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	78606	Unreliable
+	"Ohio"	"39"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	76430	Unreliable
+	"Ohio"	"39"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	73893	Unreliable
+	"Ohio"	"39"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	80156	Unreliable
+	"Ohio"	"39"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	79430	Unreliable
+	"Ohio"	"39"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	79983	Unreliable
+	"Ohio"	"39"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	76316	Unreliable
+	"Ohio"	"39"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	74070	Unreliable
+	"Ohio"	"39"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	79699	Unreliable
+	"Ohio"	"39"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	19	79777	Unreliable
+	"Ohio"	"39"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	78311	Unreliable
+	"Ohio"	"39"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	77223	Unreliable
+	"Ohio"	"39"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	79577	Unreliable
+	"Ohio"	"39"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	81198	Unreliable
+	"Ohio"	"39"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	79416	Unreliable
+	"Ohio"	"39"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	79443	Unreliable
+	"Ohio"	"39"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	78079	Unreliable
+	"Ohio"	"39"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	80391	Unreliable
+	"Ohio"	"39"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	80692	Unreliable
+	"Ohio"	"39"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	78949	Unreliable
+	"Ohio"	"39"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	79896	Unreliable
+	"Ohio"	"39"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	78742	Unreliable
+	"Ohio"	"39"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	79817	Unreliable
+	"Ohio"	"39"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	78323	Unreliable
+	"Ohio"	"39"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	77763	Unreliable
+	"Ohio"	"39"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	79658	25.1
+	"Ohio"	"39"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	78213	Unreliable
+	"Ohio"	"39"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	74069	Unreliable
+	"Ohio"	"39"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	77414	Unreliable
+	"Ohio"	"39"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	75901	Unreliable
+	"Ohio"	"39"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	78967	Unreliable
+	"Ohio"	"39"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	75262	Unreliable
+	"Ohio"	"39"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	76691	Unreliable
+	"Ohio"	"39"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	72202	Unreliable
+	"Ohio"	"39"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	69502	Unreliable
+	"Oklahoma"	"40"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	21821	Unreliable
+	"Oklahoma"	"40"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	22349	Unreliable
+	"Oregon"	"41"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	24950	Unreliable
+	"Oregon"	"41"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	24277	Unreliable
+	"Oregon"	"41"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	24994	Unreliable
+	"Oregon"	"41"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	25069	Unreliable
+	"Oregon"	"41"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	24968	Unreliable
+	"Oregon"	"41"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	25900	Unreliable
+	"Oregon"	"41"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	25687	Unreliable
+	"Pennsylvania"	"42"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	74171	Unreliable
+	"Pennsylvania"	"42"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	70611	Unreliable
+	"Pennsylvania"	"42"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	72860	Unreliable
+	"Pennsylvania"	"42"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	66214	Unreliable
+	"Pennsylvania"	"42"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	66787	Unreliable
+	"Pennsylvania"	"42"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	68000	Unreliable
+	"Pennsylvania"	"42"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	62626	Unreliable
+	"Pennsylvania"	"42"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	65394	Unreliable
+	"Pennsylvania"	"42"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	65042	Unreliable
+	"Pennsylvania"	"42"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	62617	Unreliable
+	"Pennsylvania"	"42"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	65201	Unreliable
+	"Pennsylvania"	"42"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	61471	Unreliable
+	"Pennsylvania"	"42"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	62887	Unreliable
+	"Pennsylvania"	"42"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	58327	Unreliable
+	"Pennsylvania"	"42"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	60969	Unreliable
+	"Pennsylvania"	"42"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	60043	Unreliable
+	"Pennsylvania"	"42"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	57754	Unreliable
+	"Pennsylvania"	"42"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	68650	Unreliable
+	"Pennsylvania"	"42"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	77656	Unreliable
+	"Pennsylvania"	"42"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	74161	Unreliable
+	"Pennsylvania"	"42"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	71208	Unreliable
+	"Pennsylvania"	"42"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	69092	Unreliable
+	"Pennsylvania"	"42"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	80748	Unreliable
+	"Pennsylvania"	"42"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	78643	Unreliable
+	"Pennsylvania"	"42"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	83981	Unreliable
+	"Pennsylvania"	"42"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	73088	Unreliable
+	"Pennsylvania"	"42"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	70912	Unreliable
+	"Pennsylvania"	"42"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	83520	Unreliable
+	"Pennsylvania"	"42"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	83189	Unreliable
+	"Pennsylvania"	"42"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	80501	Unreliable
+	"Pennsylvania"	"42"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	78407	Unreliable
+	"Pennsylvania"	"42"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	73019	Unreliable
+	"Pennsylvania"	"42"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	87904	Unreliable
+	"Pennsylvania"	"42"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	80543	Unreliable
+	"Pennsylvania"	"42"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	80918	Unreliable
+	"Pennsylvania"	"42"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	78819	Unreliable
+	"Pennsylvania"	"42"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	88575	Unreliable
+	"Pennsylvania"	"42"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	86222	Unreliable
+	"Pennsylvania"	"42"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	80830	Unreliable
+	"Pennsylvania"	"42"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	88236	Unreliable
+	"Pennsylvania"	"42"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	87112	Unreliable
+	"Pennsylvania"	"42"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	86275	Unreliable
+	"Pennsylvania"	"42"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	82684	Unreliable
+	"Pennsylvania"	"42"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	80899	Unreliable
+	"Pennsylvania"	"42"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	89483	Unreliable
+	"Pennsylvania"	"42"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	86344	Unreliable
+	"Pennsylvania"	"42"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	82692	25.4
+	"Pennsylvania"	"42"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	12	87951	Unreliable
+	"Pennsylvania"	"42"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	87561	Unreliable
+	"Pennsylvania"	"42"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	87534	Unreliable
+	"Pennsylvania"	"42"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	86528	Unreliable
+	"Pennsylvania"	"42"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	85446	Unreliable
+	"Pennsylvania"	"42"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	87286	Unreliable
+	"Pennsylvania"	"42"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	87173	Unreliable
+	"Pennsylvania"	"42"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	85973	Unreliable
+	"Pennsylvania"	"42"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	87531	Unreliable
+	"Pennsylvania"	"42"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	87919	Unreliable
+	"Pennsylvania"	"42"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	86692	Unreliable
+	"Pennsylvania"	"42"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	81842	Unreliable
+	"Pennsylvania"	"42"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	84427	Unreliable
+	"Pennsylvania"	"42"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	87287	Unreliable
+	"Pennsylvania"	"42"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	87685	Unreliable
+	"Pennsylvania"	"42"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	84902	Unreliable
+	"Pennsylvania"	"42"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	87105	Unreliable
+	"Pennsylvania"	"42"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	84389	Unreliable
+	"Pennsylvania"	"42"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	83723	Unreliable
+	"Pennsylvania"	"42"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	81904	Unreliable
+	"Pennsylvania"	"42"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	78117	Unreliable
+	"Pennsylvania"	"42"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	79691	Unreliable
+	"Pennsylvania"	"42"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	74584	Unreliable
+	"Pennsylvania"	"42"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	77632	Unreliable
+	"Tennessee"	"47"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	32323	Unreliable
+	"Tennessee"	"47"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	31794	Unreliable
+	"Tennessee"	"47"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	30979	Unreliable
+	"Tennessee"	"47"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	33854	Unreliable
+	"Tennessee"	"47"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	10	37451	Unreliable
+	"Tennessee"	"47"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	37225	Unreliable
+	"Tennessee"	"47"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	36571	Unreliable
+	"Tennessee"	"47"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	36621	Unreliable
+	"Tennessee"	"47"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	36681	Unreliable
+	"Tennessee"	"47"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	36701	Unreliable
+	"Tennessee"	"47"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	35160	Unreliable
+	"Tennessee"	"47"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	35786	Unreliable
+	"Tennessee"	"47"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	11	34782	Unreliable
+	"Texas"	"48"	"18 years"	"18"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	144111	Unreliable
+	"Texas"	"48"	"18 years"	"18"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	146929	Unreliable
+	"Texas"	"48"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	142877	Unreliable
+	"Texas"	"48"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	147222	Unreliable
+	"Texas"	"48"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	147737	Unreliable
+	"Texas"	"48"	"19 years"	"19"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	147654	Unreliable
+	"Texas"	"48"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	133152	Unreliable
+	"Texas"	"48"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	149345	Unreliable
+	"Texas"	"48"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	147519	Unreliable
+	"Texas"	"48"	"20 years"	"20"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	144578	Unreliable
+	"Texas"	"48"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	128178	Unreliable
+	"Texas"	"48"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	147094	Unreliable
+	"Texas"	"48"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	148892	Unreliable
+	"Texas"	"48"	"21 years"	"21"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	147950	13.5
+	"Texas"	"48"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	135995	Unreliable
+	"Texas"	"48"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	145677	Unreliable
+	"Texas"	"48"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	148210	13.5
+	"Texas"	"48"	"22 years"	"22"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	150622	Unreliable
+	"Texas"	"48"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	133674	Unreliable
+	"Texas"	"48"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	146905	Unreliable
+	"Texas"	"48"	"23 years"	"23"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	150040	Unreliable
+	"Texas"	"48"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	132585	Unreliable
+	"Texas"	"48"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	134276	Unreliable
+	"Texas"	"48"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	135187	Unreliable
+	"Texas"	"48"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	138857	Unreliable
+	"Texas"	"48"	"24 years"	"24"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	147636	Unreliable
+	"Texas"	"48"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	132800	Unreliable
+	"Texas"	"48"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	134213	Unreliable
+	"Texas"	"48"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	134191	Unreliable
+	"Texas"	"48"	"25 years"	"25"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	19	138962	Unreliable
+	"Texas"	"48"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	133072	Unreliable
+	"Texas"	"48"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	133091	Unreliable
+	"Texas"	"48"	"26 years"	"26"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	133272	Unreliable
+	"Texas"	"48"	"27 years"	"27"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	19	133247	Unreliable
+	"Texas"	"48"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	137225	Unreliable
+	"Texas"	"48"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	132136	Unreliable
+	"Texas"	"48"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	130747	Unreliable
+	"Texas"	"48"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	134147	Unreliable
+	"Texas"	"48"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	132286	15.9
+	"Texas"	"48"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	137901	Unreliable
+	"Texas"	"48"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	142188	Unreliable
+	"Texas"	"48"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	136988	Unreliable
+	"Texas"	"48"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	132429	Unreliable
+	"Texas"	"48"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	130776	Unreliable
+	"Texas"	"48"	"29 years"	"29"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	23	134694	17.1
+	"Texas"	"48"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	137095	Unreliable
+	"Texas"	"48"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	141541	Unreliable
+	"Texas"	"48"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	137872	Unreliable
+	"Texas"	"48"	"30 years"	"30"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	133199	Unreliable
+	"Texas"	"48"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	128716	Unreliable
+	"Texas"	"48"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	143354	Unreliable
+	"Texas"	"48"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	21	141630	14.8
+	"Texas"	"48"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	137122	14.6
+	"Texas"	"48"	"31 years"	"31"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	132813	Unreliable
+	"Texas"	"48"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	131671	Unreliable
+	"Texas"	"48"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	130216	Unreliable
+	"Texas"	"48"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	135367	Unreliable
+	"Texas"	"48"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	144115	Unreliable
+	"Texas"	"48"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	142343	Unreliable
+	"Texas"	"48"	"32 years"	"32"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	27	138798	19.5
+	"Texas"	"48"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	129337	Unreliable
+	"Texas"	"48"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	130832	Unreliable
+	"Texas"	"48"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	143583	14.6
+	"Texas"	"48"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	142345	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	125629	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	131176	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	138105	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	128671	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	131077	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	134995	Unreliable
+	"Texas"	"48"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	143411	Unreliable
+	"Texas"	"48"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	17	144798	Unreliable
+	"Texas"	"48"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	141190	Unreliable
+	"Texas"	"48"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	132046	Unreliable
+	"Texas"	"48"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	16	129444	Unreliable
+	"Texas"	"48"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	131239	Unreliable
+	"Texas"	"48"	"35 years"	"35"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	135560	Unreliable
+	"Texas"	"48"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	143011	Unreliable
+	"Texas"	"48"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	141281	Unreliable
+	"Texas"	"48"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	139301	Unreliable
+	"Texas"	"48"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	20	131927	15.2
+	"Texas"	"48"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	26	128685	20.2
+	"Texas"	"48"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	131141	15.3
+	"Texas"	"48"	"37 years"	"37"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	13	139398	Unreliable
+	"Texas"	"48"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	15	144385	Unreliable
+	"Texas"	"48"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	143374	Unreliable
+	"Texas"	"48"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	19	142765	Unreliable
+	"Texas"	"48"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	139485	15.8
+	"Texas"	"48"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	29	131657	22.0
+	"Texas"	"48"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	24	128891	18.6
+	"Texas"	"48"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	139665	Unreliable
+	"Texas"	"48"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	11	128701	Unreliable
+	"Texas"	"48"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	18	142132	Unreliable
+	"Texas"	"48"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	142987	Unreliable
+	"Texas"	"48"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	21	143084	14.7
+	"Texas"	"48"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	142173	Unreliable
+	"Texas"	"48"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	23	138831	16.6
+	"Texas"	"48"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	131597	15.2
+	"Texas"	"48"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	11	140962	Unreliable
+	"Texas"	"48"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	140666	Unreliable
+	"Texas"	"48"	"39 years"	"39"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	15	140043	Unreliable
+	"Texas"	"48"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	144483	Unreliable
+	"Texas"	"48"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	144349	Unreliable
+	"Texas"	"48"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	25	143000	17.5
+	"Texas"	"48"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	21	143312	14.7
+	"Texas"	"48"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	142135	14.1
+	"Texas"	"48"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	18	139563	Unreliable
+	"Texas"	"48"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	11	141454	Unreliable
+	"Texas"	"48"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	12	141366	Unreliable
+	"Texas"	"48"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	12	141307	Unreliable
+	"Texas"	"48"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	13	144637	Unreliable
+	"Texas"	"48"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	147664	Unreliable
+	"Texas"	"48"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	20	144290	13.9
+	"Texas"	"48"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	142602	15.4
+	"Texas"	"48"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	26	142566	18.2
+	"Texas"	"48"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	22	141668	15.5
+	"Texas"	"48"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	14	141704	Unreliable
+	"Texas"	"48"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	20	141591	14.1
+	"Texas"	"48"	"41 years"	"41"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	141574	Unreliable
+	"Texas"	"48"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	21	137997	15.2
+	"Texas"	"48"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	26	147635	17.6
+	"Texas"	"48"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	31	144615	21.4
+	"Texas"	"48"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	142899	17.5
+	"Texas"	"48"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	22	143382	15.3
+	"Texas"	"48"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	20	142231	14.1
+	"Texas"	"48"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	140358	Unreliable
+	"Texas"	"48"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	139882	Unreliable
+	"Texas"	"48"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	24	147118	16.3
+	"Texas"	"48"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	144032	17.4
+	"Texas"	"48"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	142445	Unreliable
+	"Texas"	"48"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	136895	Unreliable
+	"Texas"	"48"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	11	143504	Unreliable
+	"Texas"	"48"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	19	142320	Unreliable
+	"Texas"	"48"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	21	130185	16.1
+	"Texas"	"48"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	135086	Unreliable
+	"Texas"	"48"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	22	139730	15.7
+	"Texas"	"48"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	26	140188	18.5
+	"Texas"	"48"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	29	147331	19.7
+	"Texas"	"48"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	144571	14.5
+	"Texas"	"48"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	136645	Unreliable
+	"Texas"	"48"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	136390	Unreliable
+	"Texas"	"48"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	142888	Unreliable
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"Black or African American"	"2054-5"	"2004"	"2004"	10	20805	Unreliable
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	129257	Unreliable
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	17	130953	Unreliable
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	20	136967	14.6
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	30	138833	21.6
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	21	139085	15.1
+	"Texas"	"48"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	28	146127	19.2
+	"Texas"	"48"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	13	129545	Unreliable
+	"Texas"	"48"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	18	136383	Unreliable
+	"Texas"	"48"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	16	136860	Unreliable
+	"Texas"	"48"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	14	136740	Unreliable
+	"Texas"	"48"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	128173	Unreliable
+	"Texas"	"48"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	131234	Unreliable
+	"Texas"	"48"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	21	130592	16.1
+	"Texas"	"48"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	136383	16.1
+	"Texas"	"48"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	25	138162	18.1
+	"Texas"	"48"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	29	138493	20.9
+	"Texas"	"48"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	13	129653	Unreliable
+	"Texas"	"48"	"46 years"	"46"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	16	136980	Unreliable
+	"Texas"	"48"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	119051	Unreliable
+	"Texas"	"48"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	16	122129	Unreliable
+	"Texas"	"48"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	131249	Unreliable
+	"Texas"	"48"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	22	130648	16.8
+	"Texas"	"48"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	19	136667	Unreliable
+	"Texas"	"48"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	22	138801	15.9
+	"Texas"	"48"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	20	129953	15.4
+	"Texas"	"48"	"47 years"	"47"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	14	136849	Unreliable
+	"Texas"	"48"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	124215	Unreliable
+	"Texas"	"48"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	131001	Unreliable
+	"Texas"	"48"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	22	130288	16.9
+	"Texas"	"48"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	136621	14.6
+	"Texas"	"48"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	11	125295	Unreliable
+	"Texas"	"48"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	130071	Unreliable
+	"Texas"	"48"	"48 years"	"48"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	129694	Unreliable
+	"Texas"	"48"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	114087	Unreliable
+	"Texas"	"48"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	15	120483	Unreliable
+	"Texas"	"48"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	20	123713	16.2
+	"Texas"	"48"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	20	130298	15.3
+	"Texas"	"48"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	34	129553	26.2
+	"Texas"	"48"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	15	125453	Unreliable
+	"Texas"	"48"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	12	130359	Unreliable
+	"Texas"	"48"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	109649	Unreliable
+	"Texas"	"48"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	114297	Unreliable
+	"Texas"	"48"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	120206	Unreliable
+	"Texas"	"48"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	123235	Unreliable
+	"Texas"	"48"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	21	129972	16.2
+	"Texas"	"48"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2001"	"2001"	10	112371	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	16	115162	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2001"	"2001"	11	14206	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Male"	"M"	"Black or African American"	"2054-5"	"2003"	"2003"	10	15481	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	110698	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	113701	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	17	119627	Unreliable
+	"Texas"	"48"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	122704	Unreliable
+	"Texas"	"48"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	12	112594	Unreliable
+	"Texas"	"48"	"51 years"	"51"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	122212	Unreliable
+	"Texas"	"48"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	20	110815	18.0
+	"Texas"	"48"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	16	113798	Unreliable
+	"Texas"	"48"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	119950	Unreliable
+	"Texas"	"48"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	15	110099	Unreliable
+	"Texas"	"48"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	112938	Unreliable
+	"Texas"	"48"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	105680	Unreliable
+	"Texas"	"48"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	108962	Unreliable
+	"Texas"	"48"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	15	110265	Unreliable
+	"Texas"	"48"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	104425	Unreliable
+	"Texas"	"48"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	108785	Unreliable
+	"Utah"	"49"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	14739	Unreliable
+	"Utah"	"49"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	13966	Unreliable
+	"Virginia"	"51"	"28 years"	"28"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	13	35713	Unreliable
+	"Virginia"	"51"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	44498	Unreliable
+	"Virginia"	"51"	"38 years"	"38"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	12	44612	Unreliable
+	"Virginia"	"51"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	12	46056	Unreliable
+	"Virginia"	"51"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	46562	Unreliable
+	"Virginia"	"51"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	44546	Unreliable
+	"Virginia"	"51"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	16	46104	Unreliable
+	"Virginia"	"51"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	46042	Unreliable
+	"Virginia"	"51"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	45694	Unreliable
+	"Virginia"	"51"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	10	45541	Unreliable
+	"Virginia"	"51"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	44383	Unreliable
+	"Virginia"	"51"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	45892	Unreliable
+	"Virginia"	"51"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	45499	Unreliable
+	"Virginia"	"51"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	45135	Unreliable
+	"Virginia"	"51"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	44473	Unreliable
+	"Virginia"	"51"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	44879	Unreliable
+	"Virginia"	"51"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	44657	Unreliable
+	"Virginia"	"51"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	45657	Unreliable
+	"Virginia"	"51"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	43821	Unreliable
+	"Virginia"	"51"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	44337	Unreliable
+	"Virginia"	"51"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	45500	Unreliable
+	"Virginia"	"51"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	42854	Unreliable
+	"Virginia"	"51"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	44331	Unreliable
+	"Virginia"	"51"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	44327	Unreliable
+	"Virginia"	"51"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	44445	Unreliable
+	"Virginia"	"51"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	42752	Unreliable
+	"Washington"	"53"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	36913	Unreliable
+	"Washington"	"53"	"33 years"	"33"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	39390	Unreliable
+	"Washington"	"53"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	38185	Unreliable
+	"Washington"	"53"	"34 years"	"34"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	37892	Unreliable
+	"Washington"	"53"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	38134	Unreliable
+	"Washington"	"53"	"36 years"	"36"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	37933	Unreliable
+	"Washington"	"53"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	11	43920	Unreliable
+	"Washington"	"53"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	42626	Unreliable
+	"Washington"	"53"	"37 years"	"37"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	37867	Unreliable
+	"Washington"	"53"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	11	43298	Unreliable
+	"Washington"	"53"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	42635	Unreliable
+	"Washington"	"53"	"38 years"	"38"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	11	42008	Unreliable
+	"Washington"	"53"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	43039	Unreliable
+	"Washington"	"53"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	14	42678	Unreliable
+	"Washington"	"53"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	41879	Unreliable
+	"Washington"	"53"	"39 years"	"39"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	40692	Unreliable
+	"Washington"	"53"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	14	42371	Unreliable
+	"Washington"	"53"	"40 years"	"40"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	14	40756	Unreliable
+	"Washington"	"53"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	45272	Unreliable
+	"Washington"	"53"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	45219	Unreliable
+	"Washington"	"53"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	42747	Unreliable
+	"Washington"	"53"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	43173	Unreliable
+	"Washington"	"53"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	42442	Unreliable
+	"Washington"	"53"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	15	43986	Unreliable
+	"Washington"	"53"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	42438	Unreliable
+	"Washington"	"53"	"42 years"	"42"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	10	43468	Unreliable
+	"Washington"	"53"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	14	44720	Unreliable
+	"Washington"	"53"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	12	44485	Unreliable
+	"Washington"	"53"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	42903	Unreliable
+	"Washington"	"53"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	13	44808	Unreliable
+	"Washington"	"53"	"42 years"	"42"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	42617	46.9
+	"Washington"	"53"	"43 years"	"43"	"Female"	"F"	"White"	"2106-3"	"2002"	"2002"	12	42607	Unreliable
+	"Washington"	"53"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	16	42691	Unreliable
+	"Washington"	"53"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	43317	Unreliable
+	"Washington"	"53"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	44182	Unreliable
+	"Washington"	"53"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	12	42869	Unreliable
+	"Washington"	"53"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	44646	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2000"	"2000"	10	42391	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	10	43298	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	20	42691	46.8
+	"Washington"	"53"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	10	42505	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	14	43921	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	43950	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	42467	Unreliable
+	"Washington"	"53"	"44 years"	"44"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	44242	Unreliable
+	"Washington"	"53"	"45 years"	"45"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	17	42347	Unreliable
+	"Washington"	"53"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	15	43243	Unreliable
+	"Washington"	"53"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	42440	Unreliable
+	"Washington"	"53"	"45 years"	"45"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	42312	Unreliable
+	"Washington"	"53"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	11	43106	Unreliable
+	"Washington"	"53"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	18	42385	Unreliable
+	"Washington"	"53"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	18	43739	Unreliable
+	"Washington"	"53"	"46 years"	"46"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	20	43763	45.7
+	"Washington"	"53"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	13	41042	Unreliable
+	"Washington"	"53"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2001"	"2001"	10	41695	Unreliable
+	"Washington"	"53"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	10	43104	Unreliable
+	"Washington"	"53"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	42315	Unreliable
+	"Washington"	"53"	"47 years"	"47"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	17	43898	Unreliable
+	"Washington"	"53"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2002"	"2002"	17	41388	Unreliable
+	"Washington"	"53"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	42830	Unreliable
+	"Washington"	"53"	"48 years"	"48"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	16	42040	Unreliable
+	"Washington"	"53"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2003"	"2003"	12	42052	Unreliable
+	"Washington"	"53"	"49 years"	"49"	"Female"	"F"	"White"	"2106-3"	"2004"	"2004"	13	42938	Unreliable
+	"Washington"	"53"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	10	37937	Unreliable
+	"Washington"	"53"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2000"	"2000"	14	37530	Unreliable
+	"Washington"	"53"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	13	41200	Unreliable
+	"Washington"	"53"	"49 years"	"49"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	13	42879	Unreliable
+	"Washington"	"53"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"1999"	"1999"	12	38257	Unreliable
+	"Washington"	"53"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	12	40494	Unreliable
+	"Washington"	"53"	"50 years"	"50"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	41048	Unreliable
+	"Washington"	"53"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	14	39044	Unreliable
+	"Washington"	"53"	"51 years"	"51"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	40703	Unreliable
+	"Washington"	"53"	"52 years"	"52"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	11	37534	Unreliable
+	"Washington"	"53"	"53 years"	"53"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	37586	Unreliable
+	"Washington"	"53"	"54 years"	"54"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	14	37806	Unreliable
+	"Washington"	"53"	"56 years"	"56"	"Male"	"M"	"White"	"2106-3"	"2003"	"2003"	10	38433	Unreliable
+	"West Virginia"	"54"	"43 years"	"43"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	12603	Unreliable
+	"Wisconsin"	"55"	"40 years"	"40"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	12	39801	Unreliable
+	"Wisconsin"	"55"	"41 years"	"41"	"Male"	"M"	"White"	"2106-3"	"2004"	"2004"	11	40317	Unreliable
+"---"
+"Dataset: Multiple Cause of Death, 1999-2020"
+"Query Parameters:"
+"MCD - ICD-10 Codes: T40.0 (Opium); T40.1 (Heroin); T40.2 (Other opioids); T40.3 (Methadone); T40.4 (Other synthetic narcotics);"
+"T40.5 (Cocaine); T40.6 (Other and unspecified narcotics)"
+"Year/Month: 1999; 2000; 2001; 2002; 2003; 2004"
+"Group By: State; Single-Year Ages; Gender; Race; Year"
+"Show Totals: Disabled"
+"Show Zero Values: Disabled"
+"Show Suppressed: True"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
+"---"
+"Query Date: Jan 6, 2025 10:30:03 AM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Mortality 1999-2020 on CDC WONDER Online Database, released in 2021. Data are from the Multiple Cause of Death Files,"
+"1999-2020, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative"
+"Program. Accessed at http://wonder.cdc.gov/mcd-icd10.html on Jan 6, 2025 10:30:03 AM"
+"---"
+Messages:
+"1. The full results are too long to be displayed. Due to suppression constraints rows that are zero, suppressed or a total will"
+"not be available."
+"---"
+Caveats:
+"1. Circumstances in California resulted in unusually high death counts for the ICD-10 cause of death code R99, ""Other"
+"ill-defined and unspecified causes of mortality"" for deaths occurring in years 2000 and 2001. Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/mcd.html#California-Reporting-Anomalies."
+"2. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Unreliable."
+"3. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Not Stated."
+"4. Information included on the death certificate about the race and Hispanic ethnicity of the decedent is reported by the"
+"funeral director as provided by an informant, often the surviving next of kin, or, in the absence of an informant, on the basis"
+"of observation. Race and ethnicity information from the census is by self-report. To the extent that race and Hispanic origin"
+"are inconsistent between these two data sources, death rates will be biased. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Racial Differences."
+"5. The population figures for year 2020 are bridged-race estimates of the July 1 resident population, from the Vintage 2020"
+"postcensal series released by NCHS on September 22, 2021. The population figures for year 2019 are bridged-race estimates of the"
+"July 1 resident population, from the Vintage 2019 postcensal series released by NCHS on July 9, 2020. The population figures for"
+"year 2018 are bridged-race estimates of the July 1 resident population, from the Vintage 2018 postcensal series released by NCHS"
+"on June 25, 2019. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2017 postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The"
+"population figures for year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal"
+"series released by NCHS on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident"
+"population, from the Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are"
+"bridged-race estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26,"
+"2014. The population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012"
+"postcensal series released by NCHS on June 13, 2013. Population figures for 2011 are bridged-race estimates of the July 1"
+"resident population, from the county-level postcensal Vintage 2011 series released by NCHS on July 18, 2012. Population figures"
+"for 2010 are April 1 Census counts. The population figures for years 2001 - 2009, are bridged-race estimates of the July 1"
+"resident population, from the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012."
+"Population figures for 2000 are April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of"
+"July 1 estimates. Population figures for Infant Age Groups are the number of live births. <br/><b>Note:</b> Rates and population"
+"figures for years 2001 - 2009 differ slightly from previously published reports, due to use of the population estimates which"
+"were available at the time of release."
+"6. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Age Group."
+"7. Changes to cause of death classification affect reporting trends. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#ICD-10 Changes."
