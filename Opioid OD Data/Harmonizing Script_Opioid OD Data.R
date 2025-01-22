@@ -38,7 +38,7 @@ hcup_raw_counts <- read_excel("Opioid OD Data/Raw Download/Healthcare Cost and U
 
 
 ## WONDER
-wonder_raw <- read.delim("/Users/sg2736/Desktop/DSDE/Projects/Repos and Codespaces/data-gov/Opioid OD Data/Raw Download/CDC Wonder_Multiple Cause of Death 2018-2022_Not Age Adjusted Rates_Downloaded 01.06.2024.txt")
+wonder_raw <- read_csv("CDC WONDER_Cleaned_01.21.2024.csv") %>% as.data.frame()
 
 
 
@@ -72,6 +72,14 @@ head(hcup_raw_rates)[, 1:6]
 ## 
 ## Settings are defined to be all based on WONDER's definition. Otherwise,
 ## events are stratified based on "Inpatient" or "Emergency Department" status.
+
+
+#     - Not Applicable = NA
+#     - Unreliable = 0.888
+#     - Suppressed = 0.999
+#     - Incomplete = 0.777 (for generating the quarters)
+
+
 
 
 ## ----------------------------------------------------------------
@@ -259,9 +267,9 @@ sudors$Quarter <- NA
 # placeholders will be changed to adhere to the nomeclature used in the CDC
 # WONDER data cleaning steps.
 #     - Not Applicable = NA
-#     - Unreliable = 0.888
-#     - Suppressed = 0.999
-#     - Incomplete = 0.777 (for generating the quarters)
+#     - Unreliable = 0.888 or 8888
+#     - Suppressed = 0.999 or 9999
+#     - Incomplete = 0.777 (for generating the quarters) or 7777
 
 # Confirm that "Counts < 20" are marked as suppressed.
 sudors[sudors$Count < 20, "Rate"] %>% unique()
@@ -555,20 +563,34 @@ for(i in 1:nrow(entries_to_add_pop)) {
 unlist(final)[unlist(final) != 0]
 
 
+# Correct the class for each variable.
+sudors_age_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(sudors_age_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+sudors_age_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(sudors_age_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
+sudors_age_grouped[, c("Year", "Population")] <- sapply(sudors_age_grouped[, c("Year", "Population")], as.integer)
 
 
+# Recombine the newly grouped age stratified data to the other data.
+# NOTE: "Population" was only needed to regenerate the "Crude Rate".
+#        it will not be kept in the final dataset with all three combined.
 sudors_no_age <- sudors[sudors$Characteristic %!in% "Age", ] %>%
   mutate(`Crude Rate` = NA, `Age Adjusted Rate` = Rate, Population = NA) %>%
   select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`) %>%
   `rownames<-`(NULL)
 
-# Confirm 
+# Confirm that all of the columns are the same. Don't want to accidentaly induce
+# NA's.
 all(colnames(sudors_age_grouped) %in% colnames(sudors_no_age)) &
   all(colnames(sudors_no_age) %in% colnames(sudors_age_grouped))
 
-#write a function to order all rows
+# Correct the class for each variable.
+sudors_no_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(sudors_no_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+sudors_no_age[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(sudors_no_age[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
+sudors_no_age[, c("Year", "Population")] <- sapply(sudors_no_age[, c("Year", "Population")], as.integer)
 
-# "Rate of overdose deaths by jurisdiction and select drug or drug class" by ICD-10 codes
+
+# Recombine to attain the final resulting table.
+sudors_final <- bind_rows(sudors_no_age, sudors_age_grouped)
+
 
 
 
@@ -675,48 +697,350 @@ hcup[hcup$Count <= 25, ]
 # in the HCUP data documentation.
 hcup[hcup$`Crude Rate` %in% NA, ]
 
+# None of the other typical numerical placeholders are present. Therefore, we
+# cannot differentiate between NA for "Not Available or Not Applicable" from an
+# intentionally suppressed or incomplete value.
+sapply(hcup[, c("Count", "Crude Rate", "Age Adjusted Rate")], function(x){any(x %in% 999)})
+sapply(hcup[, c("Count", "Crude Rate", "Age Adjusted Rate")], function(x){any(x %in% 9999)})
 
-##
-##
-##
-## There are two types of hospital setting reflected in this data set. Only the
-## WONDER data set differentiates them. 
+# Rates in the other datasets are reported to the tenths place.
+hcup$`Crude Rate`        <- round(hcup$`Crude Rate`, digits = 1)
+hcup$`Age Adjusted Rate` <- round(hcup$`Age Adjusted Rate`, digits = 1)
 
 
+# -----------------------------
+# Adjust the age groupings.
 
+# Most groups for the other datasets are conformed to HCUP, except for the
+# "<1 Year" and "1-24 Years" entries. These need to be combined.
+
+# Subset based on the values that need to be summed.
+hcup_age <- hcup[hcup$Characteristic %in% "Age" & hcup$Level %in% "<1 Year" | hcup$Level %in% "1-24 Years", ]
+
+# Confirm that the only rates available for these entries are "Crude Rate".
+hcup_age[, "Age Adjusted Rate"] %>% unique()
+
+
+# There are counts labeled as NA that have a reported rate. These likely are 
+# suppressed values, but without documentation that is only a guess.
+hcup_age[hcup_age$Count %in% NA, "Crude Rate"] %>% unique()
+
+# For all "Crude Rate = NA" the "Count" is also all NA.
+hcup_age[hcup_age$`Crude Rate` %in% NA, "Count"] %>% unique()
+
+
+# Generate a table for all of the possible combinations. Instead of using
+# "Characteristic" or "Level" the temporary vector "Group" is used. This allows
+# subsetting by the desired age groups for aggregation.
+entries_to_group <- table(hcup_age$State, hcup_age$Year, hcup_age$Quarter, hcup_age$Setting, hcup_age$Manner_of_Death, hcup_age$Drug, useNA = "ifany") %>% 
+  as.data.frame() %>% `colnames<-`(c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Freq"))
+
+# Some possible combinations are not even represented once. We will remove these 
+# possible combinations to reduce the search space to only those that are expected.
+entries_to_group <- entries_to_group[entries_to_group$Freq != 0, ] %>% `rownames<-`(NULL)
+
+# Confirm that the number of times a combination shows up does not exceed
+# the maximum number of age groups that are being aggregated together (2).
+entries_to_group$Freq %>% max() == 2
+
+
+final <- list()
+for(i in 1:nrow(entries_to_group)) {
+  # Extract the current sub-stratification.
+  combination = entries_to_group[i, ] %>% droplevels()
+  
+  # Subset the dataset based on this individual stratification.
+  subset_df <- hcup_age[hcup_age$State %in% combination$State &
+                          hcup_age$Year %in% combination$Year &
+                          hcup_age$Quarter %in% combination$Quarter &
+                          hcup_age$Setting %in% combination$Setting &
+                          hcup_age$Manner_of_Death %in% combination$Manner_of_Death &
+                          hcup_age$Drug %in% combination$Drug, ]
+  
+  counts <- subset_df$Count
+  rates  <- subset_df$`Crude Rate`
+  
+  # Store the new counts.
+  if( all(is.numeric(counts)) ) {
+    new_count <- sum(counts)
+    
+  } else if( all(is.na(counts)) ) {
+    new_count <- NA
+    
+  } else if(nrow(subset_df) < 2 | (any(is.na(counts)) == TRUE & any(is.na(counts)) == FALSE) ) {
+    new_count <- 7777
+    
+  }
+  
+  # Calculate the population from the provided counts and crude rates.
+  if( all(is.numeric(rates)) ) {
+    pop <- floor((counts * 100000) / rates) %>% sum()
+    
+  } else if( all(is.na(rates)) ) {
+    pop <- NA
+    
+  } else if(nrow(subset_df) < 2 | (any(is.na(rates)) == TRUE & any(is.na(rates)) == FALSE) ) {
+    pop <- 7777
+    
+  }
+  
+  # Calculate the new rate.
+  if( is.numeric(new_count) & is.numeric(pop) ) {
+    new_rate <- round((new_count * 100000) / pop, digits = 1)
+    
+  } else if( is.na(new_count) & is.na(pop) ) {
+    new_rate <- NA
+    
+  } else if( new_count == 7777 | pop == 7777 | is.na(new_count) | is.na(pop) ) {
+    new_rate <- 7777
+    
+  }
+  
+  # Column-merge the quartered results with the metadata. Add back in the
+  # "Characteristic", "Level", and "Population" columns.
+  final[[i]] <- combination %>% 
+    mutate(Characteristic = "Age", Level = "<24 Years",
+           Count = new_count, Population = pop, 
+           `Crude Rate` = new_rate, `Age Adjusted Rate` = NA) %>%
+    select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`)
+
+}
+
+hcup_grouped <- do.call(rbind, final)
 
 # Correct the class for each variable.
-hcup[, c("State", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(hcup[, c("State", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
-hcup[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(hcup[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
-hcup[, c("Year")] <- sapply(hcup[, c("Year")], as.integer)
+hcup_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(hcup_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+hcup_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(hcup_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
+hcup_grouped[, c("Year", "Population")] <- sapply(hcup_grouped[, c("Year", "Population")], as.integer)
 
 
 
+# NOTE: "Population" was only needed to regenerate the "Crude Rate".
+#        it will not be kept in the final dataset with all three combined.
+hcup_not_age <- hcup[hcup$Level %!in% "<1 Year" & hcup$Level %!in% "1-24 Years", ] %>%
+  mutate(Population = NA)
+
+# Correct the class for each variable.
+hcup_not_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(hcup_not_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+hcup_not_age[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(hcup_not_age[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
+hcup_not_age[, c("Year", "Population")] <- sapply(hcup_not_age[, c("Year", "Population")], as.integer)
 
 
+# Recombine to attain the final resulting table.
+hcup_final <- bind_rows(hcup_not_age, hcup_grouped)
 
-combined <- bind_rows(cbind("Dataset" = rep("AHRQ", nrow(hcup)), hcup), 
-                      cbind("Dataset" = rep("SUDORS", nrow(sudors)), sudors))
-
-#write.csv(combined, "SUDORS and AHRQ_01.09.2024.csv", row.names=FALSE)
 
 
 
 ## ----------------------------------------------------------------
 ## HARMONIZE - WONDER
 
-# Cause of death: all or X40-44/Y10-14
-# Dates by month and quarter
-# Ages to HCUP ranges
-# Place of death: all or 
-# Naloxone?
+# The CDC WONDER dataset was cleaned in file "Compile CDC Wonder TXT Output.R".
+
+head(wonder_raw)
 
 
 
-#     - Not Applicable = NA
-#     - Unreliable = 0.888
-#     - Suppressed = 0.999
-#     - Incomplete = 0.777 (for generating the quarters)
+
+## ----------------------------------------------------------------
+## COMBINE ALL THREE
+
+# -----------------------------
+# Align "State" nomenclature.
+unique(hcup_final$State)[unique(hcup_final$State) %in% c("US", datasets::state.name, "District of Columbia") == FALSE]
+unique(wonder_raw$State)[unique(wonder_raw$State) %in% c("US", datasets::state.name, "District of Columbia") == FALSE]
+unique(sudors_final$State)[unique(sudors_final$State) %in% c("US", datasets::state.name, "District of Columbia") == FALSE]
+
+# The sets differ with how nation-wide values are noted. We'll adhere to noting
+# this level of information as "US".
+
+hcup_final[hcup_final$State %in% "National", "State"]    <- "US"
+sudors_final[sudors_final$State %in% "Overall", "State"] <- "US"
+
+
+# -----------------------------
+# Align "Quarter" nomenclature.
+unique(hcup_final$Quarter)[unique(hcup_final$Quarter) %in% c(NA, str_c("Q", 1:4)) == FALSE]
+unique(wonder_raw$Quarter)[unique(wonder_raw$Quarter) %in% c(NA, str_c("Q", 1:4)) == FALSE]
+unique(sudors_final$Quarter)[unique(sudors_final$Quarter) %in% c(NA, str_c("Q", 1:4)) == FALSE]
+
+# All is good.
+
+
+# -----------------------------
+# Align "Setting" nomenclature.
+unique(hcup_final$Setting)
+unique(wonder_raw$Setting)
+unique(sudors_final$Setting)
+
+# The only portion that needs to be adjusted is how emergency department (ED)
+# or inpatient (IP) overdose events are noted. Will adhere to the CDC WONDER's
+# nomenclature.
+
+hcup_final[hcup_final$Setting %in% "ED Treat-and-Release", "Setting"] <- "Medical Facility - Outpatient or ER"
+sudors_final[sudors_final$Setting %in% "ED", "Setting"] <- "Medical Facility - Outpatient or ER"
+
+hcup_final[hcup_final$Setting %in% "IP", "Setting"] <- "Medical Facility - Inpatient"
+sudors_final[sudors_final$Setting %in% "IP", "Setting"] <- "Medical Facility - Inpatient"
+
+
+
+# -----------------------------
+# Align "Manner of Death" nomenclature.
+unique(hcup_final$Manner_of_Death)
+unique(wonder_raw$Manner_of_Death)
+unique(sudors_final$Manner_of_Death)
+
+# All nomenclature is the same between the sets. One thing to review is
+# the interpretation of the AHRQ dataset for underlying causes of deaths.
+# Its documentation states that deaths as a result of "Drug-induced causes"
+# are "encompassed" but does not state that this is the only underlying cause of
+# death. Therefore, it is labeled with "Manner of Death = All" by the CDC WONDER's
+# definitions for UCD - Drug/Alcohol Induced Causes ICD-10 codes.
+
+# Underlying cause of death that is "Unintentional" is defined by SUDORS, where
+# only the ICD-10 codes X40-X44 and Y10-Y14 are included.
+
+hcup_final <- rename(hcup_final, `Underlying Cause of Death` = Manner_of_Death)
+wonder_raw <- rename(wonder_raw, `Underlying Cause of Death` = Manner_of_Death)
+sudors_final <- rename(sudors_final, `Underlying Cause of Death` = Manner_of_Death)
+
+
+
+# -----------------------------
+# Align "Drug" nomenclature.
+unique(hcup_final$Drug)
+unique(wonder_raw$Drug)
+unique(sudors_final$Drug)
+
+# In SUDORS "Drug = Opioids" denotes deaths where any form of opioid is listed.
+sudors_final[sudors_final$Drug %in% "Opioids", "Drug"] <- "All Opioids"
+
+# Without further investigating further, it is not readily apparent  if 
+# "Illegally-Made" or "RX" opioids can be easily defined by discrete ICD-10 codes.
+# SUDORS did not require ICD-10 codings for opioid poisoning events; it is
+# therefore not expected that these types of classifications can be cross-compared.
+sudors_final[sudors_final$Drug %in% "RX Opioids", "Drug"] <- "Prescription Opioids"
+
+# "All Opioids + Benzodiazepines/Cocaine" and "Opioids + Depressant/Stimulant"
+# are loosely asssociated. SUDORS combines multiple kinds of depressants, including
+# Benzodiazepines, and stimulants, including Cocaine. Without an exhaustive
+# search of ICD-10 codes that could be batched with "All Opioids" in the CDC
+# WONDER tool, these polysubstance were restricted to the most commonly used
+# drugs in tandem with opioids: Benzodiazepines and Cocaine.
+#
+# They will be kept labeled differently, and prompted for plotting together on
+# the Shiny app, or else labeled together with a footnote.
+sudors_final[sudors_final$Drug %in% "Opioids + Stimulant", "Drug"] <- "All Opioids + Stimulant"
+sudors_final[sudors_final$Drug %in% "Opioids + Depressant", "Drug"] <- "All Opioids + Depressant"
+
+
+
+# -----------------------------
+# Align "Characteristic" nomenclature.
+unique(hcup_final$Characteristic)
+unique(wonder_raw$Characteristic)
+unique(sudors_final$Characteristic)
+
+# "Characteristic = Total" implies not stratifed.
+hcup_final[hcup_final$Characteristic %in% "Total", "Characteristic"] <- "Not Stratified"
+
+
+
+# -----------------------------
+# Align "Characteristic = Age" nomenclature.
+hcup_final[hcup_final$Characteristic %in% "Age", "Level"] %>% unique()
+wonder_raw[wonder_raw$Characteristic %in% "Age", "Level"] %>% unique()
+sudors_final[sudors_final$Characteristic %in% "Age", "Level"] %>% unique()
+
+# Confirm the strings all match exactly.
+unique(hcup_final[hcup_final$Characteristic %in% "Age", "Level"])[unique(hcup_final[hcup_final$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
+unique(wonder_raw[wonder_raw$Characteristic %in% "Age", "Level"])[unique(wonder_raw[wonder_raw$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
+unique(sudors_final[sudors_final$Characteristic %in% "Age", "Level"])[unique(sudors_final[sudors_final$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
+
+
+
+# -----------------------------
+# Align "Characteristic = Sex" nomenclature.
+hcup_final[hcup_final$Characteristic %in% "Sex", "Level"] %>% unique()
+wonder_raw[wonder_raw$Characteristic %in% "Sex", "Level"] %>% unique()
+sudors_final[sudors_final$Characteristic %in% "Sex", "Level"] %>% unique()
+
+# Change to "Sex = Male/Female" nomenclature.
+hcup_final[hcup_final$Characteristic %in% "Sex" & hcup_final$Level %in% "Males", "Level"]   <- "Male"
+hcup_final[hcup_final$Characteristic %in% "Sex" & hcup_final$Level %in% "Females", "Level"] <- "Female"
+
+sudors_final[sudors_final$Characteristic %in% "Sex" & sudors_final$Level %in% "Males", "Level"]   <- "Male"
+sudors_final[sudors_final$Characteristic %in% "Sex" & sudors_final$Level %in% "Females", "Level"] <- "Female"
+
+
+
+# -----------------------------
+# Align "Characteristic = Not Stratified" nomenclature.
+hcup_final[hcup_final$Characteristic %in% "Not Stratified", "Level"] %>% unique()
+wonder_raw[wonder_raw$Characteristic %in% "Not Stratified", "Level"] %>% unique()
+sudors_final[sudors_final$Characteristic %in% "Not Stratified", "Level"] %>% unique()
+
+# The location information was moved to the "Setting" variable. Confirm that
+# when "Not Stratified = All ED Visits/All Inpatient Stays" the "Setting" outcome
+# is unique and corresponds.
+hcup_final[hcup_final$Characteristic %in% "Not Stratified" & hcup_final$Level %in% "All ED Visits", "Setting"] %>% unique()
+hcup_final[hcup_final$Characteristic %in% "Not Stratified" & hcup_final$Level %in% "All Inpatient Stays", "Setting"] %>% unique()
+
+# Because they do, we'll change these to N/A.
+hcup_final[hcup_final$Characteristic %in% "Not Stratified" & hcup_final$Level %in% "All ED Visits", "Level"]       <- "N/A"
+hcup_final[hcup_final$Characteristic %in% "Not Stratified" & hcup_final$Level %in% "All Inpatient Stays", "Level"] <- "N/A"
+
+
+
+# -----------------------------
+# Align "Characteristic = Race/Ethnicity" nomenclature.
+wonder_raw[wonder_raw$Characteristic %in% "Race/Ethnicity", "Level"] %>% unique()
+sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity", "Level"] %>% unique()
+
+# When stratifying by race in the CDC WONDER tool, the following "Single Race 6"
+# categories were specified to have no Hispanic origin:
+#     - American Indian or Alaska Native
+#     - Asian
+#     - Black or African American
+#     - Native Hawaiian or Other Pacific Islander
+#     - White
+#     - More than one race
+#     - Not Available
+# 
+# The CDC WONDER documentation does not explain what "Not Available" under
+# "Single Race 6" means exactly. This could be interpreted simply as entries
+# where the field was left blank. It is not clear how this variable relates to
+# Hispanic origin, and so it will be removed; it does not have an adequate
+# definition or comparison in SUDORS.
+#
+# When stratifying the CDC WONDER dataset for Hispanic peoples, the "Single Race 6"
+# was set to "All" and "Hispanic Origin" to is/is not "Hispanic or Latino". This
+# included one outcome that was "Not Stated", which is not well defined. Therefore
+# this entry was removed.
+
+# Confirm nomenclature between the two sets.
+sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "Black", "Level"] <- "Black or African American"
+sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "American Indian/Alaska Natives", "Level"] <- "American Indian or Alaska Native"
+sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "Native Hawaiian/Pacific Islander", "Level"] <- "Native Hawaiian or Other Pacific Islander"
+wonder_raw[wonder_raw$Characteristic %in% "Race/Ethnicity" & wonder_raw$Level %in% "More than one race", "Level"] <- "Multi-Race, non-Hispanic"
+
+# We'll assume that "Hispanic" in the SUDORS set also implies "Hispanic or Latino".
+sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "Hispanic", "Level"] <- "Hispanic or Latino"
+
+# Remove the "Not Available" entries.
+wonder_raw <- wonder_raw[!str_detect(wonder_raw$Level, "Not Available"), ] %>% `rownames<-`(NULL)
+
+
+
+# -----------------------------
+# Compile all datasets.
+
+combined <- bind_rows(cbind("Dataset" = rep("AHRQ", nrow(hcup_final)), hcup_final),
+                      cbind("Dataset" = rep("CDC WONDER", nrow(wonder_raw)), wonder_raw), 
+                      cbind("Dataset" = rep("SUDORS", nrow(sudors_final)), sudors_final))
+
+#write.csv(combined, "Harmonized Opioid Overdose Datasets_01.22.2025.csv", row.names = FALSE)
 
 
 
