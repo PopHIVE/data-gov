@@ -38,7 +38,7 @@ hcup_raw_counts <- read_excel("Opioid OD Data/Raw Download/Healthcare Cost and U
 
 
 ## WONDER
-wonder_raw <- read_csv("CDC WONDER_Cleaned_01.21.2024.csv") %>% as.data.frame()
+wonder_raw <- read_csv("Opioid OD Data/CDC WONDER_Cleaned_01.21.2024.csv") %>% as.data.frame()
 
 
 
@@ -72,12 +72,12 @@ head(hcup_raw_rates)[, 1:6]
 ## 
 ## Settings are defined to be all based on WONDER's definition. Otherwise,
 ## events are stratified based on "Inpatient" or "Emergency Department" status.
-
-
-#     - Not Applicable = NA
-#     - Unreliable = 0.888
-#     - Suppressed = 0.999
-#     - Incomplete = 0.777 (for generating the quarters)
+## 
+## Numerical codings were introduced to convey the following circumstances:
+#     - Not Applicable or Not Available = NA
+#     - Unreliable = 8888
+#     - Suppressed = 9999
+#     - Incomplete = 7777 (generated during age and dates aggregation)
 
 
 
@@ -415,7 +415,7 @@ new_age_groups <- list("2" = c("<24 Years"), "3" = c("25-44 Years"),
 pb = txtProgressBar(min = 0, max = nrow(entries_to_group), initial = 0)
 
 final <- list()
-#for(i in 1:nrow(entries_to_group)) {
+for(i in 1:nrow(entries_to_group)) {
   # Extract the current sub-stratification.
   combination = entries_to_group[i, ] %>% droplevels()
   
@@ -908,7 +908,6 @@ sudors_final <- rename(sudors_final, `Underlying Cause of Death` = Underlying_Ca
 
 
 # -----------------------------
-# Align "Drug" nomenclature.
 unique(hcup_final$Drug)
 unique(wonder_raw$Drug)
 unique(sudors_final$Drug)
@@ -1040,7 +1039,7 @@ combined <- bind_rows(cbind("Dataset" = rep("AHRQ", nrow(hcup_final)), hcup_fina
                       cbind("Dataset" = rep("CDC WONDER", nrow(wonder_raw)), wonder_raw), 
                       cbind("Dataset" = rep("SUDORS", nrow(sudors_final)), sudors_final))
 
-#write.csv(combined, "Harmonized Opioid Overdose Datasets_01.22.2025.csv", row.names = FALSE)
+write.csv(combined, "Harmonized Opioid Overdose Datasets_01.23.2025.csv", row.names = FALSE)
 
 
 
