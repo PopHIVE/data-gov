@@ -121,7 +121,7 @@ confirm_notes <- function(input_list, state_level = FALSE, summarize_results = F
     # -----------------------------
     # Confirm the underlying cause of death either includes all types or
     # unintentional (ICD-10 codes X40-X44 and Y10-Y14) only.
-    # NOTE: when stratifying by the manner of death, only "UCD - Drug/Alcohol 
+    # NOTE: when stratifying by the Underlying Cause of Death, only "UCD - Drug/Alcohol 
     #       Induced Causes" was toggled under section "6. Select underlying
     #       cause of death". If all underlying causes are included then this
     #       field will not show up.
@@ -139,7 +139,7 @@ confirm_notes <- function(input_list, state_level = FALSE, summarize_results = F
         str_detect(ucd_codes, "Drug poisonings \\(overdose\\) Undetermined \\(Y10-Y14\\)")
       
     } else{
-      result[3] <- "Manner of death error"
+      result[3] <- "Underlying Cause of Death error"
       
     }
     
@@ -427,13 +427,13 @@ standardize_format <- function(input_list){
   }
   
   # Code to confirm that all of the column names are the same.
-  #lapply(df, function(x) all(colnames(x) %in% c("Notes", "Date", "Setting", "Manner_of_Death",
+  #lapply(df, function(x) all(colnames(x) %in% c("Notes", "Date", "Setting", "Underlying_Cause",
   #                                              "Count", "Population", "Crude Rate", 
   #                                              "Age Adjusted Rate", "Drug")) ) %>% unlist()
   
   
   # -----------------------------
-  # Add the "Manner of Death", "Characteristic", and "Level" columns and 
+  # Add the "Underlying Cause of Death", "Characteristic", and "Level" columns and 
   # conform column classes.
   for(i in 1:length(df)){
     subset <- df[[i]]
@@ -468,15 +468,15 @@ standardize_format <- function(input_list){
     }
     
     
-    # Add the "Manner of Death".
+    # Add the "Underlying Cause of Death".
     if(file_name_components[4] == "All Deaths"){
-      subset$Manner_of_Death <- "All"
+      subset$Underlying_Cause <- "All"
       
     } else if(file_name_components[4] ==  "Unintentional"){
-      subset$Manner_of_Death <- "Unintentional"
+      subset$Underlying_Cause <- "Unintentional"
       
     } else {
-      warning(str_glue("Manner of death file name is inconsistent. File name: {names(df)[i]}."))
+      warning(str_glue("Underlying Cause of Death file name is inconsistent. File name: {names(df)[i]}."))
       
     }
     
@@ -488,8 +488,8 @@ standardize_format <- function(input_list){
     
     # -----------------------------
     # Convert the columns to the same type.
-    subset[, c("Notes", "Setting", "Manner_of_Death", "Drug", "State", "Characteristic", "Level")] <- 
-      sapply(subset[, c("Notes", "Setting", "Manner_of_Death", "Drug", "State", "Characteristic", "Level")], as.character)
+    subset[, c("Notes", "Setting", "Underlying_Cause", "Drug", "State", "Characteristic", "Level")] <- 
+      sapply(subset[, c("Notes", "Setting", "Underlying_Cause", "Drug", "State", "Characteristic", "Level")], as.character)
     
     # The following four numeric variables are sometimes reported as character
     # vectors where unreliable or suppressed values are present. In order to
@@ -519,7 +519,7 @@ standardize_format <- function(input_list){
     
     # -----------------------------
     # Reorder the columns to be the same.
-    subset <- subset %>% select(Notes, State, Date, Setting, `Manner_of_Death`, 
+    subset <- subset %>% select(Notes, State, Date, Setting, `Underlying_Cause`, 
                                 Drug, Characteristic, Level, Count, Population, 
                                 `Crude Rate`, `Age Adjusted Rate`)
     
@@ -976,7 +976,7 @@ df_months[df_months$Count < 1 & df_months$Count != 0, ] %>% nrow()
 # we'd expect if all dates are represented. Notice that "Characteristic"
 # does not differentiate rows, it only categorizes the "Level" entry by the
 # gross classification for that stratification. Therefore, only "Level" is used.
-entries_for_aggregation <- sapply(df_months[, c("State", "Setting", "Manner_of_Death", "Drug", "Level")], function(x) unique(x) %>% length())
+entries_for_aggregation <- sapply(df_months[, c("State", "Setting", "Underlying_Cause", "Drug", "Level")], function(x) unique(x) %>% length())
 expected_unique_entries <- prod(entries_for_aggregation) * length(unique(df_months$Date))
 
 # We see that about 1/4 of the expected unique entries are present in this dataset.
@@ -987,8 +987,8 @@ nrow(df_months) / expected_unique_entries
 # Generate a table for all of the possible combinations. Notice that "Characteristic"
 # does not add new possible combinations with "Level" present, and so it is not
 # included.
-entries_to_quarter <- table(df_months$State, df_months$Setting, df_months$Manner_of_Death, df_months$Drug, df_months$Level) %>% 
-  as.data.frame() %>% `colnames<-`(c("State", "Setting", "Manner_of_Death", "Drug", "Level", "Freq"))
+entries_to_quarter <- table(df_months$State, df_months$Setting, df_months$Underlying_Cause, df_months$Drug, df_months$Level) %>% 
+  as.data.frame() %>% `colnames<-`(c("State", "Setting", "Underlying_Cause", "Drug", "Level", "Freq"))
 
 # Most possible combinations are not even represented once. We will remove these 
 # possible combinations to reduce the search space to only those that are expected.
@@ -1018,7 +1018,7 @@ final <- list()
   # Subset the dataset based on this individual stratification.
   subset_df <- df_months[df_months$State %in% combination$State &
                  df_months$Setting %in% combination$Setting &
-                 df_months$Manner_of_Death %in% combination$Manner_of_Death &
+                 df_months$Underlying_Cause %in% combination$Underlying_Cause &
                  df_months$Drug %in% combination$Drug &
                  df_months$Level %in% combination$Level, ]
   
@@ -1137,7 +1137,7 @@ final <- list()
     # "Characteristic" column.
     quartered[[j]] <- merge(combination, df_quarter) %>% 
       mutate(Characteristic = unique(subset_df$Characteristic)) %>%
-      select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count)
+      select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count)
     
   }
   
@@ -1162,7 +1162,7 @@ df_quarters <- df_quarters %>%
   mutate(Population = NA, `Crude Rate` = NA, `Age Adjusted Rate` = NA)
 
 # Correct the class for each variable.
-df_quarters[, c("State", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(df_quarters[, c("State", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+df_quarters[, c("State", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(df_quarters[, c("State", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 df_quarters[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(df_quarters[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 df_quarters[, c("Year", "Population")] <- sapply(df_quarters[, c("Year", "Population")], as.integer)
 
@@ -1173,7 +1173,7 @@ df_years <- df[!str_detect(df$Date, "[0-9]{4}/[0-9]{2}"), ] %>%
   select(colnames(df_quarters)) %>% `rownames<-`(NULL)
 
 # Correct the class for each variable.
-df_years[, c("State", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(df_years[, c("State", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+df_years[, c("State", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(df_years[, c("State", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 df_years[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(df_years[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 df_years[, c("Year", "Population")] <- sapply(df_years[, c("Year", "Population")], as.integer)
 
@@ -1242,8 +1242,8 @@ df_age[df_age$Level %in% c("65-74 years", "75-84 years", "85+ years"), "Group"] 
 # Generate a table for all of the possible combinations. Instead of using
 # "Characteristic" or "Level" the temporary vector "Group" is used. This allows
 # subsetting by the desired age groups for aggregation.
-entries_to_group <- table(df_age$State, df_age$Year, df_age$Quarter, df_age$Setting, df_age$Manner_of_Death, df_age$Drug, df_age$Group, useNA = "ifany") %>% 
-  as.data.frame() %>% `colnames<-`(c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Group", "Freq"))
+entries_to_group <- table(df_age$State, df_age$Year, df_age$Quarter, df_age$Setting, df_age$Underlying_Cause, df_age$Drug, df_age$Group, useNA = "ifany") %>% 
+  as.data.frame() %>% `colnames<-`(c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Group", "Freq"))
 
 # Most possible combinations are not even represented once. We will remove these 
 # possible combinations to reduce the search space to only those that are expected.
@@ -1280,7 +1280,7 @@ final <- list()
                         df_age$Year %in% combination$Year &
                         df_age$Quarter %in% combination$Quarter &
                         df_age$Setting %in% combination$Setting &
-                        df_age$Manner_of_Death %in% combination$Manner_of_Death &
+                        df_age$Underlying_Cause %in% combination$Underlying_Cause &
                         df_age$Drug %in% combination$Drug &
                         df_age$Group %in% combination$Group, ]
 
@@ -1357,7 +1357,7 @@ final <- list()
   final[[i]] <- merge(combination, grouped_counts) %>%
     rename(Count = y) %>%
     mutate(Characteristic = "Age", Level = target, Population = sum(subset_df$Population)) %>%
-    select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, Population)
+    select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, Population)
     
 }
 
@@ -1399,7 +1399,7 @@ for(i in 1:nrow(for_rate)){
 df_grouped <- df_grouped %>% mutate("Crude Rate" = new_rate, "Age Adjusted Rate" = NA)
 
 # Correct the class for each variable.
-df_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(df_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+df_grouped[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(df_grouped[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 df_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(df_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 df_grouped[, c("Year", "Population")] <- sapply(df_grouped[, c("Year", "Population")], as.integer)
 
@@ -1419,7 +1419,7 @@ df_no_age[df_no_age$Population < 1 & df_no_age$Population %!in% 0, "Population"]
 df_no_age[df_no_age$`Crude Rate` < 1 & df_no_age$`Crude Rate` %!in% 0, "Crude Rate"] %>% unique()
 
 # Correct the class for each variable.
-df_no_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(df_no_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+df_no_age[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(df_no_age[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 df_no_age[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(df_no_age[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 df_no_age[, c("Year", "Population")] <- sapply(df_no_age[, c("Year", "Population")], as.integer)
 

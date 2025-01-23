@@ -23,10 +23,10 @@ library("stringr")
 ## ----------------------------------------------------------------
 ## LOAD THE DATA
 
+## SUDORS
 sudors_raw <- read_excel("Opioid OD Data/Raw Download/CDC SUDORS_Dashboard Output_Download 12.23.2024.xlsx", 
                          sheet = "Data") %>% as.data.frame()
 
-## HCUP data sets
 hcup_raw_rates  <- read_excel("Opioid OD Data/Raw Download/Healthcare Cost and Utilization Project (HCUP)_Opioid Related Hospital Use_Downloaded 12.23.2024.xlsx", 
                               sheet = "Quarterly Rates", skip = 1) %>% as.data.frame()
 
@@ -252,7 +252,7 @@ sudors[str_detect(sudors$Level, "age_65plus"), "Level"]  <- "65+ Years"
 
 # All of the SUDORS overdose events are classified as either ICD-10 X40–X44 or 
 # Y10–Y14, which are unintentional deaths.
-sudors$Manner_of_Death <- "Unintentional"
+sudors$Underlying_Cause <- "Unintentional"
 
 # While quarterly rates and counts are available on the dashboard, the values
 # could not be easily exported. They required manual transcription for
@@ -334,7 +334,7 @@ sudors[sudors$Rate %in% NA, "Characteristic"] %>% unique()
 # Subset the dataset to only reflect the entries for "Age"
 sudors_age <- sudors[sudors$Characteristic %in% "Age", ] %>%
   mutate(`Crude Rate` = Rate, `Age Adjusted Rate` = NA) %>%
-  select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, `Crude Rate`, `Age Adjusted Rate`) %>%
+  select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, `Crude Rate`, `Age Adjusted Rate`) %>%
   `rownames<-`(NULL)
 
 
@@ -386,8 +386,8 @@ sudors_age[sudors_age$Level %in% c("65+ Years"), "Group"]                  <- 5
 # Generate a table for all of the possible combinations. Instead of using
 # "Characteristic" or "Level" the temporary vector "Group" is used. This allows
 # subsetting by the desired age groups for aggregation.
-entries_to_group <- table(sudors_age$State, sudors_age$Year, sudors_age$Setting, sudors_age$Manner_of_Death, sudors_age$Drug, sudors_age$Group, useNA = "ifany") %>% 
-  as.data.frame() %>% `colnames<-`(c("State", "Year", "Setting", "Manner_of_Death", "Drug", "Group", "Freq"))
+entries_to_group <- table(sudors_age$State, sudors_age$Year, sudors_age$Setting, sudors_age$Underlying_Cause, sudors_age$Drug, sudors_age$Group, useNA = "ifany") %>% 
+  as.data.frame() %>% `colnames<-`(c("State", "Year", "Setting", "Underlying_Cause", "Drug", "Group", "Freq"))
 
 # Some possible combinations are not even represented once. We will remove these 
 # possible combinations to reduce the search space to only those that are expected.
@@ -423,7 +423,7 @@ final <- list()
   subset_df <- sudors_age[sudors_age$State %in% combination$State &
                             sudors_age$Year %in% combination$Year &
                             sudors_age$Setting %in% combination$Setting &
-                            sudors_age$Manner_of_Death %in% combination$Manner_of_Death &
+                            sudors_age$Underlying_Cause %in% combination$Underlying_Cause &
                             sudors_age$Drug %in% combination$Drug &
                             sudors_age$Group %in% combination$Group, ]
   
@@ -508,7 +508,7 @@ final <- list()
     mutate(Characteristic = "Age", Level = target, Quarter = NA,
            Count = grouped_counts, Population = pop, 
            `Crude Rate` = new_rate, `Age Adjusted Rate` = NA) %>%
-    select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`)
+    select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`)
   
 }
 
@@ -537,8 +537,8 @@ sudors_age_grouped[sudors_age_grouped$`Crude Rate` %in% 0.7777, "Crude Rate"] <-
 no_rate <- sudors[sudors$Rate %in% NA, ] 
 
 # First we'll check if any values match in their metadata.
-entries_to_add_pop <- table(no_rate$State, no_rate$Year, no_rate$Setting, no_rate$Manner_of_Death, no_rate$Drug, useNA = "ifany") %>% 
-  as.data.frame() %>% `colnames<-`(c("State", "Year", "Setting", "Manner_of_Death", "Drug", "Freq"))
+entries_to_add_pop <- table(no_rate$State, no_rate$Year, no_rate$Setting, no_rate$Underlying_Cause, no_rate$Drug, useNA = "ifany") %>% 
+  as.data.frame() %>% `colnames<-`(c("State", "Year", "Setting", "Underlying_Cause", "Drug", "Freq"))
 
 entries_to_add_pop <- entries_to_add_pop[entries_to_add_pop$Freq %!in% 0, ] %>% `rownames<-`(NULL)
 
@@ -552,7 +552,7 @@ for(i in 1:nrow(entries_to_add_pop)) {
   subset_df <- sudors_age_grouped[sudors_age_grouped$State %in% combination$State &
                                     sudors_age_grouped$Year %in% combination$Year &
                                     sudors_age_grouped$Setting %in% combination$Setting &
-                                    sudors_age_grouped$Manner_of_Death %in% combination$Manner_of_Death &
+                                    sudors_age_grouped$Underlying_Cause %in% combination$Underlying_Cause &
                                     sudors_age_grouped$Drug %in% combination$Drug, ]
   
   final[[i]] <- nrow(subset_df)
@@ -564,7 +564,7 @@ unlist(final)[unlist(final) != 0]
 
 
 # Correct the class for each variable.
-sudors_age_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(sudors_age_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+sudors_age_grouped[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(sudors_age_grouped[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 sudors_age_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(sudors_age_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 sudors_age_grouped[, c("Year", "Population")] <- sapply(sudors_age_grouped[, c("Year", "Population")], as.integer)
 
@@ -574,7 +574,7 @@ sudors_age_grouped[, c("Year", "Population")] <- sapply(sudors_age_grouped[, c("
 #        it will not be kept in the final dataset with all three combined.
 sudors_no_age <- sudors[sudors$Characteristic %!in% "Age", ] %>%
   mutate(`Crude Rate` = NA, `Age Adjusted Rate` = Rate, Population = NA) %>%
-  select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`) %>%
+  select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`) %>%
   `rownames<-`(NULL)
 
 # Confirm that all of the columns are the same. Don't want to accidentaly induce
@@ -583,7 +583,7 @@ all(colnames(sudors_age_grouped) %in% colnames(sudors_no_age)) &
   all(colnames(sudors_no_age) %in% colnames(sudors_age_grouped))
 
 # Correct the class for each variable.
-sudors_no_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(sudors_no_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+sudors_no_age[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(sudors_no_age[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 sudors_no_age[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(sudors_no_age[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 sudors_no_age[, c("Year", "Population")] <- sapply(sudors_no_age[, c("Year", "Population")], as.integer)
 
@@ -670,7 +670,7 @@ hcup$Drug <- "All Opioids"
 # to imply all underlying causes of deaths are counted together, which includes
 # those specific for "Drug-induced causes".
 
-hcup$Manner_of_Death <- "ALL"
+hcup$Underlying_Cause <- "All"
 
 
 # HCUP states that "annualized quarterly rates are calculated as the quarterly 
@@ -681,7 +681,7 @@ hcup$Manner_of_Death <- "ALL"
 
 hcup <- hcup %>%
   mutate(`Crude Rate` = Rate, `Age Adjusted Rate` = NA) %>%
-  select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, `Crude Rate`, `Age Adjusted Rate`)
+  select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, `Crude Rate`, `Age Adjusted Rate`)
 
 
 # The HCUP age groups are used as reference for the other two datasets. The
@@ -732,8 +732,8 @@ hcup_age[hcup_age$`Crude Rate` %in% NA, "Count"] %>% unique()
 # Generate a table for all of the possible combinations. Instead of using
 # "Characteristic" or "Level" the temporary vector "Group" is used. This allows
 # subsetting by the desired age groups for aggregation.
-entries_to_group <- table(hcup_age$State, hcup_age$Year, hcup_age$Quarter, hcup_age$Setting, hcup_age$Manner_of_Death, hcup_age$Drug, useNA = "ifany") %>% 
-  as.data.frame() %>% `colnames<-`(c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Freq"))
+entries_to_group <- table(hcup_age$State, hcup_age$Year, hcup_age$Quarter, hcup_age$Setting, hcup_age$Underlying_Cause, hcup_age$Drug, useNA = "ifany") %>% 
+  as.data.frame() %>% `colnames<-`(c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Freq"))
 
 # Some possible combinations are not even represented once. We will remove these 
 # possible combinations to reduce the search space to only those that are expected.
@@ -754,7 +754,7 @@ for(i in 1:nrow(entries_to_group)) {
                           hcup_age$Year %in% combination$Year &
                           hcup_age$Quarter %in% combination$Quarter &
                           hcup_age$Setting %in% combination$Setting &
-                          hcup_age$Manner_of_Death %in% combination$Manner_of_Death &
+                          hcup_age$Underlying_Cause %in% combination$Underlying_Cause &
                           hcup_age$Drug %in% combination$Drug, ]
   
   counts <- subset_df$Count
@@ -802,14 +802,14 @@ for(i in 1:nrow(entries_to_group)) {
     mutate(Characteristic = "Age", Level = "<24 Years",
            Count = new_count, Population = pop, 
            `Crude Rate` = new_rate, `Age Adjusted Rate` = NA) %>%
-    select(State, Year, Quarter, Setting, Manner_of_Death, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`)
+    select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, Population, `Crude Rate`, `Age Adjusted Rate`)
 
 }
 
 hcup_grouped <- do.call(rbind, final)
 
 # Correct the class for each variable.
-hcup_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(hcup_grouped[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+hcup_grouped[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(hcup_grouped[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 hcup_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(hcup_grouped[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 hcup_grouped[, c("Year", "Population")] <- sapply(hcup_grouped[, c("Year", "Population")], as.integer)
 
@@ -821,7 +821,7 @@ hcup_not_age <- hcup[hcup$Level %!in% "<1 Year" & hcup$Level %!in% "1-24 Years",
   mutate(Population = NA)
 
 # Correct the class for each variable.
-hcup_not_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")] <- sapply(hcup_not_age[, c("State", "Year", "Quarter", "Setting", "Manner_of_Death", "Drug", "Characteristic", "Level")], as.character)
+hcup_not_age[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")] <- sapply(hcup_not_age[, c("State", "Year", "Quarter", "Setting", "Underlying_Cause", "Drug", "Characteristic", "Level")], as.character)
 hcup_not_age[, c("Count", "Crude Rate", "Age Adjusted Rate")] <- sapply(hcup_not_age[, c("Count", "Crude Rate", "Age Adjusted Rate")], as.numeric)
 hcup_not_age[, c("Year", "Population")] <- sapply(hcup_not_age[, c("Year", "Population")], as.integer)
 
@@ -886,24 +886,24 @@ sudors_final[sudors_final$Setting %in% "IP", "Setting"] <- "Medical Facility - I
 
 
 # -----------------------------
-# Align "Manner of Death" nomenclature.
-unique(hcup_final$Manner_of_Death)
-unique(wonder_raw$Manner_of_Death)
-unique(sudors_final$Manner_of_Death)
+# Align "Underlying Cause of Death" nomenclature.
+unique(hcup_final$Underlying_Cause)
+unique(wonder_raw$Underlying_Cause)
+unique(sudors_final$Underlying_Cause)
 
 # All nomenclature is the same between the sets. One thing to review is
 # the interpretation of the AHRQ dataset for underlying causes of deaths.
 # Its documentation states that deaths as a result of "Drug-induced causes"
 # are "encompassed" but does not state that this is the only underlying cause of
-# death. Therefore, it is labeled with "Manner of Death = All" by the CDC WONDER's
+# death. Therefore, it is labeled with "Underlying Cause of Death = All" by the CDC WONDER's
 # definitions for UCD - Drug/Alcohol Induced Causes ICD-10 codes.
 
 # Underlying cause of death that is "Unintentional" is defined by SUDORS, where
 # only the ICD-10 codes X40-X44 and Y10-Y14 are included.
 
-hcup_final <- rename(hcup_final, `Underlying Cause of Death` = Manner_of_Death)
-wonder_raw <- rename(wonder_raw, `Underlying Cause of Death` = Manner_of_Death)
-sudors_final <- rename(sudors_final, `Underlying Cause of Death` = Manner_of_Death)
+hcup_final <- rename(hcup_final, `Underlying Cause of Death` = Underlying_Cause)
+wonder_raw <- rename(wonder_raw, `Underlying Cause of Death` = Underlying_Cause)
+sudors_final <- rename(sudors_final, `Underlying Cause of Death` = Underlying_Cause)
 
 
 
