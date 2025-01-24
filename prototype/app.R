@@ -17,7 +17,7 @@ df <- read_csv(data_url) |>
   filter(!(age_adjusted_rate %in% c(7777, 8888, 9999)))
 
 # Static
-opioid_od <- read_csv("../Opioid OD Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv") %>%
+opioid_od <- read_csv(data_url) %>%
   as.data.frame()
 
 
