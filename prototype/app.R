@@ -76,6 +76,8 @@ ui <- fluidPage(
                tabPanel("2022", plotOutput("bar_graph_2022"))
              ),
              plotOutput("us_map"),
+             hr(),
+             br(),
              includeHTML("footnotes.html")
     ),
     tabPanel("Respiratory Syncytial Virus (RSV)")
