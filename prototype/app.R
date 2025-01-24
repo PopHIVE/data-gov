@@ -20,9 +20,7 @@ ui <- fluidPage(
                column(4,
                       checkboxGroupInput("data_source",
                                          "Data Source(s):",
-                                         c("CDC WONDER" = "cdc_wonder",
-                                           "SUDORS" = "sudors",
-                                           "AHRQ" = "ahrq")),
+                                         unique(df$dataset)),
                       selectInput("state",
                                   "State:",
                                   unique(df$state)),
@@ -46,7 +44,8 @@ ui <- fluidPage(
              )
     ),
     tabPanel("Respiratory Syncytial Virus (RSV)")
-  )
+  ),
+  includeHTML("footnotes.html")
 )
 
 # Define server logic
@@ -54,16 +53,23 @@ server <- function(input, output) {
   output$time_series <- renderPlot({
     req(input$data_source)
     
+    measure_type_title <- stringr::str_to_title(gsub("_", " ", input$measure_type))
+    
     df |> 
       filter(dataset %in% input$data_source,
              state == input$state,
              setting == input$setting,
              drug == input$drug,
              characteristic == input$stratify_by) |> 
+      filter(!is.na(quarter)) |> 
       mutate(year_quarter = paste(year, quarter)) |> 
-      ggplot(aes(x = year_quarter, y = .data[[input$measure_type]])) +
+      ggplot(aes(x = year_quarter, y = .data[[input$measure_type]], group = 1)) +
       geom_line() +
-      labs(title = "Basic Time Series Plot", x = "Date", y = "Value")
+      theme_light() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+      labs(title = paste0("Distribution of ", measure_type_title), 
+           x = NULL,
+           y = measure_type_title)
   })
   
   

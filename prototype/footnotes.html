@@ -1,0 +1,54 @@
+<h3>Footnotes:</h3>
+<ol>
+    <li>
+        Links to detailed source-specific methods: 
+        <a href="https://hcup-us.ahrq.gov/reports/methods/methods_topic.jsp" target="_blank">HCUP</a>, 
+        <a href="https://www.cdc.gov/overdose-prevention/data-research/facts-stats/about-sudors.html" target="_blank">SUDORS</a>, and 
+        <a href="https://wonder.cdc.gov/wonder/help/mcd-expanded.html" target="_blank">CDC WONDER</a>.
+    </li>
+    <li>All rates reflect events per 100,000 persons.</li>
+    <li>
+        Coded numerical values were introduced to denote suppressed, missing, or unreliable values.
+        <ul>
+            <li>
+                <strong>NA:</strong> “Not Available” or “Not Applicable”, depending on the situation 
+                (<a href="https://wonder.cdc.gov/wonder/help/mcd-expanded.html" target="_blank">CDC WONDER Documentation</a>). 
+                Aggregated NA’s imply all components were NA.
+            </li>
+            <li>
+                <strong>7777:</strong> Incomplete information. This was introduced during aggregation of age-groups or dates and indicates at least component was missing, NA, 8888, or 9999.
+            </li>
+            <li>
+                <strong>8888:</strong> Rates are unreliable as the numerator is 20 or less.
+            </li>
+            <li>
+                <strong>9999:</strong> Suppressed counts to ensure the criteria for confidentiality constraints 
+                (<a href="https://wonder.cdc.gov/wonder/help/mcd-expanded.html" target="_blank">CDC WONDER Documentation</a>). 
+                Aggregated 9999 imply all components were suppressed.
+            </li>
+        </ul>
+    </li>
+    <li>
+        HCUP’s documentation did not imply that the rates were age-adjusted, justifying all of them being labeled as crude rates, only.
+    </li>
+    <li>
+        Age-adjusted rates are available for entries that have not been stratified by age. CDC WONDER used the 2000 Census population for age-adjustments, and SUDORS used the 2010 U.S. Census population.
+    </li>
+    <li>
+        Underlying Cause of Death outcomes are defined by the CDC WONDER definition for that variable, and selections were made based on the UCD – Drug/Alcohol Induced Causes subset of ICD-10 codes 
+        (<a href="https://wonder.cdc.gov/wonder/help/mcd-expanded.html#Step6" target="_blank">Step 6. Select underlying cause of death</a>). 
+        “All” means any available underlying cause of death code, and “Unintentional” selects Drug poisonings (overdose) Unintentional (X40-X44) and only Drug poisonings (overdose) Undetermined (Y10-Y14).
+    </li>
+    <li>
+        Drug outcomes indicated as “All” are only present in the SUDORS dataset. These are drug overdose/poisoning events involving opioids, stimulants, depressants, or polysubstances.
+    </li>
+    <li>
+        “All Opioids” is defined by the HCUP documentation, including ICD-10 codes T40.0 (Opium), T40.1 (Heroin), T40.2 (Other opioids), T40.3 (Methadone), T40.4 (Other synthetic narcotics), T40.6 (Other and unspecified narcotics), 
+        F11.0 (Mental and behavioural disorders due to use of opioids, acute intoxication).
+    </li>
+    <li>
+        Overdose events involving multiple drug types (polysubstances) were included for the SUDORS and CDC WONDER datasets. 
+        SUDORS batches opioids plus any stimulants (including Cocaine) or depressants (including Benzodiazepines). 
+        CDC WONDER only included the ICD-10 codes T42.4 (Benzodiazepines) and T40.5 (Cocaine).
+    </li>
+</ol>
