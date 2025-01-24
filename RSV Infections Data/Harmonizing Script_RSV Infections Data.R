@@ -26,6 +26,18 @@ rsv_net <- read_csv("RSV Infections Data/Raw Download/RSV-NET All Seasons_Intera
   as.data.frame()
 
 
+nrevss_lab <- read_csv("RSV Infections Data/Raw Download/NREVSS Laboratory Data_Respiratory Syncytial Virus (RSV) Surveillance Archive_Downloaded 01.23.2025.csv") %>%
+  as.data.frame()
+
+nrevss_hhs <- read_csv("RSV Infections Data/Raw Download/NREVSS by HHS Region_Respiratory Syncytial Virus (RSV) Surveillance Archive_Downloaded 01.23.2025.csv") %>%
+  as.data.frame()
+
+
+epic <- read_csv("RSV Infections Data/Raw Download/EpicCosmos_Communicable Diseases by State_Between 12.22.2024 and 01.04.2025_ Downloaded 01.23.2025.csv") %>%
+  as.data.frame()
+
+
+
 # bronchiolitis (infants only), rsv
 
 # EPIC, NERVESS, and Google Trends not expected to have stratification except by state.
