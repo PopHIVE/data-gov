@@ -1,0 +1,14 @@
+name: phdx_playing
+title: phdx_playing
+username: weinbergerlab
+account: weinbergerlab
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13807588
+bundleId: 9698955
+url: https://weinbergerlab.shinyapps.io/phdx_playing/
+version: 1
+quarto_version: 1.4.555
+quarto_engines: knitr
+asMultiple: FALSE
+asStatic: FALSE

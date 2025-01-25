@@ -1,0 +1,30 @@
+---
+title: "load"
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(plotly)
+library(shiny)
+library(tidyverse)
+library(scales)
+library(janitor)
+```
+
+```{r, echo=F}
+"%!in%" <- function(x,y)!("%in%"(x,y))
+
+# Interactive
+
+df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', show_col_types = FALSE) |>
+  clean_names() |> 
+  dplyr::filter(!(count %in% c(7777, 8888, 9999))) |> 
+  dplyr::filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
+  dplyr::filter(!(age_adjusted_rate %in% c(7777, 8888, 9999))) %>%
+  mutate(qtr=as.numeric((gsub("Q",'', quarter))), 
+         qtr =if_else(is.na(qtr),1,qtr),
+         qdate= year+ qtr/4 -1/4
+         )
+```
