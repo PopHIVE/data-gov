@@ -3,7 +3,7 @@ body {
   background-color: #f9f9f9;
 }
 h1, h2, h3 {
-  color: #00356b; /* Yale Blue */
+  color: #0c233f; /* Yale Blue */
 }
 a {
   color: #286dc0; /* Light Yale Blue */
@@ -13,7 +13,7 @@ a {
   border-radius: 10px;
 }
 .btn {
-  background-color: #00356b;
+  background-color: #0c233f;
   color: white;
 }
 .btn:hover {
@@ -29,7 +29,7 @@ a {
 }
 .title {
   font-weight: bold;
-  color: white !important;
+  color: #0c233f !important;
   font-family: Times;
   font-variant: normal;
 }

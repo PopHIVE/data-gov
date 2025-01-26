@@ -1,5 +1,5 @@
 ---
-title: "Public Health Data Explorer (PHDE)"
+title: "A"
 title-block-banner: "#0c233f"
 format:
   html:
@@ -69,7 +69,7 @@ saveRDS(rsv_ts, './Data/rsv_latest.rds') #saves latest vintage of the r
 
 ```
 
-## PHDE
+# Public Health Data Explorer (PHDE)
 
 Welcome to the Public Health Data Explorer, hosted by the Yale School of Public Health. Here you can find visualizations of diverse datasets related to public health outcomes of general interest.
 
