@@ -1,9 +1,17 @@
 ---
-title: "Public Health Data Exchange (PHDX)"
+title: "Public Health Data Explorer (PHDE)"
+title-block-banner: "#0c233f"
 format:
   html:
-    code-tools: 
-      source: /load.qmd 
+    embed-resources: true
+    smooth-scroll: true
+    theme: cosmo
+    fontcolor: black
+    toc: false
+    toc-location: left
+    toc-title: Summary
+    toc-depth: 3
+css: styles.css
 server: shiny
 ---
 
@@ -14,9 +22,20 @@ library(shiny)
 library(tidyverse)
 library(scales)
 library(janitor)
+library(MMWRweek)
+#library(cdcfluview)
+#install.packages("remotes")
+#remotes::install_github("hrbrmstr/cdcfluview")
+#hhs_regions$state <- state.abb[match(hhs_regions$state_or_territory,state.name)]
+#state.hhs.codes <- aggregate(hhs_regions$state, #list(hhs_regions$region), paste, collapse=",")
+#state.hhs.codes$x <- gsub('NA,','',state.hhs.codes$x)
+#state.hhs.codes$x <- gsub(',NA','',state.hhs.codes$x)
+#saveRDS(state.hhs.codes, './website_play3/hhs_regions.rds')
 ```
 
 ```{r, echo=F}
+#datasets for use in the global environment
+
 "%!in%" <- function(x,y)!("%in%"(x,y))
 
 # Interactive
@@ -30,29 +49,30 @@ df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', sho
          qdate= year+ qtr/4 -1/4
          )
 
-```
+rsv1_tests <- read.csv('https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/RSV%20Infections%20Data/Raw%20Download/NREVSS%20by%20HHS%20Region_Respiratory%20Syncytial%20Virus%20(RSV)%20Surveillance%20Archive_Downloaded%2001.23.2025.csv')
 
-## PHDX
+key <- readRDS('./Data/hhs_regions.rds')
 
-Welcome to the Public Health Data Exchange, hosted by the Yale School of Public Health. Here you can find visualizations of diverse datasets related to public health outcomes of general interest.
+rsv_ts <- rsv1_tests %>%
+    mutate(date= as.Date(substr(mmwrweek_end,1,10 ), '%m/%d/%Y'),
+           postdate= as.Date(substr(posted,1,10 ), '%m/%d/%Y')) %>%
+  filter(postdate==max(postdate)) %>%
+  ungroup() %>%
+  filter(level != 'National') %>%
+  group_by(level ) %>%
+  left_join(key, by=c('level'='Group.1')) %>%
+  mutate(scaled_cases = pcr_detections/max(pcr_detections),
+         hhs_abbr = x
+         )
+saveRDS(rsv_ts, './Data/rsv_latest.rds') #saves latest vintage of the r
 
-## Opioids in the United States
-
-```{r}
-#| panel: sidebar
-
-selectInput("state.select", "State:", 
-            choices=unique(df1$state), selected='US')
-```
-
-::: panel-tabset
-### Trends in healthcare visits
-
-```{r}
-#| panel: fill
-plotlyOutput("distPlot1")
 
 ```
+
+## PHDE
+
+Welcome to the Public Health Data Explorer, hosted by the Yale School of Public Health. Here you can find visualizations of diverse datasets related to public health outcomes of general interest.
+
 
 ```{r}
 #| context: server
@@ -76,7 +96,7 @@ output$distPlot1 <- renderPlotly({
   ggplot(aes(x=qdate, y=count, group=level, color=level)) +
     theme_minimal() +
     geom_line()
-p1
+ggplotly(p1)
 })
 
 output$distPlot2 <- renderPlotly({
@@ -88,17 +108,113 @@ output$distPlot2 <- renderPlotly({
   ggplot(aes(x=qdate, y=count, group=level, color=level)) +
     theme_minimal() +
     geom_line()
-p1
+ggplotly(p1)
+})
+
+########################################
+##RSV
+########################################
+key <- readRDS('./Data/hhs_regions.rds')
+
+rsv_ts <- readRDS('./Data/rsv_latest.rds')
+
+dates2 <- MMWRweek(as.Date(rsv_ts$date))
+
+max.wk.yr <- max(dates2$MMWRweek[dates2$MMWRyear==max(dates2$MMWRyear)])
+
+rsv_ts <- cbind.data.frame(rsv_ts,dates2[,c('MMWRyear', 'MMWRweek')]) %>%
+  mutate( epiyr = MMWRyear, 
+          epiyr = if_else(MMWRweek<=26,MMWRyear - 1 ,MMWRyear),
+          epiwk  = if_else( MMWRweek<=26, MMWRweek+52, MMWRweek  ),
+          epiwk=epiwk-26
+          )
+#d1.m.alt$geo <- substr(d1.m.alt$geo,4,5)
+
+last.wk <- max(rsv_ts$MMWRweek[rsv_ts$MMWRyear==max(rsv_ts$MMWRyear)] )
+
+
+n_years <- length(unique(rsv_ts$epiyr))
+
+output$distPlotRSV3 <- renderPlotly({
+  
+point_plot <- rsv_ts %>% filter(hhs_abbr==input$hhs.region.select &  epiyr == max(epiyr, na.rm=T) ) %>%
+  filter(epiwk==max(epiwk))
+
+rsv_ts1 <- rsv_ts %>%
+  filter(x==input$hhs.region.select) %>%
+  ggplot(aes(x=epiwk, y=scaled_cases, group=as.factor(epiyr), color=as.factor(epiyr)))+
+  geom_line()+
+  theme_minimal()+
+  xlab('Weeks since July')+
+  ylab('RSV positive tests')+
+  scale_colour_viridis_d() +
+geom_point(data=point_plot,aes(x=epiwk, y=scaled_cases) ,col='red') +
+  guides(color=guide_legend(title="Season starting:"))
+  
+
+ggplotly(rsv_ts1)
 })
 ```
 
-### Trends in deaths
+## Respiratory syncytial virus (RSV) in the United States
+
+::: panel-tabset
+
+
+### Trends in positive tests
+
+```{r}
+#| panel: sidebar
+
+selectInput("hhs.region.select", "HHS Region:", 
+            choices=unique(rsv_ts$hhs_abbr), selected='CT,ME,MA,NH,RI,VT')
+```
+
+```{r}
+#| panel: fill
+plotlyOutput("distPlotRSV3")
+
+```
+
+
+### Trends in Google searches
+```{r}
+#| panel: fill
+
+```
+
+### Positive tests (all regions)
+
+```{r}
+heat1 <- rsv1_tests %>%
+  mutate(date= as.Date(substr(mmwrweek_end,1,10 ), '%m/%d/%Y'),
+          postdate= as.Date(substr(posted,1,10 ), '%m/%d/%Y')) %>%
+  filter(postdate==max(postdate)) %>% 
+  ungroup() %>%
+  filter(level != 'National') %>%
+  group_by(level ) %>%
+  left_join(key, by=c('level'='Group.1')) %>%
+  mutate(scaled_cases = pcr_detections/max(pcr_detections),
+         hhs_abbr=x)
+
+# by each district
+ggplot(heat1, aes(date, x, fill = scaled_cases))+
+  geom_tile()+ 
+  scale_fill_distiller(name = "PCR Positives", 
+                       palette = "Blues", 
+                       direction = 1,
+                       breaks = pretty_breaks())+
+  theme(axis.text.y = element_text(size = 3))+
+  labs(x = "Date", y = "HHS Region", title ="RSV detections NREVSS")+
+   guides(fill="none")+
+  theme_minimal()
+```
 
 :::
 
 ------------------------------------------------------------------------
 
-## RSV in the United States
+## Opioids in the United States
 
 ```{r}
 #| panel: sidebar
@@ -108,33 +224,24 @@ selectInput("state.select", "State:",
 ```
 
 ::: panel-tabset
+### Trends in healthcare visits
 
-### Trends in hospitalizations
 ```{r}
 #| panel: fill
+plotlyOutput("distPlot1")
 
 ```
 
-### Trends in positive tests
-```{r}
-#| panel: fill
-
-```
-
-### Trends in Google searches
-```{r}
-#| panel: fill
-
-```
+### Trends in deaths
 
 :::
 
-
-## Explanation and Context
-
-The above visualizations provide a blend of temporal and spatial insights:
-
--   **Time Series Plots**: Observe trends and fluctuations over time.
--   **Maps**: Geographical context enriches understanding, linking data to place.
-
 ------------------------------------------------------------------------
+
+
+
+## Documentation
+
+### Notes on data sources
+
+------------------------------------------------------------------------ todo todo
