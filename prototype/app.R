@@ -21,8 +21,6 @@ opioid_od <- read_csv(data_url) %>%
   as.data.frame()
 
 
-
-
 # Define UI
 ui <- fluidPage(
   
@@ -64,18 +62,23 @@ ui <- fluidPage(
                column(8,
                       plotOutput("time_series_interactive")
                )
-               
              ),
              br(),
-             h2("Static Plots"),
              br(),
-             plotOutput("time_series_static"),
-             tabsetPanel(
-               tabPanel("2020", plotOutput("bar_graph_2020")),
-               tabPanel("2021", plotOutput("bar_graph_2021")),
-               tabPanel("2022", plotOutput("bar_graph_2022"))
+             fluidRow(
+               column(6, 
+                      plotOutput("time_series_static")),
+               column(6, 
+                      tabsetPanel(
+                        tabPanel("2020", plotOutput("bar_graph_2020")),
+                        tabPanel("2021", plotOutput("bar_graph_2021")),
+                        tabPanel("2022", plotOutput("bar_graph_2022"))
+                      )
+               )
              ),
-             plotOutput("us_map"),
+             fluidRow(
+               plotOutput("us_map")
+             ),
              hr(),
              br(),
              includeHTML("footnotes.html")
@@ -280,7 +283,7 @@ server <- function(input, output, session) {
       labs(title = "National Opioid Overdose Rate for All Types of Opioids",
            subtitle = "Underlying Cause of Death: All. Setting: Medical Facility - Inpatient.",
            x = "Year", y = "Crude Rate (per 100,000)") +
-      theme_minimal()
+      theme_minimal(base_size = 17)
     
   })
   
@@ -297,6 +300,9 @@ server <- function(input, output, session) {
       filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
              `Underlying Cause of Death` %in% "Unintentional",
              Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      mutate(Drug = if_else(Drug == "Mental and behavioural disorders due to use of opioids, acute intoxication",
+                            "Mental and behavioural disorders",
+                            Drug)) %>%
       
       # Plot settings and features.
       ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`)) +
@@ -304,7 +310,8 @@ server <- function(input, output, session) {
       labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2020",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal() + theme(axis.text.x = element_text(angle = 55,  hjust = 1))
+      theme_minimal(base_size = 15) + 
+      theme(axis.text.x = element_text(angle = 55,  hjust = 1))
     
     
     
@@ -325,14 +332,18 @@ server <- function(input, output, session) {
       filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
              `Underlying Cause of Death` %in% "Unintentional",
              Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      mutate(Drug = if_else(Drug == "Mental and behavioural disorders due to use of opioids, acute intoxication",
+                            "Mental and behavioural disorders",
+                            Drug)) %>%
       
       # Plot settings and features.
       ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`)) +
       geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
-      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2020",
+      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2021",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal() + theme(axis.text.x = element_text(angle = 55,  hjust = 1))
+      theme_minimal(base_size = 15) +
+      theme(axis.text.x = element_text(angle = 55,  hjust = 1))
     
     
     
@@ -353,14 +364,18 @@ server <- function(input, output, session) {
       filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
              `Underlying Cause of Death` %in% "Unintentional",
              Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      mutate(Drug = if_else(Drug == "Mental and behavioural disorders due to use of opioids, acute intoxication",
+                            "Mental and behavioural disorders",
+                            Drug)) %>%
       
       # Plot settings and features.
       ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`)) +
       geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
-      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2020",
+      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2022",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal() + theme(axis.text.x = element_text(angle = 55,  hjust = 1))
+      theme_minimal(base_size = 15) + 
+      theme(axis.text.x = element_text(angle = 55,  hjust = 1))
     
   })
   
@@ -403,7 +418,11 @@ server <- function(input, output, session) {
         low = "white", high = "red", name = "Count (2022)", label = scales::comma
       ) + 
       labs(title = "AHRQ") +
-      theme(legend.position = "")
+      theme(legend.position = "",
+            plot.title = element_text(size = 18, face = "bold"),  # Increase title size
+            axis.text = element_text(size = 12),                 # Adjust axis text
+            legend.text = element_text(size = 12),               # Adjust legend text
+            legend.title = element_text(size = 14))
     
     
     
@@ -431,7 +450,11 @@ server <- function(input, output, session) {
         low = "white", high = "red", name = "Count (2022)", label = scales::comma
       ) + 
       labs(title = "\ \ \ \ \ \ CDC WONDER") +
-      theme(legend.position = "right")
+      theme(legend.position = "right",
+            plot.title = element_text(size = 18, face = "bold"),  # Increase title size
+            axis.text = element_text(size = 14),                 # Adjust axis text
+            legend.text = element_text(size = 14),               # Adjust legend text
+            legend.title = element_text(size = 16))
     
     
     
@@ -440,8 +463,10 @@ server <- function(input, output, session) {
     
     # Generate the main title.
     title <- ggdraw() + 
-      draw_label("National Opioid Overdose Counts for All Opioid Types in 2022", x = 0, y = 0.2, hjust = 0, vjust =1) +
-      draw_label("Underlying Cause of Death: All Setting: Medical Facility - Inpatient.", x = 0, y = 0.1, hjust = 0, size = 12) +
+      draw_label("National Opioid Overdose Counts for All Opioid Types in 2022", 
+                 x = 0, y = 0.2, hjust = 0, vjust = 1, size = 18) +
+      draw_label("Underlying Cause of Death: All Setting: Medical Facility - Inpatient.", 
+                 x = 0, y = 0.1, hjust = 0, size = 14) +
       theme(plot.margin = margin(0, 0, 0, 7))
     
     # Display the plot with title.
