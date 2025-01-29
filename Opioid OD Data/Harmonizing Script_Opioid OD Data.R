@@ -3,9 +3,11 @@
 ##
 ## Date: December 23rd, 2024
 ## Source:
-##    - CDC SUDORS and DOSE
-##    - Agency for Healthcare Research and Quality (AHRQ)
-##    - CDC WONDER
+##    - CDC's State Unintentional Drug Overdose Reporting System (SUDORS)
+##    - Agency for Healthcare Research and Quality (AHRQ) Healthcare Cost
+##      and Utilization Project (HCUP) Quarterly and annual rates for 
+##      Opioid-Related Hospital Use
+##    - CDC Wide-ranging ONline Data for Epidemiologic Researc (WONDER)
 
 ## ----------------------------------------------------------------
 ## SET UP THE ENVIRONMENT
