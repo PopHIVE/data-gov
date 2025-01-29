@@ -1,5 +1,6 @@
 library(shiny)
 library(tidyverse)
+library(plotly)
 library(scales)
 library(usmap)
 library(cowplot)
