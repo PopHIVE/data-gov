@@ -8,6 +8,7 @@ editor_options:
 
 ```{r}
 library(tidyverse)
+library(janitor)
 library(scales)
 library(plotly)
 
@@ -82,8 +83,8 @@ Plot
 ```{r}
 p1 <- df %>%
   filter(drug=='All Opioids' & 
-         characteristic=='Age' &
-         state == "Texas") %>%
+           characteristic=='Age' &
+           state == "Texas") %>%
   group_by(dataset, state, year_quarter, level) %>%
   summarize(count=sum(count, na.rm = TRUE)) %>%
   ungroup() %>%
@@ -103,7 +104,7 @@ p1 <- df %>%
   facet_wrap(~dataset) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-  
+
 
 ggplotly(p1, tooltip = c("text"))
 ```
@@ -113,8 +114,8 @@ Plot By Sex
 ```{r}
 df %>%
   filter(drug=='All Opioids' & 
-         characteristic=='Sex' &
-         state == "US") %>%
+           characteristic=='Sex' &
+           state == "US") %>%
   group_by(dataset, state, year_quarter, level) %>%
   summarize(count=sum(count, na.rm = TRUE)) %>%
   ungroup() %>%
@@ -125,8 +126,112 @@ df %>%
                            "Count: ", count))) +
   geom_line() +
   scale_x_discrete(breaks = c("2016 Q1", "2017 Q1", "2018 Q1",
-                                  "2019 Q1", "2020 Q1", "2021 Q1", 
-                                  "2022 Q1")) +
+                              "2019 Q1", "2020 Q1", "2021 Q1", 
+                              "2022 Q1")) +
   facet_wrap(~dataset) +
   theme_minimal()
 ```
+
+
+```{r}
+df %>%
+  filter(drug=='All Opioids' & 
+           characteristic=='Age' &
+           state == "Connecticut") |> 
+  group_by(dataset, state, year_quarter, level) %>%
+  summarize(count=sum(count, na.rm = TRUE)) |>
+  ungroup() |> 
+  pivot_wider(names_from = level, values_from = count) |> 
+  mutate(Overall = `25-44 Years` + `45-64 Years` + `65+ Years` + `<24 Years`) |> 
+  pivot_longer(
+    cols = where(is.numeric),
+    names_to = "level",
+    values_to = "count"
+  ) |> 
+  mutate(level = factor(level),
+         level = fct_relevel(level, c("Overall", "65+ Years",
+                                      "45-64 Years", "25-44 Years",
+                                      "<24 Years")))
+```
+
+
+
+```{r}
+# Interactive
+data_url <- "https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/Opioid%20OD%20Data/Harmonized%20Opioid%20Overdose%20Datasets_01.23.2025.csv"
+
+# Static
+opioid_od <- read_csv(data_url) %>%
+  as.data.frame()
+
+"%!in%" <- function(x,y)!("%in%"(x,y))
+```
+
+
+```{r}
+# Counts in AHRQ dataset.
+ahrq_map_plot <- opioid_od %>%
+  # Filter the placeholder numerical values.
+  filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+  
+  # Switch between the two settings, and change the subtitle name.
+  filter(Setting %in% "Medical Facility - Inpatient") %>%
+  #filter(Setting %in% "Medical Facility - Outpatient or ER") %>%
+  
+  # Filter the metadata settings.
+  filter(Dataset %in% "AHRQ", State %in% datasets::state.name, 
+         Year %in% 2022, Quarter %in% NA,
+         `Underlying Cause of Death` %in% "All", Drug %in% "All Opioids",
+         Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+  
+  # plot_usmap() requires specific nomenclature for the column with states.
+  rename(state = State) %>%
+  
+  # Plot settings and features.
+  plot_usmap(data = ., values = "Count", color = "red") + 
+  scale_fill_continuous(
+    low = "white", high = "red", name = "Count (2022)", label = scales::comma
+  ) + 
+  labs(title = "AHRQ") +
+  theme(legend.position = "",
+        plot.title = element_text(size = 18, face = "bold"),  # Increase title size
+        axis.ticks = element_blank(),  # Remove ticks
+        axis.text = element_blank(),    # Remove tick labels
+        legend.text = element_text(size = 12),               # Adjust legend text
+        legend.title = element_text(size = 14))
+
+
+
+# Counts in CDC WONDER dataset.
+wonder_map_plot <- opioid_od %>%
+  # Filter the placeholder numerical values.
+  filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+  
+  # Switch between the two settings, and change the subtitle name.
+  filter(Setting %in% "Medical Facility - Inpatient") %>%
+  #filter(Setting %in% "Medical Facility - Outpatient or ER") %>%
+  
+  # Filter the metadata settings.
+  filter(Dataset %in% "CDC WONDER", State %in% datasets::state.name, 
+         Year %in% 2022, Quarter %in% NA,
+         `Underlying Cause of Death` %in% "All", Drug %in% "All Opioids",
+         Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+  
+  # plot_usmap() requires specific nomenclature for the column with states.
+  rename(state = State) %>%
+  
+  # Plot settings and features.
+  plot_usmap(data = ., values = "Count", color = "red") + 
+  scale_fill_continuous(
+    low = "white", high = "red", name = "Count (2022)", label = scales::comma
+  ) + 
+  labs(title = "CDC WONDER") +
+  theme(legend.position = "right",
+        plot.title = element_text(size = 18, face = "bold"),  # Increase title size
+        axis.ticks = element_blank(),  # Remove ticks
+        axis.text = element_blank(),               # Adjust axis text
+        legend.text = element_text(size = 14),               # Adjust legend text
+        legend.title = element_text(size = 16))
+```
+
+

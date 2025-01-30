@@ -9,9 +9,9 @@ library(janitor)
 "%!in%" <- function(x,y)!("%in%"(x,y))
 
 # Interactive
-data_url <- "https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/Opioid%20OD%20Data/Harmonized%20Opioid%20Overdose%20Datasets_01.23.2025.csv"
+opioid_data <- "data/Harmonized Opioid Overdose Datasets_01.23.2025.csv"
 
-df <- read_csv(data_url) |>
+df <- read_csv(opioid_data) |>
   clean_names() |> 
   filter(!(count %in% c(7777, 8888, 9999))) |> 
   filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
@@ -22,7 +22,7 @@ df <- read_csv(data_url) |>
   mutate(year_quarter = paste(year, quarter))
 
 # Static
-opioid_od <- read_csv(data_url) %>%
+opioid_od <- read_csv(opioid_data) %>%
   as.data.frame()
 
 
@@ -39,7 +39,8 @@ ui <- fluidPage(
                column(3,
                       selectInput("state",
                                   "State:",
-                                  choices = unique(df$state))
+                                  choices = unique(df$state),
+                                  selected = "US")
                ),
                column(6,
                       plotlyOutput("time_series_interactive")
@@ -52,14 +53,26 @@ ui <- fluidPage(
                       plotOutput("time_series_static")),
                column(6, 
                       tabsetPanel(
-                        tabPanel("2020", plotOutput("bar_graph_2020")),
-                        tabPanel("2021", plotOutput("bar_graph_2021")),
-                        tabPanel("2022", plotOutput("bar_graph_2022"))
+                        tabPanel("2020", 
+                                 br(),
+                                 plotOutput("bar_graph_2020", width = "100%", height = "500px")),
+                        tabPanel("2021",
+                                 br(),
+                                 br(),
+                                 plotOutput("bar_graph_2021")),
+                        tabPanel("2022",
+                                 br(),
+                                 br(),
+                                 plotOutput("bar_graph_2022"))
                       )
                )
              ),
              fluidRow(
-               plotOutput("us_map")
+               h3("National Opioid Overdose Counts for All Opioid Types in 2022"),
+               h4("Underlying Cause of Death: All Setting Medical Facility - Inpatient"),
+               br(),
+               column(6, plotlyOutput("ahrq_map")),     # AHRQ plot on the left
+               column(6, plotlyOutput("wonder_map"))   # CDC WONDER plot on the right
              ),
              hr(),
              br(),
@@ -77,10 +90,21 @@ server <- function(input, output, session) {
     df %>%
       filter(drug=='All Opioids' & 
                characteristic=='Age' &
-               state == input$state) %>%
+               state == input$state) |> 
       group_by(dataset, state, year_quarter, level) %>%
-      summarize(count=sum(count, na.rm = TRUE)) %>%
-      ungroup() %>%
+      summarize(count=sum(count, na.rm = TRUE)) |>
+      ungroup() |> 
+      pivot_wider(names_from = level, values_from = count) |> 
+      mutate(Overall = `25-44 Years` + `45-64 Years` + `65+ Years` + `<24 Years`) |> 
+      pivot_longer(
+        cols = where(is.numeric),
+        names_to = "level",
+        values_to = "count"
+      ) |> 
+      mutate(level = factor(level),
+             level = fct_relevel(level, c("Overall", "65+ Years",
+                                          "45-64 Years", "25-44 Years",
+                                          "<24 Years"))) |> 
       filter(count > 0) 
   })
   
@@ -106,11 +130,11 @@ server <- function(input, output, session) {
       facet_wrap(~dataset) +
       theme_minimal(base_size = 13) +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
+    
     ggplotly(p1, tooltip = c("text"))
   }) 
   
- 
+  
   
   output$time_series_static <- renderPlot({
     
@@ -157,8 +181,8 @@ server <- function(input, output, session) {
       labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2020",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal(base_size = 15) + 
-      theme(axis.text.x = element_text(angle = 55,  hjust = 1))
+      theme_minimal(base_size = 17) + 
+      theme(axis.text.x = element_text(angle = 90,  hjust = 1))
     
     
     
@@ -189,8 +213,8 @@ server <- function(input, output, session) {
       labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2021",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal(base_size = 15) +
-      theme(axis.text.x = element_text(angle = 55,  hjust = 1))
+      theme_minimal(base_size = 16) +
+      theme(axis.text.x = element_text(angle = 90,  hjust = 1))
     
     
     
@@ -221,14 +245,14 @@ server <- function(input, output, session) {
       labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2022",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal(base_size = 15) + 
-      theme(axis.text.x = element_text(angle = 55,  hjust = 1))
+      theme_minimal(base_size = 16) + 
+      theme(axis.text.x = element_text(angle = 90,  hjust = 1))
     
   })
   
   
   
-  output$us_map <- renderPlot({
+  output$ahrq_map <- renderPlotly({
     
     
     # -----------------------------
@@ -266,13 +290,18 @@ server <- function(input, output, session) {
       ) + 
       labs(title = "AHRQ") +
       theme(legend.position = "",
-            plot.title = element_text(size = 18, face = "bold"),  # Increase title size
-            axis.text = element_text(size = 12),                 # Adjust axis text
+            plot.title = element_text(size = 14),  # Increase title size
+            axis.ticks = element_blank(),
+            axis.text = element_blank(),
             legend.text = element_text(size = 12),               # Adjust legend text
             legend.title = element_text(size = 14))
     
+    ggplotly(ahrq_map_plot)
     
-    
+  })
+  
+  
+  output$wonder_map <- renderPlotly({
     # Counts in CDC WONDER dataset.
     wonder_map_plot <- opioid_od %>%
       # Filter the placeholder numerical values.
@@ -298,38 +327,15 @@ server <- function(input, output, session) {
       ) + 
       labs(title = "\ \ \ \ \ \ CDC WONDER") +
       theme(legend.position = "right",
-            plot.title = element_text(size = 18, face = "bold"),  # Increase title size
-            axis.text = element_text(size = 14),                 # Adjust axis text
+            plot.title = element_text(size = 14),  # Increase title size
+            axis.ticks = element_blank(),
+            axis.text = element_blank(),
             legend.text = element_text(size = 14),               # Adjust legend text
             legend.title = element_text(size = 16))
     
-    
-    
-    # Compile plots to display side-by-side.
-    plot_together <- plot_grid(ahrq_map_plot, wonder_map_plot, labels = "AUTO")
-    
-    # Generate the main title.
-    title <- ggdraw() + 
-      draw_label("National Opioid Overdose Counts for All Opioid Types in 2022", 
-                 x = 0, y = 0.2, hjust = 0, vjust = 1, size = 18) +
-      draw_label("Underlying Cause of Death: All Setting: Medical Facility - Inpatient.", 
-                 x = 0, y = 0.1, hjust = 0, size = 14) +
-      theme(plot.margin = margin(0, 0, 0, 7))
-    
-    # Display the plot with title.
-    plot_grid(title, plot_together, ncol = 1, rel_heights = c(1, 1))
-    
-    
-    
-    
-    
-    
+    ggplotly(wonder_map_plot)
     
   })
-  
-  
-  
-  
 }
 
 # Run the application 

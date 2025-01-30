@@ -5,6 +5,6 @@ account: howardbaikyale
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13820873
-bundleId: 9707840
+bundleId: 9718965
 url: https://howardbaikyale.shinyapps.io/prototype/
 version: 1
