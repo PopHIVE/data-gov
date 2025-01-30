@@ -8,10 +8,29 @@ library(janitor)
 
 "%!in%" <- function(x,y)!("%in%"(x,y))
 
-# Interactive
-opioid_data <- "data/Harmonized Opioid Overdose Datasets_01.23.2025.csv"
+# Define Yale branding colors
+yale_colors <- c(
+  "#00356B",
+  "#286DC0",
+  "#63AAFF",
+  "#C4DDFC",
+  "#DDDDDD"
+)
 
-df <- read_csv(opioid_data) |>
+yale_gradient <- c("#DDDDDD",
+                   "#C4DDFC",
+                   "#63AAFF",
+                   "#286DC0",
+                   "#00356B") # Adjust order for your desired gradient
+
+
+
+
+# Opioid Dataset---
+# Interactive
+opioid_path <- "data/Harmonized Opioid Overdose Datasets_01.23.2025.csv"
+
+df_opioid <- read_csv(opioid_path) |>
   clean_names() |> 
   filter(!(count %in% c(7777, 8888, 9999))) |> 
   filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
@@ -22,48 +41,53 @@ df <- read_csv(opioid_data) |>
   mutate(year_quarter = paste(year, quarter))
 
 # Static
-opioid_od <- read_csv(opioid_data) %>%
+opioid_od <- read_csv(opioid_path) %>%
   as.data.frame()
+
+# RSV-Net Dataset---
+rsv_net_path <- "data/Harmonized RSV-NET_01.29.2025.csv"
+
+df_rsv_net <- read_csv(rsv_net_path) |> 
+  clean_names()
 
 
 # Define UI
 ui <- fluidPage(
-  
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+  ),
   # Application title
-  titlePanel("Prototype App"),
+  titlePanel(title = img(src="ysph-logo.png", height = "50px"),
+             windowTitle = "Prototype App"),
   hr(),
   tabsetPanel(
-    tabPanel("Opioids",
+    tabPanel("Opioids Overdose",
              br(),
              fluidRow(
                column(3,
                       selectInput("state",
                                   "State:",
-                                  choices = unique(df$state),
+                                  choices = unique(df_opioid$state),
                                   selected = "US")
                ),
                column(6,
-                      plotlyOutput("time_series_interactive")
+                      plotlyOutput("opioid_time_series_interactive_1")
                )
              ),
              br(),
              br(),
              fluidRow(
                column(6, 
-                      plotOutput("time_series_static")),
+                      plotlyOutput("opioid_time_series_interactive_2")),
                column(6, 
                       tabsetPanel(
                         tabPanel("2020", 
                                  br(),
-                                 plotOutput("bar_graph_2020", width = "100%", height = "500px")),
+                                 plotlyOutput("opioid_bar_graph_2020", width = "100%", height = "500px")),
                         tabPanel("2021",
-                                 br(),
-                                 br(),
-                                 plotOutput("bar_graph_2021")),
+                                 plotlyOutput("opioid_bar_graph_2021")),
                         tabPanel("2022",
-                                 br(),
-                                 br(),
-                                 plotOutput("bar_graph_2022"))
+                                 plotlyOutput("opioid_bar_graph_2022"))
                       )
                )
              ),
@@ -78,7 +102,24 @@ ui <- fluidPage(
              br(),
              includeHTML("footnotes.html")
     ),
-    tabPanel("Respiratory Syncytial Virus (RSV)")
+    tabPanel("Respiratory Syncytial Virus (RSV)",
+             br(),
+             fluidRow(
+               column(3,
+                      selectInput("region_type",
+                                  "Region Type:",
+                                  choices = unique(df_rsv_net$region_type),
+                                  selected = "State"),
+                      selectInput("region",
+                                  "Region:",
+                                  choices = NULL,
+                                  selected = "US")
+               ),
+               column(6,
+                      plotlyOutput("rsv_net_time_series_interactive")
+               )
+             )
+    )
   ),
   
 )
@@ -86,8 +127,9 @@ ui <- fluidPage(
 # Define server logic
 server <- function(input, output, session) {
   
+  # TAB: Opioids Overdose----
   df_time_series_interactive <- reactive({
-    df %>%
+    df_opioid %>%
       filter(drug=='All Opioids' & 
                characteristic=='Age' &
                state == input$state) |> 
@@ -108,7 +150,7 @@ server <- function(input, output, session) {
       filter(count > 0) 
   })
   
-  output$time_series_interactive <- renderPlotly({ 
+  output$opioid_time_series_interactive_1 <- renderPlotly({ 
     # User must provide inputs
     req(input$state)
     # Dataset must have rows
@@ -118,7 +160,7 @@ server <- function(input, output, session) {
       ggplot(aes(x = year_quarter, y = count, 
                  group = level, color = level,
                  text = paste0("Quarter: ", year_quarter, "\n",
-                               "Count: ", count))) +
+                               "Count: ", scales::comma(count)))) +
       geom_line() +
       labs(x = NULL,
            y = "Count",
@@ -127,8 +169,9 @@ server <- function(input, output, session) {
                                   "2019 Q1", "2020 Q1", "2021 Q1", 
                                   "2022 Q1")) +
       scale_y_continuous(labels = scales::comma) +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
       facet_wrap(~dataset) +
-      theme_minimal(base_size = 13) +
+      theme_minimal(base_size = 15) +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
     
     ggplotly(p1, tooltip = c("text"))
@@ -136,31 +179,40 @@ server <- function(input, output, session) {
   
   
   
-  output$time_series_static <- renderPlot({
+  output$opioid_time_series_interactive_2 <- renderPlotly({
     
-    opioid_od %>%
-      # Filter the placeholder numerical values.
-      filter(`Crude Rate` %!in% 7777 & `Crude Rate` %!in% 8888 & `Crude Rate` %!in% 9999) %>%
-      
-      # Filter the metadata settings.
-      filter(State %in% "US", Quarter %in% NA, Drug %in% "All Opioids",
-             Setting %in% "Medical Facility - Inpatient",
-             `Underlying Cause of Death` %in% "All",
-             Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
-      
-      # Plot settings and features.
-      ggplot(data = ., aes(x = Year, y = `Crude Rate`)) +
-      geom_line(aes(color = Dataset)) +
-      labs(title = "National Opioid Overdose Rate for All Types of Opioids",
-           subtitle = "Underlying Cause of Death: All. Setting: Medical Facility - Inpatient.",
-           x = "Year", y = "Crude Rate (per 100,000)") +
-      theme_minimal(base_size = 17)
+    p <- df_opioid %>%
+      filter(drug=='All Opioids' & 
+               characteristic=='Sex' &
+               state == "US") %>%
+      group_by(dataset, state, year_quarter, level) %>%
+      summarize(count=sum(count, na.rm = TRUE)) %>%
+      ungroup() %>%
+      filter(count > 0) %>%
+      ggplot(aes(x = year_quarter, y = count, 
+                 group = level, color = level,
+                 text = paste0("Quarter: ", year_quarter, "\n",
+                               "Count: ", scales::comma(count)))) +
+      geom_line() +
+      labs(x = NULL,
+           y = "Count",
+           color = NULL,
+           title = "National Opioid Overdose Count") +
+      scale_x_discrete(breaks = c("2016 Q1", "2017 Q1", "2018 Q1",
+                                  "2019 Q1", "2020 Q1", "2021 Q1", 
+                                  "2022 Q1")) +
+      scale_y_continuous(labels = scales::comma) +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      facet_wrap(~dataset) +
+      theme_minimal(base_size = 13) +
+      theme(axis.text.x = element_text(angle = 45,  hjust = 1))
     
+    ggplotly(p, tooltip = "text")
   })
   
-  output$bar_graph_2020 <- renderPlot({
+  output$opioid_bar_graph_2020 <- renderPlotly({
     
-    opioid_od %>%
+    p <- opioid_od %>%
       # Filter the placeholder numerical values.
       filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
       
@@ -176,23 +228,25 @@ server <- function(input, output, session) {
                             Drug)) %>%
       
       # Plot settings and features.
-      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`)) +
+      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`,
+                           text = paste0("Drug: ", Drug, "<br>",
+                                         "Age Adjusted Rate: ", `Age Adjusted Rate`))) +
       geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
-      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2020",
+      labs(title = "National Opioid Overdose Rate\nby Types of Opioid and Polysubstance in 2020",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
            x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal(base_size = 17) + 
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      scale_fill_manual(values = yale_colors) + # Apply Yale branding colors
+      theme_minimal(base_size = 13) + 
       theme(axis.text.x = element_text(angle = 90,  hjust = 1))
     
-    
-    
-    
+    ggplotly(p, tooltip = "text")
   })
   
-  output$bar_graph_2021 <- renderPlot({
+  output$opioid_bar_graph_2021 <- renderPlotly({
     
     
-    opioid_od %>%
+    p <- opioid_od %>%
       # Filter the placeholder numerical values.
       filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
       
@@ -208,23 +262,25 @@ server <- function(input, output, session) {
                             Drug)) %>%
       
       # Plot settings and features.
-      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`)) +
+      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`,
+                           text = paste0("Drug: ", Drug, "<br>",
+                                         "Age Adjusted Rate: ", `Age Adjusted Rate`))) +
       geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
-      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2021",
+      labs(title = "National Opioid Overdose Rate by\nTypes of Opioid and Polysubstance in 2021",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
-           x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal(base_size = 16) +
+           x = "", y = "Age-Adjusted Rate\n(per 100,000)") +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      scale_fill_manual(values = yale_colors) + # Apply Yale branding colors
+      theme_minimal(base_size = 13) +
       theme(axis.text.x = element_text(angle = 90,  hjust = 1))
     
-    
-    
-    
+    ggplotly(p, tooltip = "text")
   })
   
-  output$bar_graph_2022 <- renderPlot({
+  output$opioid_bar_graph_2022 <- renderPlotly({
     
     
-    opioid_od %>%
+    p <- opioid_od %>%
       # Filter the placeholder numerical values.
       filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
       
@@ -240,13 +296,19 @@ server <- function(input, output, session) {
                             Drug)) %>%
       
       # Plot settings and features.
-      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`)) +
+      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`,
+                           text = paste0("Drug: ", Drug, "<br>",
+                                         "Age Adjusted Rate: ", `Age Adjusted Rate`))) +
       geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
-      labs(title = "National Opioid Overdose Rate by Types of Opioid and Polysubstance in 2022",
+      labs(title = "National Opioid Overdose Rate\nby Types of Opioid and Polysubstance in 2022",
            subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
-           x = "", y = "Age-Adjusted Rate (per 100,000)") +
-      theme_minimal(base_size = 16) + 
+           x = "", y = "Age-Adjusted Rate\n(per 100,000)") +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      scale_fill_manual(values = yale_colors) + # Apply Yale branding colors
+      theme_minimal(base_size = 13) + 
       theme(axis.text.x = element_text(angle = 90,  hjust = 1))
+    
+    ggplotly(p, tooltip = "text")
     
   })
   
@@ -284,9 +346,11 @@ server <- function(input, output, session) {
       rename(state = State) %>%
       
       # Plot settings and features.
-      plot_usmap(data = ., values = "Count", color = "red") + 
-      scale_fill_continuous(
-        low = "white", high = "red", name = "Count (2022)", label = scales::comma
+      plot_usmap(data = ., values = "Count", color = "#00356B",) + 
+      scale_fill_gradientn(
+        colors = yale_gradient,   # Use Yale branding colors in gradient
+        name = "Count (2022)", 
+        labels = scales::comma    # Format labels with commas
       ) + 
       labs(title = "AHRQ") +
       theme(legend.position = "",
@@ -296,8 +360,13 @@ server <- function(input, output, session) {
             legend.text = element_text(size = 12),               # Adjust legend text
             legend.title = element_text(size = 14))
     
-    ggplotly(ahrq_map_plot)
+    # Add a custom tooltip with comma formatting
+    ahrq_map_plot <- ahrq_map_plot +
+      aes(text = paste0("State: ", state, "<br>",
+                        "Count: ", scales::comma(Count)))
     
+    # Convert to plotly
+    ggplotly(ahrq_map_plot, tooltip = "text")
   })
   
   
@@ -321,9 +390,11 @@ server <- function(input, output, session) {
       rename(state = State) %>%
       
       # Plot settings and features.
-      plot_usmap(data = ., values = "Count", color = "red") + 
-      scale_fill_continuous(
-        low = "white", high = "red", name = "Count (2022)", label = scales::comma
+      plot_usmap(data = ., values = "Count", color = "#00356B",) + 
+      scale_fill_gradientn(
+        colors = yale_gradient,   # Use Yale branding colors in gradient
+        name = "Count (2022)", 
+        labels = scales::comma    # Format labels with commas
       ) + 
       labs(title = "\ \ \ \ \ \ CDC WONDER") +
       theme(legend.position = "right",
@@ -333,9 +404,79 @@ server <- function(input, output, session) {
             legend.text = element_text(size = 14),               # Adjust legend text
             legend.title = element_text(size = 16))
     
-    ggplotly(wonder_map_plot)
+    # Add a custom tooltip with comma formatting
+    wonder_map_plot <- wonder_map_plot +
+      aes(text = paste0("State: ", state, "<br>",
+                        "Count: ", scales::comma(Count)))
+    
+    ggplotly(wonder_map_plot, tooltip = "text")
     
   })
+  
+  
+  # TAB: Respiratory Syncytial Virus (RSV)----
+  region_type <- reactive({
+    filter(df_rsv_net, region_type == input$region_type)
+  })
+  observeEvent(region_type(), {
+    choices <- unique(region_type()$region)
+    updateSelectInput(inputId = "region", choices = choices)
+  })
+  
+  rsv_net_reactive <- reactive({
+    df_rsv_net |> 
+      filter(region_type == input$region_type, 
+             region      == input$region,
+             characteristic == 'Age') |> 
+      select(region, region_type,
+             season, week_observed,
+             level, count) |>
+      filter(!is.na(count)) |> 
+      pivot_wider(names_from = level, values_from = count) |> 
+      mutate(Overall = rowSums(across(c(`18-49 Years`, `50-64 Years`, 
+                                        `65-74 Years`, `75+ Years`,
+                                        `<1 Years`, `1-4 Years`,
+                                        `5-17 Years`)), na.rm = TRUE)) |> 
+      pivot_longer(
+        cols = where(is.numeric),
+        names_to = "level",
+        values_to = "count"
+      ) |> 
+      filter(!is.na(count)) |> 
+      mutate(level = factor(level),
+             level = fct_relevel(level, c("Overall", "75+ Years",
+                                          "65-74 Years", "50-64 Years",
+                                          "18-49 Years", "5-17 Years",
+                                          "1-4 Years", "<1 Years")))
+  })
+  
+  output$rsv_net_time_series_interactive <- renderPlotly({ 
+    # User must provide inputs
+    req(input$region)
+    # Dataset must have rows
+    req(nrow(rsv_net_reactive()) > 0)
+    
+    p <- rsv_net_reactive() |> 
+      ggplot(aes(x = week_observed, y = count, 
+                 group = level, color = level,
+                 text = paste0("Week: ", week_observed, "\n",
+                               "Count: ", scales::comma(count)))) +
+      geom_line() +
+      scale_color_manual(values = c(yale_colors, 
+                                    "#7634A6",
+                                    "#00C288",
+                                    "#D6EF4A")) + # Apply Yale branding colors
+      labs(x = NULL,
+           y = "Count",
+           color = "Age Category") +
+      theme_minimal(base_size = 15)
+    
+    ggplotly(p, tooltip = c("text"))
+  }) 
+  
+  
+  
+  
 }
 
 # Run the application 
