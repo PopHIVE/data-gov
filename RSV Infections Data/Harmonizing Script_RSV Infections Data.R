@@ -552,7 +552,7 @@ nrevss_lab <- nrevss_lab %>%
   mutate(`Region Type` = "HHS", Characteristic = "Not Stratified", Level = "N/A",
          `Crude Rate` = NA, `Age-Adjusted Rate` = NA, 
          `Cumulative Crude Rate` = NA, `Cumulative Age-Adjusted Rate` = NA) %>%
-  mutate(Region = str_c("Region ", nrevss_lab$Region)) %>%
+  mutate(Region = str_c("Region ", nrevss_lab$`HHS region`)) %>%
   select(colnames(rsv_net))
 
 # Organize the rows.
@@ -992,6 +992,8 @@ nrevss_lab_new <- calc_seasonal_rates(nrevss_lab)
 nrevss_hhs_new <- calc_seasonal_rates(nrevss_hhs)
 
 
+
+
 # -----------------------------
 # Compile all datasets.
 
@@ -1002,7 +1004,7 @@ combined <- bind_rows(cbind("Dataset" = rep("RSV-NET", nrow(rsv_net_new)), rsv_n
                       cbind("Dataset" = rep("NREVSS HHS", nrow(nrevss_hhs_new)), nrevss_hhs_new),
                       cbind("Dataset" = rep("Epic Cosmos", nrow(epic)), epic))
 
-write.csv(rsv_net, "RSV Infections Data/Harmonized RSV Infections Datasets_01.30.2025.csv", row.names = FALSE)
+write.csv(combined, "RSV Infections Data/Harmonized RSV Infections Datasets_01.30.2025.csv", row.names = FALSE)
 
 
 
