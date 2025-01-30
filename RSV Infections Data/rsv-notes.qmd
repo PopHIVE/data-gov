@@ -2,25 +2,62 @@
 title: "Untitled"
 format: html
 editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+library(tidyverse)
+
+rsv_net <- read_csv("Harmonized RSV-NET_01.29.2025.csv") |> 
+  clean_names()
 ```
 
-You can add options to executable code like this
 
 ```{r}
-#| echo: false
-2 * 2
+rsv_net |> 
+  filter(region_type == "State") |> 
+  count(region, sort = TRUE) |> 
+  View()
+
+rsv_net |> 
+  count(region_type)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+rsv_net |> 
+  filter(region_type == "State", 
+         region      == "New York",
+         characteristic == 'Age') |> 
+  select(region, region_type,
+         season, week_observed,
+         level, count) |>
+  filter(!is.na(count)) |> 
+  pivot_wider(names_from = level, values_from = count) |> 
+  mutate(Overall = rowSums(across(c(`18-49 Years`, `50-64 Years`, 
+                                    `65-74 Years`, `75+ Years`,
+                                    `<1 Years`, `1-4 Years`,
+                                    `5-17 Years`)), na.rm = TRUE)) |> 
+  pivot_longer(
+    cols = where(is.numeric),
+    names_to = "level",
+    values_to = "count"
+  ) |> 
+  filter(!is.na(count)) |> 
+  mutate(level = factor(level),
+         level = fct_relevel(level, c("Overall", "75+ Years",
+                                      "65-74 Years", "50-64 Years",
+                                      "18-49 Years", "5-17 Years",
+                                      "1-4 Years", "<1 Years"))) |> 
+  ggplot(aes(x = week_observed, y = count, 
+             group = level, color = level,
+             text = paste0("Week: ", week_observed, "\n",
+                           "Count: ", scales::comma(count)))) +
+  geom_line() +
+  labs(x = NULL,
+       y = "Count",
+       color = "Age Category") +
+   theme_minimal(base_size = 13)
+```
+
+
