@@ -69,6 +69,104 @@ bridged_pop[, -c(1:6)] <- sapply(bridged_pop[, -c(1:6)], function(x) as.numeric(
 state_codes <- unique(bridged_pop$State_FIPS)
 
 
+# The NREVSS participating sites are listed for the 2024-25 surveillance year.
+# Other surveillance years are not reported. These will be used to approximate
+# the population relevant for the rate calculation, similar to RSV-NET.
+# 
+# Below the location of participating sites are copied from:
+# https://www.cdc.gov/nrevss/media/pdfs/2024/11/Participating-Labs-for-2024-25.pdf
+nrevss_participating <- data.frame(
+  "State"  = c( rep(c("Alabama"), 3), c("Alaska"), c("Arizona"), c("Arkansas"), 
+                rep(c("California"), 16), rep(c("Colorado"), 2), rep(c("Connecticut"), 3),
+                rep(c("Delaware"), 2), c("District of Columbia"), rep(c("Florida"), 6), 
+                rep(c("Georgia"), 8), c("Hawaii"), rep(c("Idaho"), 4), rep(c("Illinois"), 8),
+                rep(c("Indiana"), 4), rep(c("Iowa"), 27), c("Kansas"), rep(c("Kentucky"), 3), 
+                rep(c("Louisiana"), 2), rep(c("Maine"), 2), rep(c("Maryland"), 3),
+                rep(c("Massachusetts"), 4), rep(c("Michigan"), 5), rep(c("Minnesota"), 10), 
+                c("Mississippi"), rep(c("Missouri"), 6), rep(c("Montana"), 4),
+                rep(c("Nebraska"), 24), rep(c("Nevada"), 4), c("New Hampshire"), 
+                rep(c("New Jersey"), 5), c("New Mexico"), rep(c("New York"), 3), 
+                rep(c("North Carolina"), 7), rep(c("North Dakota"), 2), 
+                rep(c("Ohio"), 13), c("Oklahoma"), rep(c("Oregon"), 15), 
+                rep(c("Pennsylvania"), 6), rep(c("Rhode Island"), 1), 
+                rep(c("South Carolina"), 2), rep(c("South Dakota"), 2), 
+                rep(c("Tennessee"), 6), rep(c("Texas"), 24), c("Utah"), rep(c("Vermont"), 3), 
+                c("Virginia"), rep(c("Washington"), 5), rep(c("West Virginia"), 4), 
+                rep(c("Wisconsin"), 6), rep(c("Wyoming"), 2) ),
+  "County" = c( c("Jefferson", "Montgomery", "Mobile"), c("Fairbanks North Star"), 
+                c("Maricopa"), c("Pulaski"), c("San Francisco", "Sacramento", "Tulare", 
+                  "San Luis Obispo", "San Diego", "Alameda", "Imperial", "Humboldt", 
+                  "Los Angeles", "Marin", "Monterey", "Orange", "San Joaquin", 
+                  "Santa Clara", "Sonoma", "Ventura"), c("Arapahoe", "El Paso"),
+                c("Fairfield", "Hartford", "New Haven"), c("Kent", "New Castle"), 
+                c("District of Columbia"), c("Pinellas", "Hillsborough", "Duval", 
+                  "Volusia", "Polk", "Miami-Dade"), c("Bacon", "Fulton", "Decatur", 
+                  "Macon", "Hall", "Clarke", "Muscogee", "Stephens"),
+                c("Honolulu"), c("Franklin", "Boise", "Kootenai", "Shoshone"), 
+                c("Fulton", "Sangamon", "Jackson", "Williamson", "Cook", "Mercer",
+                  "St Clair", "Washington"), c("Gibson", "Marion", "Ripley", 
+                  "Franklin"), c("Des Moines", "Floyd", "Plymouth", "Union", "Fayette", 
+                  "Hardin", "Humboldt", "Jefferson", "Story", "Chickasaw", "Jasper", 
+                  "Cerro Gordo", "Pottawattamie", "Marion", "Delaware", "Obrien", 
+                  "Sioux", "Woodbury", "Linn", "Polk", "Dallas", "Warren", "Madison",
+                  "Dubuque", "Johnson", "Black Hawk", "Winneshiek"), c("Shawnee"), 
+                c("Franklin", "Jefferson", "Fayette"), c("East Baton Rouge", 
+                  "St Tammany"), c("Cumberland", "Penobscot"), c("Frederick", 
+                  "Baltimore", "Montgomery"), c("Suffolk", "Hampden", "Middlesex", 
+                  "Worcester"), c("Kalamazoo", "Genesee", "Wayne", "Ingham", "Washtenaw"),
+                c("Kandiyohi", "Wadena", "Chippewa", "Hennepin", "Otter Tail", 
+                  "Blue Earth", "Olmsted", "Ramsey", "Carver", "Beltrami"), 
+                c("Jackson"), c("Boone", "Greene", "St Louis", "Cole", "Buchanan", 
+                  "Cape Girardeau"), c("Cascade", "Gallatin", "Lewis and Clark", 
+                  "Missoula"), c("Antelope", "Gage", "Sarpy", "Boone", "Box Butte", 
+                  "Lincoln", "Kearney", "Brown", "Butler", "Hall", "Dawes", 
+                  "Douglas", "Platte", "Seward", "York", "Madison", "Dawson",
+                  "Jefferson", "Johnson", "Adams", "Hamilton", "Nemaha", "Scotts Bluff", 
+                  "Holt"), c("Clark", "Mineral", "Washoe", "Lyon"), c("Merrimack"),
+                c("Cape May", "Cumberland", "Mercer", "Atlantic", "Passaic"),
+                c("Bernalillo"), c("New York", "Albany", "Onondaga"), c("Forsyth", 
+                  "Pitt", "Buncombe", "Guilford", "Wake", "Orange", "Durham"),
+                c("Burleigh", "Cass"), c("Montgomery", "Hamilton", "Summit", 
+                  "Stark", "Medina", "Lorain", "Cuyahoga", "Gallia", "Lake", 
+                  "Lucas", "Franklin", "Tuscarawas", "Athens"),
+                c("Oklahoma"), c("Jackson", "Coos", "Deschutes", "Clatsop", "Benton", 
+                  "Umatilla", "Union", "Multnomah", "Lake", "Douglas", "Wasco", 
+                  "Washington", "Marion", "Klamath", "Yamhill"), c("Philadelphia", 
+                  "Elk", "Westmoreland", "Crawford", "Chester", "Cumberland"),
+                c("Providence"), c("Lexington", "Richland"), c("Minnehaha", "Hughes"), 
+                c("Shelby", "Franklin", 
+                  "Davidson", "Robertson", "Sumner", "Weakley"),  c("Dallas", 
+                  "Jasper", "Houston", "Comanche", "Tarrant", "Austin", "Nueces", 
+                  "Wichita", "Hansford", "Midland", "Mitchell", "Limestone", 
+                  "Andrews", "Reagan", "Pecos", "Bexar", "Baylor", "Stephens", 
+                  "Swisher", "Brazos", "Tyler", "Lubbock", "Galveston", "Yoakum"),
+                c("Salt Lake"), c("Washington", "Bennington", "Chittenden"), 
+                c("Richmond"), c("King", "Pierce", "Cowlitz", "Whatcom", "Thurston"), 
+                c("Braxton", "Cabell", "Greenbrier", "Lewis"), c("Jackson", 
+                  "Milwaukee", "Dunn", "Richland", "Sauk", "Dane"), 
+                c("Natrona", "Laramie") )
+           )
+
+# Add columns for the FIPS code for the state and county. These will be used
+# to subset the population dataset by participating sites.
+nrevss_participating <- nrevss_participating %>%
+  mutate(State_FIPS = NA, County_FIPS = NA)
+
+# Fill in those columns.
+for(i in 1:nrow(fips_codes)){
+  nrevss_participating[nrevss_participating$State %in% fips_codes[i, 1], "State_FIPS"]   <- fips_codes[i, 3]
+  nrevss_participating[nrevss_participating$State %in% fips_codes[i, 1] & 
+                       nrevss_participating$County %in% fips_codes[i, 2], "County_FIPS"] <- fips_codes[i, 4]
+}
+
+
+# Subset population. DO NOT USE IF THE ALL COUNTIES ARE NEEDED.
+bridged_pop <- bridged_pop[bridged_pop$State_FIPS %in% nrevss_participating$State_FIPS &
+              bridged_pop$County_FIPS %in% nrevss_participating$County_FIPS, ]
+
+
+
+
 # -----------------------------
 # Generate the state-level population counts.
 
@@ -244,7 +342,7 @@ bridged_pop_all <- bridged_pop_all %>%
 
 # -----------------------------
 # Save results.
-write.csv(bridged_pop_all, "RSV Infections Data/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020_Prepared.csv", row.names=FALSE)
+write.csv(bridged_pop_all, "RSV Infections Data/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020.csv", row.names=FALSE)
 
 # Return warning options to baseline.
 options(dplyr.summarise.inform = TRUE)

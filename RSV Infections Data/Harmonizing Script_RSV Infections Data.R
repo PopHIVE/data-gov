@@ -98,7 +98,12 @@ HHS_regions <- data.frame(
 ##         https://www.census.gov/programs-surveys/popest/data/special-tab/content.html
 
 
-bridged_pop <- read_csv("RSV Infections Data/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020_Prepared.csv") %>%
+bridged_pop <- read_csv("RSV Infections Data/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020_All Counties.csv") %>%
+  as.data.frame()
+
+# Special subset for counties of hospitals that were listed as participants in the
+# 2024-25 season. Other seasons were not noted.
+bridged_pop_nrevss <- read_csv("RSV Infections Data/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020_NREVSS Subset.csv") %>%
   as.data.frame()
 
 
@@ -353,7 +358,7 @@ for(i in 1:nrow(search_space) ){
   
   # If there is a match, simply sum the scaled population used for the rate denominator.
   if(nrow(subset) > 0){
-    denominator<- sum(subset$Denominator)
+    denominator <- sum(subset$Denominator)
     
   # If there is no match, generalize using the participating state for that infection
   # season and the stratified postcensal population counts to recalculate the
@@ -365,14 +370,14 @@ for(i in 1:nrow(search_space) ){
       all_sites$Level %in% search_space[i, 3], ]
     
     # Save the postcensal population date range.
-    pop_date <- colnames(bridged_pop)[str_detect(colnames(bridged_pop), str_glue("Postcensal Population_", {year(target_subset$`Week ending date`)[i]}) )]
+    pop_date <- colnames(bridged_pop)[str_detect(colnames(bridged_pop), str_glue("Postcensal Population_", {year(target_subset$`Week ending date`)} ) )]
     # Save the season in the target.
     season   <- percent_rep[percent_rep$Season %in% target_subset$Season, ]
     
     # Extract the postcensal population estimates for a specific combination of
     # metadata and the states participating in the RSV-NET season.
-    season$Population <- bridged_pop[bridged_pop$Characteristic %in% target_subset$Characteristic[i] & 
-      bridged_pop$Level %in% target_subset$Level[i] &
+    season$Population <- bridged_pop[bridged_pop$Characteristic %in% target_subset$Characteristic & 
+      bridged_pop$Level %in% target_subset$Level &
       bridged_pop$State %in% season$State, pop_date]
     
     # Calculate the scaled population rate denominator.
@@ -393,6 +398,10 @@ for(i in 1:nrow(search_space) ){
 # Recombine the all sites and states only subsets.
 rsv_net <- bind_rows(all_sites, states_only)
 
+
+# -----------------------------
+# Fill in the missing values.
+
 # Counts should be an integer. At this state, we are approximating the count
 # in order to regenerate the rates. Therefore, a few extra significant figures
 # will be retained.
@@ -405,7 +414,7 @@ for(i in 1:nrow(HHS_regions)){
 }
 
 # Aggregate by HHS Region.
-rsv_hhs <- rsv_net[, c(2:5, 10, 13:14)] %>%
+rsv_hhs <- rsv_net[rsv_net$`HHS Region` %!in% NA, c(2:5, 10, 13:14)] %>%
   group_by(`HHS Region`, Season, `Week ending date`, Characteristic, Level) %>% 
   summarise_at(vars(Denominator, Count), sum, na.rm = FALSE) %>%
   ungroup()
@@ -436,6 +445,8 @@ rsv_net <- bind_rows(rsv_net, rsv_hhs) %>%
   `rownames<-`(NULL)
 
 
+# -----------------------------
+# Aesthetics and structure.
 
 # Organize the rows.
 rsv_net <- rsv_net[with(rsv_net, order(`Region Type`, Region, Season, Characteristic, Level, `Week Observed`)), ] %>% 
@@ -482,6 +493,21 @@ rsv_net <- rsv_net %>%
 # Round the counts to ceiling.
 rsv_net$Count <- ceiling(rsv_net$Count)
 
+# Adhere column nomenclature and organization to NREVSS.
+rsv_net <- rsv_net %>%
+  mutate(`Tests Administered` = NA) %>%
+  select(colnames(rsv_net)[1:7], `Tests Administered`, colnames(rsv_net)[8:12]) %>%
+  rename(`Positives Detected` = Count)
+  
+
+# "Region = All Sites" has "Region Type = NA".
+rsv_net[rsv_net$Region %in% "All Sites", "Region Type"] <- NA
+
+
+# Organize the rows.
+rsv_net <- rsv_net[with(rsv_net, order(`Region Type`, Region, `Diagnostic Test Type`, Season, Characteristic, Level, `Week Observed`)), ] %>% 
+  `rownames<-`(NULL)
+
 
 
 
@@ -492,39 +518,288 @@ head(nrevss_lab)
 head(nrevss_hhs)
 
 
+# -----------------------------
+# NREVSS Lab Data
+
 # The RSV-NET surveillance season begins week 40 (approximately Oct. 1st) and
 # ends week 39 of the following year (approximately Sep. 30th).
 
+# Format the dates so that it is easier for the program to read.
 nrevss_lab$`Week ending Date` <- as.Date(nrevss_lab$`Week ending Date`, format = "%d%B%Y")
 
-
+# To label the season where the tests results were recorded, we need to define
+# the span of years available and the boundaries of that season.
 available_years <- year(nrevss_lab$`Week ending Date`) %>% unique()
 
-##
-##
-## fix the "Season" to add the initial date too
-season_ranges <- data.frame("Season" = str_c(min(available_years) - 1, 10:21, sep = "-"),
+# Associate a seasons week's boundaries over the span of years available with
+# the new season name that conforms to the RSV-NET nomenclature.
+season_ranges <- data.frame("Season" = str_c((min(available_years)-1):(max(available_years)), 10:21, sep = "-"),
   "Start" = str_c(c(min(available_years) - 1, available_years), "-10-01"),
   "End" = str_c(c(available_years, max(available_years) + 1), "-09-30"))
 
+# Add the appropriate season label as a new variable.
+nrevss_lab$Season <- sapply(nrevss_lab$`Week ending Date`, function(x) {
+  ifelse(x >= season_ranges[, "Start"] & x <= season_ranges[, "End"], 1, 0) %>% 
+         (\(y) { season_ranges[as.logical(y), "Season"] }) 
+  })
 
-ifelse("2010-07-10" >= season_ranges[, "Start"] & "2010-07-10" <= season_ranges[, "End"], 1, 0)
+
+# Adhere to the RSV-NET dataset formatting and columns.
+nrevss_lab <- nrevss_lab %>%
+  select(-c(`Surveillance Year`, `Week ending Code`)) %>%
+  rename(`Positives Detected` = `RSV Detections`, `Tests Administered` = `RSV Tests`,
+         Region = `HHS region`, `Week Observed` = `Week ending Date`) %>%
+  mutate(`Region Type` = "HHS", Characteristic = "Not Stratified", Level = "N/A",
+         `Crude Rate` = NA, `Age-Adjusted Rate` = NA, 
+         `Cumulative Crude Rate` = NA, `Cumulative Age-Adjusted Rate` = NA) %>%
+  mutate(Region = str_c("Region ", nrevss_lab$Region)) %>%
+  select(colnames(rsv_net))
+
+# Organize the rows.
+nrevss_lab <- nrevss_lab[with(nrevss_lab, order(`Region Type`, Region, `Diagnostic Test Type`, Season, Characteristic, Level, `Week Observed`)), ] %>% 
+  `rownames<-`(NULL)
 
 
-# for lab:
-# manipulate the date to get season and week ending
-# Calculate crude rate and cumulative rate
 
-# for HHS:
-# remove the percentage columns and exclude the 3- and 5-week averages
-# add season and week ending
-# add diagnostic test type "PCR"
+# In this scenario, "State = US" represents the total population of all
+# participating counties.
+pop_not_strat <- bridged_pop_nrevss[bridged_pop_nrevss$Characteristic %in% "Not Stratified" & bridged_pop_nrevss$State %!in% "US", ] %>%
+  `rownames<-`(NULL)
+
+# Fill in the HHS Region that the state is in.
+for(i in 1:nrow(HHS_regions)){
+  pop_not_strat[pop_not_strat$State %in% HHS_regions[i, 1], "HHS Region"] <- HHS_regions[i, 2]
+}
+
+# Aggregate by HHS Region.
+pop_not_strat <- pop_not_strat %>%
+  group_by(`HHS Region`, Characteristic, Level) %>% 
+  summarise_at(vars(`Base Population_2010`:`Postcensal Population_2020`), sum, na.rm = FALSE) %>%
+  ungroup() %>% as.data.frame()
+
+
+# Add the relevant population estimates. These will be the rate denominator.
+nrevss_lab$Population <- NA
+
+for(i in 1:nrow(nrevss_lab)){
+  year_observed    <- year(nrevss_lab$`Week Observed`[i])
+  years_bridge_pop <- str_extract(colnames(pop_not_strat)[-c(1:4)], "[0-9]{4}")
+  
+  # Match the appropriate population by metadata and year of observation. Notice
+  # that both sets only have "Characteristic = Not Stratified" and "Level = N/A".
+  nrevss_lab[i, "Population"] <- 
+    pop_not_strat[pop_not_strat$`HHS Region` %in% nrevss_lab$Region[i], 
+                str_detect(colnames(pop_not_strat), "Postcensal Population")] %>%
+    (\(x) { x[, str_detect(colnames(x), as.character(year_observed) )] }) ()
+   
+}
+
+
+# Calculate the rate per 100,000 persons.
+nrevss_lab$`Crude Rate` <- round( (nrevss_lab$`Positives Detected` / nrevss_lab$Population) * 100000, digits = 1)
+
+# Now we're going to calculate the "Cumulative Crude Rate" values.
+
+# Generate the search space for subsetting.
+search_space <- nrevss_lab[nrevss_lab$`Region Type` %in% "HHS", ] %>% 
+  (\(x) { table(x$Region, x$Characteristic, x$Level) }) () %>% 
+  as.data.frame() %>%
+  (\(x) { x[x$Freq %!in% 0, ] }) () %>% 
+  `rownames<-`(NULL)
+
+
+for(i in 1:nrow(search_space) ){
+  # Subset by the metadata.
+  subset <- nrevss_lab[nrevss_lab$Region %in% search_space[i, 1] &
+                         nrevss_lab$Characteristic %in% search_space[i, 2] &
+                         nrevss_lab$Level %in% search_space[i, 3], ]
+  
+  for(j in 1:length(unique(subset$Season)) ){
+    # Save the crude rate.
+    rate <- subset[subset$Season %in% unique(subset$Season)[j], "Crude Rate"]
+    
+    # Calculate and save the cumulative of that rate.
+    subset[subset$Season %in% unique(subset$Season)[j], "Cumulative Crude Rate"] <- cumsum(rate)
+  }
+  
+  # Commit the changes.
+  nrevss_lab[nrevss_lab$Region %in% search_space[i, 1] &
+               nrevss_lab$Characteristic %in% search_space[i, 2] &
+               nrevss_lab$Level %in% search_space[i, 3], ] <- subset
+}
+
+# Remove the "Population" column.
+nrevss_lab <- nrevss_lab %>% select(colnames(rsv_net))
+
+# Organize the rows.
+nrevss_lab <- nrevss_lab[with(nrevss_lab, order(`Region Type`, Region, `Diagnostic Test Type`, Season, Characteristic, Level, `Week Observed`)), ] %>% 
+  `rownames<-`(NULL)
+
+
+
+
+# -----------------------------
+# NREVSS HHS Data
+
+# First we want to inspect if there are unique entries ("posted") made for a given 
+# week ("mmwrweek_end").
+
+# Convert the date formats so that they are easier to read.
+nrevss_hhs$`mmwrweek_end` <- str_split(nrevss_hhs$`mmwrweek_end`, " ") %>% 
+  do.call(rbind, .) %>% .[, 1] %>% as.Date(., format = "%m/%d/%Y")
+
+nrevss_hhs$posted <- str_split(nrevss_hhs$posted, " ") %>% 
+  do.call(rbind, .) %>% .[, 1] %>% as.Date(., format = "%m/%d/%Y")
+
+# Remove the percentage columns and alternative test averaging, as those are
+# expected to differ in value but provide a new metric from the other methods.
+# For this analysis, keeping the 5-week moving average for the current week
+# is sufficient.
+nrevss_hhs <- nrevss_hhs[, -c(2:5, 7:8)]
+
+# If newly posted entries are unique, then there should not be a large volume,
+# if any, duplicated "pcr_detections" or "pcr_tests".
+
+# Number of entries for one post for a given week of tests and region.
+nrevss_hhs[nrevss_hhs$posted %in% "2023-09-21" & 
+             nrevss_hhs$mmwrweek_end %in% "2020-04-11" &
+             nrevss_hhs$level %in% "National", ]
+
+# Number of entries associated with that week and region.
+nrevss_hhs[nrevss_hhs$mmwrweek_end %in% "2020-04-11" & 
+             nrevss_hhs$level %in% "National", ]
+
+# We clearly see there are a large number of duplicated entries with the
+# exact same combination of values for "pcr_detections" and "pcr_tests".
+nrevss_hhs[nrevss_hhs$mmwrweek_end %in% "2020-04-11" &
+             nrevss_hhs$level %in% "National", -c(4)] %>% distinct()
+
+# While it is possible that the same number of tests and positive results could
+# happen at different participating sites and be reported for the same week,
+# we will assume that all duplicated entries are not unique. Different reports 
+# for "mmwrweek_end" will be averaged.
+
+# Remove the "posted" variable, as it does not provide valuable additional information.
+nrevss_hhs <- nrevss_hhs[, -c(4)]
+
+# Take the average of all candidate, unique, entries for a given week and region.
+nrevss_hhs <- nrevss_hhs %>%
+  group_by(level, mmwrweek_end) %>% 
+  summarise_at(vars(pcr_detections, pcr_tests), mean, na.rm = FALSE) %>%
+  ungroup() %>% as.data.frame()
+
+# Round to the nearest significant figure.
+nrevss_hhs[, c(3:4)] <- sapply(nrevss_hhs[, c(3:4)], function(x) round(x, digits = 1))
+
+
+# Adhere to the RSV-NET dataset formatting and columns.
+nrevss_hhs <- nrevss_hhs %>%
+  rename(Region = level, `Positives Detected` = pcr_detections, 
+         `Tests Administered` = pcr_tests, `Week Observed` = mmwrweek_end) %>%
+  mutate(`Region Type` = "HHS", Season = NA, `Diagnostic Test Type` = "PCR",
+         Characteristic = "Not Stratified", Level = "N/A",
+         `Crude Rate` = NA, `Age-Adjusted Rate` = NA, `Cumulative Crude Rate` = NA,
+         `Cumulative Age-Adjusted Rate` = NA) %>% 
+  select(colnames(rsv_net))
+
+
+# To label the season where the tests results were recorded, we need to define
+# the span of years available and the boundaries of that season.
+available_years <- year(nrevss_hhs$`Week Observed`) %>% unique() %>% sort()
+
+# Associate a seasons week's boundaries over the span of years available with
+# the new season name that conforms to the RSV-NET nomenclature.
+season_ranges <- data.frame("Season" = str_c((min(available_years)-1):(max(available_years)), 20:26, sep = "-"),
+                            "Start" = str_c(c(min(available_years) - 1, available_years), "-10-01"),
+                            "End" = str_c(c(available_years, max(available_years) + 1), "-09-30"))
+
+# Add the appropriate season label as a new variable.
+nrevss_hhs$Season <- sapply(nrevss_hhs$`Week Observed`, function(x) {
+  ifelse(x >= season_ranges[, "Start"] & x <= season_ranges[, "End"], 1, 0) %>% 
+    (\(y) { season_ranges[as.logical(y), "Season"] }) 
+})
+
+
+# Adjust the national-level to specify all participating sites.
+nrevss_hhs[nrevss_hhs$Region %in% "National", "Region"] <- "All Sites"
+
+# "Region = All Sites" has "Region Type = NA".
+nrevss_hhs[nrevss_hhs$Region %in% "All Sites", "Region Type"] <- NA
+
+
+# Sum over all of the HHS regions to get the "All Sites" population level.
+if(any(pop_not_strat$`HHS Region` %in% "All Sites") == FALSE){
+  pop_not_strat <- bind_rows(cbind("HHS Region" = "All Sites", pop_not_strat %>%
+    group_by(Characteristic, Level) %>% 
+    summarise_at(vars(`Base Population_2010`:`Postcensal Population_2020`), sum, na.rm = FALSE) %>%
+    ungroup()), pop_not_strat
+  )
+}
+
+# Add the relevant population estimates. These will be the rate denominator.
+nrevss_hhs$Population <- NA
+
+for(i in 1:nrow(nrevss_hhs)){
+  # Match the appropriate population by metadata and year of observation. Notice
+  # that both sets only have "Characteristic = Not Stratified" and "Level = N/A".
+  # Also notice that the range of available dates exceeds the range of the
+  # bridge-race census data. In its place we'll use the most recent available
+  # population estimates.
+  nrevss_hhs[i, "Population"] <- 
+    pop_not_strat[pop_not_strat$`HHS Region` %in% nrevss_hhs$Region[i], 
+                  str_detect(colnames(pop_not_strat), "Postcensal Population_2020")]
+  
+}
+
+# Calculate the rate per 100,000 persons.
+nrevss_hhs$`Crude Rate` <- round( (nrevss_hhs$`Positives Detected` / nrevss_hhs$Population) * 100000, digits = 1)
+
+# Organize the rows.
+nrevss_hhs <- nrevss_hhs[with(nrevss_hhs, order(`Region Type`, Region, `Diagnostic Test Type`, Season, Characteristic, Level, `Week Observed`)), ] %>% 
+  `rownames<-`(NULL)
+
+
+# Now we're going to calculate the "Cumulative Crude Rate" values.
+
+# Generate the search space for subsetting.
+search_space <- nrevss_hhs %>% 
+  (\(x) { table(x$Region, x$Characteristic, x$Level) }) () %>% 
+  as.data.frame() %>%
+  (\(x) { x[x$Freq %!in% 0, ] }) () %>% 
+  `rownames<-`(NULL)
+
+
+for(i in 1:nrow(search_space) ){
+  # Subset by the metadata.
+  subset <- nrevss_hhs[nrevss_hhs$Region %in% search_space[i, 1] &
+                         nrevss_hhs$Characteristic %in% search_space[i, 2] &
+                         nrevss_hhs$Level %in% search_space[i, 3], ]
+  
+  for(j in 1:length(unique(subset$Season)) ){
+    # Save the crude rate.
+    rate <- subset[subset$Season %in% unique(subset$Season)[j], "Crude Rate"]
+    
+    # Calculate and save the cumulative of that rate.
+    subset[subset$Season %in% unique(subset$Season)[j], "Cumulative Crude Rate"] <- cumsum(rate)
+  }
+  
+  # Commit the changes.
+  nrevss_hhs[nrevss_hhs$Region %in% search_space[i, 1] &
+               nrevss_hhs$Characteristic %in% search_space[i, 2] &
+               nrevss_hhs$Level %in% search_space[i, 3], ] <- subset
+}
+
+# Remove the "Population" column.
+nrevss_hhs <- nrevss_hhs %>% select(colnames(rsv_net))
+
+# As a final step we'll round the count columns that should be integers.
+nrevss_hhs[, c("Tests Administered", "Positives Detected")] <- sapply(nrevss_hhs[, c("Tests Administered", "Positives Detected")], function(x) round(x, digits = 0))
+
 
 
 
 ## ----------------------------------------------------------------
 ## HARMONIZE - EPIC COSMOS
-
 
 head(epic)
 
@@ -534,10 +809,69 @@ head(epic)
 # left to the state-wide rates that have a data download button.
 
 # At the time of download, the season reflected is: Between 12/22/2024 and 1/4/2025.
-# Rates are noted to be age-adjusted, and so they are assumed to be crude rates.
+# Rates are not noted to be age-adjusted, and so they are assumed to be crude rates.
+# Additionally, we'll assume that a hospital visit that is counted here implies
+# that the visit was with someone who tested positive for RSV. Because the
+# tests used to confirm a positive infection is not noted, we'll assume any
+# test type is represented.
 
 
-# calculate the population, sum to get the total visits and crude rates by HHS region.
+epic <- read_csv("RSV Infections Data/Raw Download/EpicCosmos_Communicable Diseases by State_Between 12.22.2024 and 01.04.2025_ Downloaded 01.23.2025.csv") %>%
+  as.data.frame()
+
+
+# Adhere to the RSV-NET dataset formatting and columns.
+epic <- epic %>%
+  rename(Region = State, `Positives Detected` = `Total visits`, 
+         `Crude Rate` = `Infections per 100,000 visits`) %>%
+  mutate(`Region Type` = "State", Season = "2024-25", `Diagnostic Test Type` = "All",
+         Characteristic = "Not Stratified", Level = "N/A", `Week Observed` = NA,
+         `Age-Adjusted Rate` = NA, `Cumulative Crude Rate` = NA,
+         `Cumulative Age-Adjusted Rate` = NA, `Tests Administered` = NA) %>% 
+  select(colnames(rsv_net))
+
+
+# Regenerate the population values used to estimate the infection rate.
+epic$Population <- (epic$`Positives Detected` / epic$`Crude Rate`) * 100000
+
+# Add the national-level representation of all participating sites.
+epic <- bind_rows(epic, epic %>%
+  summarise_at(vars(`Positives Detected`, Population), sum, na.rm = FALSE) %>%
+  ungroup() %>%
+  mutate(Region = "All Sites", Season = "2024-25", `Diagnostic Test Type` = "All",
+         Characteristic = "Not Stratified", Level = "N/A")
+)
+
+# Fill in the HHS Region that the state is in.
+for(i in 1:nrow(HHS_regions)){
+  epic[epic$Region %in% HHS_regions[i, 1], "HHS Region"] <- HHS_regions[i, 2]
+}
+
+# Aggregate by HHS Region.
+epic_hhs <- epic[epic$`HHS Region` %!in% NA, ] %>%
+  group_by(`HHS Region`) %>% 
+  summarise_at(vars(`Positives Detected`, Population), sum, na.rm = FALSE) %>%
+  ungroup() %>%
+  mutate(`Region Type` = "HHS", Season = "2024-25", `Diagnostic Test Type` = "All",
+         Characteristic = "Not Stratified", Level = "N/A") %>%
+  rename(Region = `HHS Region`)
+
+# Add the HHS-level reports back to the main dataset.
+epic <- bind_rows(epic, epic_hhs)
+
+# Calculate the crude rate for the new regions.
+epic[epic$`Crude Rate` %in% NA, "Crude Rate"] <- epic[epic$`Crude Rate` %in% NA, ] %>%
+  (\(x) { (x$`Positives Detected` / x$Population) * 100000 }) ()
+
+# Round rate to one significant figure.
+epic$`Crude Rate` <- round(epic$`Crude Rate`, digits = 1)
+
+# Remove the "Population" column.
+epic <- epic %>% select(colnames(rsv_net))
+
+# Organize the rows.
+epic <- epic[with(epic, order(`Region Type`, Region)), ] %>% 
+  `rownames<-`(NULL)
 
 
 
@@ -545,15 +879,130 @@ head(epic)
 ## ----------------------------------------------------------------
 ## COMBINE ALL THREE
 
+# One major difference between the Epic Cosmos dataset and the others is that
+# Epic Cosmos only shows the total values over one season. We will therefore
+# add this to the other sets so they have some crossover.
+
+# Clear environment of specific variables to ensure no crossover with global
+# variables.
+
+rm(dataset)
+rm(search_space)
+rm(subset)
+rm(available_years)
+rm(pop)
+
+# Function to add the seasonal rates.
+calc_seasonal_rates <- function(dataset){
+  
+  search_space <- dataset %>% 
+    (\(x) { table(x$Region, x$Season, x$`Diagnostic Test Type`, x$Characteristic, x$Level) }) () %>% 
+    as.data.frame() %>%
+    (\(x) { x[x$Freq %!in% 0, ] }) () %>% 
+    `rownames<-`(NULL)
+  
+  
+  result <- list()
+  for(i in 1:nrow(search_space) ){
+    # Subset by the metadata.
+    subset <- dataset[dataset$Region %in% search_space[i, 1] &
+                        dataset$Season %in% search_space[i, 2] &
+                        dataset$`Diagnostic Test Type` %in% search_space[i, 3] &
+                        dataset$Characteristic %in% search_space[i, 4] &
+                        dataset$Level %in% search_space[i, 5], ]
+    
+    # Aggregate by Season.
+    seasonal_level <- subset %>%
+      summarise_at(vars(`Tests Administered`, `Positives Detected`), sum, na.rm = FALSE) %>%
+      mutate(Region = unique(subset$Region), `Region Type` = unique(subset$`Region Type`), 
+             Season = unique(subset$Season), `Week Observed` = NA,
+             `Diagnostic Test Type` = unique(subset$`Diagnostic Test Type`),
+             Characteristic = unique(subset$Characteristic), Level = unique(subset$Level))
+    
+    
+    
+    # The new rate needs to be calculated using the current values over that
+    # season. If there is no rate reported, then fill the value accordingly.
+    if(all(subset$`Crude Rate` %in% NA)){
+      seasonal_level$`Crude Rate` <- NA
+      
+    } else if(mean(subset$`Crude Rate`) == 0){
+      seasonal_level$`Crude Rate` <- 0
+      
+    } else if(mean(subset$`Crude Rate`) != 0){
+      available_years <- year(subset$`Week Observed`) %>% unique()
+      
+      # Average the population represented over the years that the season spans.
+      # Use the max "Positives Detected" in each year to regenerate the population used.
+      
+      if(length(available_years) == 1){
+        pop <- subset[year(subset$`Week Observed`) %in% available_years[1], ] %>% 
+          (\(x) { x[which(x$`Positives Detected` == max(x$`Positives Detected`)), ] }) () %>%
+          (\(x) { (x$`Positives Detected` / x$`Crude Rate`) * 100000 }) () %>% .[1]
+        
+      } else if(length(available_years) == 2){
+        
+        # Condition if any span of dates is all zeros or NA.
+        
+        # If the first range is all zeros or NA, only use the second span of dates.
+        if(all(subset[year(subset$`Week Observed`) %in% available_years[1], "Crude Rate"] == 0) | 
+           all(subset[year(subset$`Week Observed`) %in% available_years[1], "Crude Rate"] %in% NA)) {
+          pop <- subset[year(subset$`Week Observed`) %in% available_years[2], ] %>% 
+            (\(x) { x[which(x$`Positives Detected` == max(x$`Positives Detected`)), ] }) () %>%
+            (\(x) { (x$`Positives Detected` / x$`Crude Rate`) * 100000 }) () %>% .[1]
+          
+          # If the second range is all zeros or NA, only use the first span of dates.
+        } else if(all(subset[year(subset$`Week Observed`) %in% available_years[2], "Crude Rate"] == 0) | 
+                  all(subset[year(subset$`Week Observed`) %in% available_years[2], "Crude Rate"] %in% NA)) {
+          pop <- subset[year(subset$`Week Observed`) %in% available_years[1], ] %>% 
+            (\(x) { x[which(x$`Positives Detected` == max(x$`Positives Detected`)), ] }) () %>%
+            (\(x) { (x$`Positives Detected` / x$`Crude Rate`) * 100000 }) () %>% .[1]
+          
+          # If both are not zeros or NA then average over both.
+        } else{
+          pop <- mean(
+            subset[year(subset$`Week Observed`) %in% available_years[1], ] %>% 
+              (\(x) { x[which(x$`Positives Detected` == max(x$`Positives Detected`)), ] }) () %>%
+              (\(x) { (x$`Positives Detected` / x$`Crude Rate`) * 100000 }) () %>% .[1],
+            subset[year(subset$`Week Observed`) %in% available_years[2], ] %>% 
+              (\(x) { x[which(x$`Positives Detected` == max(x$`Positives Detected`)), ] }) () %>%
+              (\(x) { (x$`Positives Detected` / x$`Crude Rate`) * 100000 }) () %>% .[1]
+          )
+          
+        }
+        
+      }
+      
+      # Recalculate the Crude Rate over the whole season.
+      seasonal_level$`Crude Rate` <- round((seasonal_level$`Positives Detected` / pop) * 100000, 1)
+      
+      
+    }
+    
+    
+    # Commit the changes.
+    result[[i]] <- bind_rows(subset, seasonal_level)
+  }
+  
+  do.call(rbind, result)
+}
+
+rsv_net_new <- calc_seasonal_rates(rsv_net)
+nrevss_lab_new <- calc_seasonal_rates(nrevss_lab)
+nrevss_hhs_new <- calc_seasonal_rates(nrevss_hhs)
+
 
 # -----------------------------
 # Compile all datasets.
 
-combined <- bind_rows(cbind("Dataset" = rep("AHRQ", nrow(hcup_final)), hcup_final),
-                      cbind("Dataset" = rep("CDC WONDER", nrow(wonder_raw)), wonder_raw), 
-                      cbind("Dataset" = rep("SUDORS", nrow(sudors_final)), sudors_final))
+# Positives Detected and Tests Administered
 
-write.csv(rsv_net, "RSV Infections Data/Harmonized RSV-NET_01.28.2025.csv", row.names = FALSE)
+combined <- bind_rows(cbind("Dataset" = rep("RSV-NET", nrow(rsv_net_new)), rsv_net_new),
+                      cbind("Dataset" = rep("NREVSS Lab", nrow(nrevss_lab_new)), nrevss_lab_new), 
+                      cbind("Dataset" = rep("NREVSS HHS", nrow(nrevss_hhs_new)), nrevss_hhs_new),
+                      cbind("Dataset" = rep("Epic Cosmos", nrow(epic)), epic))
+
+write.csv(rsv_net, "RSV Infections Data/Harmonized RSV Infections Datasets_01.30.2025.csv", row.names = FALSE)
 
 
 
