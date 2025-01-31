@@ -23,6 +23,11 @@ library(tidyverse)
 library(scales)
 library(janitor)
 library(MMWRweek)
+library(arrow)
+library(parquetize)
+library(sf)
+library(tigris)
+library(viridis)
 #library(cdcfluview)
 #install.packages("remotes")
 #remotes::install_github("hrbrmstr/cdcfluview")
@@ -65,6 +70,32 @@ rsv_ts <- rsv1_tests %>%
          hhs_abbr = x
          )
 saveRDS(rsv_ts, './Data/rsv_latest.rds') #saves latest vintage of the r
+
+
+#Detailed data, did a static download; updated regularly via API rdmq-nq56
+##convert from CSV to parquet, which is much more compact!
+# csv_to_parquet(path_to_file = './website_play3/Data/CopyOfNSSP_Emergency_Department_Visit_Trajectories_by_State_and_Sub_State_Regions-_COVID-19__Flu__RSV__Combined___20250130.csv', path_to_parquet ='./website_play3/Data/NSSP_detailed.parquet') 
+dates <- seq.Date(from=as.Date('2022-10-01'), to=as.Date('2025-01-30'),by='week')
+
+#TODO fix county mapping in CT https://stackoverflow.com/questions/78599492/plotting-old-connecticut-county-regions-in-usmap
+
+for(i in 100:length(dates)){
+d1 <- open_dataset('./website_play3/Data/NSSP_detailed.parquet') %>%
+  filter(county!='All' & week_end==dates[i] & ed_trends_rsv!='Data Unavailable') %>%
+  mutate(percent_visits_rsv=if_else(is.na(percent_visits_rsv),0,percent_visits_rsv),
+         percent_visits_rsv=if_else(percent_visits_rsv>1,1,percent_visits_rsv) ) %>%
+  collect()
+
+p1 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_rsv' )   +
+   labs(title = paste0('RSV ED visits ', dates[i])) + 
+    theme(panel.background = element_rect(color = "white", fill = "white")) +
+    scale_fill_stepsn('RSV', breaks= seq(0,1, by=0.1), limits = c(0,1),
+                      colors=viridis_pal()(10),
+                      guide = guide_colorsteps(even.steps = FALSE))
+print(p1)
+}
+                
+
 
 
 ```
