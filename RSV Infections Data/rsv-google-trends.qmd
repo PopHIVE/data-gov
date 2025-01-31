@@ -1,0 +1,39 @@
+---
+title: "RSV Google Trends"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+Perform Google Trends Query
+```{r}
+# Use development version, instead of CRAN version
+# devtools::install_github("PMassicotte/gtrendsR")
+
+# remotes::install_github("trendecon/trendecon")
+library(trendecon)
+
+state_abb_us <- paste0('US-', state.abb)
+
+rsv_raw <- ts_gtrends(keyword = c("rsv", "bronchiolitis"), 
+                      geo = state_abb_us)
+
+rsv_raw <- lapply(state_abb_us, 
+                  function(x)
+                    ts_gtrends(keyword = c("rsv", "bronchiolitis"),
+                               geo = x,
+                               time = "2020-01-01 2025-01-01")
+)
+
+
+library(gtrendsR)
+
+state_abb_us <- paste0('US-', state.abb)
+df <- gtrends(keyword = "rsv", geo = state_abb_us[1],
+              time = "2020-01-01 2025-01-21",
+              category = 0, gprop='web')
+
+
+```
+Uhh this ain't working.
