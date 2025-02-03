@@ -78,12 +78,14 @@ saveRDS(rsv_ts, './Data/rsv_latest.rds') #saves latest vintage of the r
 dates <- seq.Date(from=as.Date('2022-10-01'), to=as.Date('2025-01-30'),by='week')
 
 #TODO fix county mapping in CT https://stackoverflow.com/questions/78599492/plotting-old-connecticut-county-regions-in-usmap
-
-for(i in 100:length(dates)){
-d1 <- open_dataset('./website_play3/Data/NSSP_detailed.parquet') %>%
-  filter(county!='All' & week_end==dates[i] & ed_trends_rsv!='Data Unavailable') %>%
-  mutate(percent_visits_rsv=if_else(is.na(percent_visits_rsv),0,percent_visits_rsv),
-         percent_visits_rsv=if_else(percent_visits_rsv>1,1,percent_visits_rsv) ) %>%
+for(i in 1:length(dates)){
+d1 <- open_dataset('./Data/NSSP_detailed.parquet') %>%
+  filter(county!='All' & week_end==dates[i] ) %>%
+  mutate(
+         percent_visits_rsv=if_else(percent_visits_rsv>1,1,percent_visits_rsv) ,
+         
+         
+         percent_visits_combined=if_else(percent_visits_combined>10,10,percent_visits_combined) ) %>%
   collect()
 
 p1 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_rsv' )   +
@@ -92,11 +94,21 @@ p1 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_rsv' 
     scale_fill_stepsn('RSV', breaks= seq(0,1, by=0.1), limits = c(0,1),
                       colors=viridis_pal()(10),
                       guide = guide_colorsteps(even.steps = FALSE))
+
+p2 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_combined' )   +
+   labs(title = paste0('RSV/flu/COVID ED visits ', dates[i])) + 
+    theme(panel.background = element_rect(color = "white", fill = "white")) +
+    scale_fill_stepsn('Virus', breaks= seq(0,10, by=1), limits = c(0,10),
+                      colors=viridis_pal()(10),
+                      guide = guide_colorsteps(even.steps = FALSE))
+
 print(p1)
+print(p2)
 }
                 
-
-
+# 
+# d1_all <- open_dataset('./Data/NSSP_detailed.parquet') %>%
+#   filter(county!='All') %>%collect()
 
 ```
 
