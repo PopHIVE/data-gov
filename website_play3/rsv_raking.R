@@ -116,6 +116,9 @@ fit <- mipfp::Ipfp(initial_joint_dist,tgt.list.2d, target_list,na.target = TRUE)
 # Extract the estimated joint probabilities
 joint_dist <- fit$p.hat
 
+
+joint_dist_count <- fit$x.hat
+
 #estimated weight by state
 #state_probs <- apply(joint_dist,2,sum)
 #how does estimates weight relate to state population?
@@ -125,7 +128,7 @@ joint_dist <- fit$p.hat
 joint_counts_age_state <- fit$x.hat
 
 
-## How about doing this with likelhiood?
+## How about doing this with optim?
 # Initialize numerical parameter vectors
 
 #set.seed(123)
@@ -136,29 +139,28 @@ init_age_parms <- rep( 1 , length(age_marginal))
 init_state_parms <- rep(1, length(state_marginal))  
 init_state_parms[is.na(init_state_parms)] <- mean(init_state_parms, na.rm=T)
 
-
-# Define the likelihood function
-pop_ll <- function(age.parms, state.parms, age_marginal, state_marginal) {
+# Define the optimization function
+pop_opt <- function(age.parms, state.parms, age_marginal, state_marginal) {
   
   #Compute joint age-state effect (outer product)
-    joint_age_state_effect <- exp(outer(age.parms, state.parms))  
+  joint_age_state_effect <- exp(outer(age.parms, state.parms))  
   
-    joint_age_state_effect <- ifelse(is.na(joint_age_state_effect), 1e-10, joint_age_state_effect)
+  joint_age_state_effect <- ifelse(is.na(joint_age_state_effect), 1e-10, joint_age_state_effect)
   
-    joint_age_state_effect <- pmax(joint_age_state_effect, 1e-10)
+  joint_age_state_effect <- pmax(joint_age_state_effect, 1e-10)
   
   # Compute predicted margins
   pred_age <- rowSums(joint_age_state_effect, na.rm = TRUE)
   pred_state <- colSums(joint_age_state_effect, na.rm = TRUE)
   
-  # Compute log-likelihoods using Poisson distribution
-  ll_age <- dpois(round(age_marginal), lambda = pred_age, log = TRUE)
-  ll_state <- dpois(round(state_marginal), lambda = pred_state, log = TRUE)
+  # Compute diff
+  age_diff <- abs(age_marginal - pred_age)
+  state_diff <- abs(state_marginal - pred_state )
   
   # Total log-likelihood (sum over all observations)
-  ll_total <- sum(ll_age, na.rm=T) + sum(ll_state, na.rm=T)
+  diff_total <- sum(age_diff, na.rm=T) + sum(state_diff, na.rm=T)
   
-  return(-ll_total)  # Negative log-likelihood for minimization
+  return(diff_total)  #  minimization
 }
 
 # Optimization
@@ -168,7 +170,7 @@ optim_result <- optim(par = c(init_age_parms, init_state_parms),
                         n_state <- length(state_marginal)
                         age_parms <- par[1:n_age]
                         state_parms <- par[(n_age + 1):(n_age + n_state)]
-                        pop_ll(age_parms, state_parms, age_marginal, state_marginal)
+                        pop_opt(age_parms, state_parms, age_marginal, state_marginal)
                       },
                       method = "BFGS")  # Use "L-BFGS-B" if bounds are needed
 
@@ -178,6 +180,16 @@ optim_result
 age_mu <- optim_result$par[1:length(age_marginal)]
 state_mu <- optim_result$par[(length(age_marginal) + 1):(length(age_marginal) + length(state_marginal))]
 joint_age_state_beta <- exp(outer(age_mu, state_mu))  
+
+check.rows <- apply(joint_age_state_beta,1,sum)
+plot(check.rows,age_marginal)
+abline(a=0, b=1)
+
+
+check.cols <-  apply(joint_age_state_beta,2,sum)
+plot(check.cols,state_marginal)
+abline(a=0, b=1)
+
 
 ########################################
 ########################################
