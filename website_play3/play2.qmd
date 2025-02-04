@@ -16,6 +16,9 @@ server: shiny
 ---
 
 ```{r setup, include=FALSE}
+#| context: setup
+#| include: false
+
 library(tidyverse)
 library(plotly)
 library(shiny)
@@ -24,10 +27,11 @@ library(scales)
 library(janitor)
 library(MMWRweek)
 library(arrow)
+#library(rnaturalearth)
 library(parquetize)
-library(sf)
 library(tigris)
 library(viridis)
+library(sf)
 #library(cdcfluview)
 #install.packages("remotes")
 #remotes::install_github("hrbrmstr/cdcfluview")
@@ -35,13 +39,26 @@ library(viridis)
 #state.hhs.codes <- aggregate(hhs_regions$state, #list(hhs_regions$region), paste, collapse=",")
 #state.hhs.codes$x <- gsub('NA,','',state.hhs.codes$x)
 #state.hhs.codes$x <- gsub(',NA','',state.hhs.codes$x)
-#saveRDS(state.hhs.codes, './website_play3/hhs_regions.rds')
-```
+#saveRDS(state.hhs.codes, './hhs_regions.rds')
 
-```{r, echo=F}
+
 #datasets for use in the global environment
 
+
 "%!in%" <- function(x,y)!("%in%"(x,y))
+
+# states <- ne_states(country = "United States of America", returnclass = "sf")
+# state_centers <- centers <- st_centroid(states) |> 
+#   st_coordinates() |> 
+#   as.data.frame() |>
+#   cbind(State = states$name)
+```
+
+```{r}
+#| context: data
+#| include: false
+#| cache: true
+#| cache.extra: !expr file.info("data.csv")$mtime
 
 # Interactive
 df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', show_col_types = FALSE) |>
@@ -54,8 +71,13 @@ df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', sho
          qdate= year+ qtr/4 -1/4
          )
 
-rsv1_tests <- read.csv('https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/RSV%20Infections%20Data/Raw%20Download/NREVSS%20by%20HHS%20Region_Respiratory%20Syncytial%20Virus%20(RSV)%20Surveillance%20Archive_Downloaded%2001.23.2025.csv')
+#csv_to_parquet('https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/RSV%20Infections%20Data/Raw%20Download/NREVSS%20by%20HHS%20Region_Respiratory%20Syncytial%20Virus%20(RSV)%20Surveillance%20Archive_Downloaded%2001.23.2025.csv',path_to_parquet ='./Data/rsv_testing.parquet')
 
+rsv1_tests <- open_dataset('./Data/rsv_testing.parquet') %>%
+  collect() %>%
+  as.data.frame()
+  
+  
 key <- readRDS('./Data/hhs_regions.rds')
 
 rsv_ts <- rsv1_tests %>%
@@ -67,48 +89,83 @@ rsv_ts <- rsv1_tests %>%
   group_by(level ) %>%
   left_join(key, by=c('level'='Group.1')) %>%
   mutate(scaled_cases = pcr_detections/max(pcr_detections),
-         hhs_abbr = x
-         )
-saveRDS(rsv_ts, './Data/rsv_latest.rds') #saves latest vintage of the r
+         hhs_abbr = x  ) %>%
+  ungroup()
 
+dates2_rsv_ts <- MMWRweek(as.Date(rsv_ts$date))
+
+max.wk.yr <- max(dates2_rsv_ts$MMWRweek[dates2_rsv_ts$MMWRyear==max(dates2_rsv_ts$MMWRyear)])
+
+rsv_ts <- cbind.data.frame(rsv_ts,dates2_rsv_ts[,c('MMWRyear', 'MMWRweek')]) %>%
+  mutate( epiyr = MMWRyear, 
+          epiyr = if_else(MMWRweek<=26,MMWRyear - 1 ,MMWRyear),
+          epiwk  = if_else( MMWRweek<=26, MMWRweek+52, MMWRweek  ),
+          epiwk=epiwk-26
+          )
 
 #Detailed data, did a static download; updated regularly via API rdmq-nq56
 ##convert from CSV to parquet, which is much more compact!
-# csv_to_parquet(path_to_file = './website_play3/Data/CopyOfNSSP_Emergency_Department_Visit_Trajectories_by_State_and_Sub_State_Regions-_COVID-19__Flu__RSV__Combined___20250130.csv', path_to_parquet ='./website_play3/Data/NSSP_detailed.parquet') 
+# csv_to_parquet(path_to_file = './Data/CopyOfNSSP_Emergency_Department_Visit_Trajectories_by_State_and_Sub_State_Regions-_COVID-19__Flu__RSV__Combined___20250130.csv', path_to_parquet ='./Data/NSSP_detailed.parquet') 
 dates <- seq.Date(from=as.Date('2022-10-01'), to=as.Date('2025-01-30'),by='week')
 
 #TODO fix county mapping in CT https://stackoverflow.com/questions/78599492/plotting-old-connecticut-county-regions-in-usmap
-for(i in 1:length(dates)){
-d1 <- open_dataset('./Data/NSSP_detailed.parquet') %>%
-  filter(county!='All' & week_end==dates[i] ) %>%
-  mutate(
-         percent_visits_rsv=if_else(percent_visits_rsv>1,1,percent_visits_rsv) ,
-         
-         
-         percent_visits_combined=if_else(percent_visits_combined>10,10,percent_visits_combined) ) %>%
-  collect()
-
-p1 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_rsv' )   +
-   labs(title = paste0('RSV ED visits ', dates[i])) + 
-    theme(panel.background = element_rect(color = "white", fill = "white")) +
-    scale_fill_stepsn('RSV', breaks= seq(0,1, by=0.1), limits = c(0,1),
-                      colors=viridis_pal()(10),
-                      guide = guide_colorsteps(even.steps = FALSE))
-
-p2 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_combined' )   +
-   labs(title = paste0('RSV/flu/COVID ED visits ', dates[i])) + 
-    theme(panel.background = element_rect(color = "white", fill = "white")) +
-    scale_fill_stepsn('Virus', breaks= seq(0,10, by=1), limits = c(0,10),
-                      colors=viridis_pal()(10),
-                      guide = guide_colorsteps(even.steps = FALSE))
-
-print(p1)
-print(p2)
-}
+#for(i in 1:length(dates)){
+#}
                 
 # 
 # d1_all <- open_dataset('./Data/NSSP_detailed.parquet') %>%
 #   filter(county!='All') %>%collect()
+
+
+# Waste water Latest: https://www.cdc.gov/wcms/vizdata/NCEZID_DIDRI/RSVStateLevelDownloadCSV.csv
+
+#hospitalizations
+#
+# csv_to_parquet('https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/RSV%20Infections%20Data/Harmonized%20RSV-NET_01.29.2025.csv',path_to_parquet ='./Data/rsvnet_hosp.parquet')
+
+h1 <- open_dataset('./Data/rsvnet_hosp.parquet') %>%
+  filter(`Region Type`=='State' & `Diagnostic Test Type`=='All' & Characteristic=='Not Stratified' & Region != 'All Sites') %>%
+  rename(state=Region, hosp_rate=`Crude Rate`, date=`Week Observed`) %>%
+  dplyr::select(state, date, hosp_rate) %>%
+  collect() %>%
+  as.data.frame()
+
+
+#Wastewaster by state and date
+w1 <- read.csv('./Data/RSVStateLevelDownloadCSV_ww.csv') %>%
+  mutate(date=as.Date(Week_Ending_Date, '%m/%d/%Y')) %>%
+  filter(Data_Collection_Period=='All Results') %>%
+  rename(state=State.Territory, rsv_ww=State.Territory_WVAL) %>%
+  arrange(state, date) %>%
+  dplyr::select(state, date, rsv_ww)
+
+
+#ED visits by state overall
+d1 <- open_dataset('./Data/NSSP_detailed.parquet') %>%
+  filter(county=='All'  ) %>%
+  rename(state=geography, date='week_end') %>%
+  dplyr::select(state, date, percent_visits_rsv) %>%
+  collect() %>%
+  as.data.frame()
+
+#combine hospital, wastewater, ED visits
+dwh <- d1 %>%
+  full_join(w1, by=c('state','date')) %>%
+  full_join(h1, by=c('state', 'date'))
+
+dates2 <- MMWRweek(as.Date(dwh$date))
+
+max.wk.yr <- max(dates2$MMWRweek[dates2$MMWRyear==max(dates2$MMWRyear)])
+
+dwh <- cbind.data.frame(dwh,dates2[,c('MMWRyear', 'MMWRweek')]) %>%
+  mutate( epiyr = MMWRyear, 
+          epiyr = if_else(MMWRweek<=26,MMWRyear - 1 ,MMWRyear),
+          epiwk  = if_else( MMWRweek<=26, MMWRweek+52, MMWRweek  ),
+          epiwk=epiwk-26
+          )
+
+
+
 
 ```
 
@@ -116,19 +173,8 @@ print(p2)
 
 Welcome to the Public Health Data Explorer, hosted by the Yale School of Public Health. Here you can find visualizations of diverse datasets related to public health outcomes of general interest.
 
-
 ```{r}
 #| context: server
-
-df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', show_col_types = FALSE) |>
-  clean_names() |> 
-  dplyr::filter(!(count %in% c(7777, 8888, 9999))) |> 
-  dplyr::filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
-  dplyr::filter(!(age_adjusted_rate %in% c(7777, 8888, 9999))) %>%
-  mutate(qtr=as.numeric((gsub("Q",'', quarter))), 
-         qtr =if_else(is.na(qtr),1,qtr),
-         qdate= year+ qtr/4 -1/4
-         )
 
 output$distPlot1 <- renderPlotly({
   
@@ -157,27 +203,6 @@ ggplotly(p1)
 ########################################
 ##RSV
 ########################################
-key <- readRDS('./Data/hhs_regions.rds')
-
-rsv_ts <- readRDS('./Data/rsv_latest.rds')
-
-dates2 <- MMWRweek(as.Date(rsv_ts$date))
-
-max.wk.yr <- max(dates2$MMWRweek[dates2$MMWRyear==max(dates2$MMWRyear)])
-
-rsv_ts <- cbind.data.frame(rsv_ts,dates2[,c('MMWRyear', 'MMWRweek')]) %>%
-  mutate( epiyr = MMWRyear, 
-          epiyr = if_else(MMWRweek<=26,MMWRyear - 1 ,MMWRyear),
-          epiwk  = if_else( MMWRweek<=26, MMWRweek+52, MMWRweek  ),
-          epiwk=epiwk-26
-          )
-#d1.m.alt$geo <- substr(d1.m.alt$geo,4,5)
-
-last.wk <- max(rsv_ts$MMWRweek[rsv_ts$MMWRyear==max(rsv_ts$MMWRyear)] )
-
-
-n_years <- length(unique(rsv_ts$epiyr))
-
 output$distPlotRSV3 <- renderPlotly({
   
 point_plot <- rsv_ts %>% filter(hhs_abbr==input$hhs.region.select &  epiyr == max(epiyr, na.rm=T) ) %>%
@@ -197,12 +222,60 @@ geom_point(data=point_plot,aes(x=epiwk, y=scaled_cases) ,col='red') +
 
 ggplotly(rsv_ts1)
 })
+
+
+############################
+#https://www.cdc.gov/wcms/vizdata/NCEZID_DIDRI/RSVStateLevelDownloadCSV.csv
+
+output$distPlotRSV_dwh <- renderPlotly({
+  
+ # point_plot <- dwh %>% 
+ #   dplyr::select(state,date, percent_visits_rsv,rsv_ww,hosp_rate) %>%
+ #  filter(state==input$state.select2 ) %>%
+ #  reshape2::melt(id.vars=c('state','date')) %>%
+ #   group_by(variable) %>%
+ #   filter(date==max(date))
+
+rsv_ts_comp <- dwh %>%
+  filter(state==input$state.select2 & date >=as.Date('2023-07-01')) %>%
+  ggplot()+
+  geom_line(aes(x=date, y=percent_visits_rsv/max(percent_visits_rsv, na.rm=T), color='ED')) +
+   geom_line(aes(x=date, y=rsv_ww/max(rsv_ww, na.rm=T), color='WasteW')) +
+   geom_line(aes(x=date, y=hosp_rate/max(hosp_rate, na.rm=T),color='Hosp'), lty=2) +  
+  theme_minimal()+
+  xlab('Date')+
+  ylab('RSV activity')+
+    scale_color_manual(name = "RSV", values = c("ED" = "#e41a1c", "WasteW"="#377eb8", 'Hosp'='#4daf4a'  ))+
+  ggtitle(input$state.select2)
+
+  scale_colour_viridis_d() 
+
+
+ggplotly(rsv_ts_comp)
+})
+
 ```
 
 ## Respiratory syncytial virus (RSV) in the United States
 
 ::: panel-tabset
 
+
+### Compare Data
+
+```{r}
+#| panel: sidebar
+
+selectInput("state.select2", "State:", 
+            choices=state.name, selected='New York')
+```
+
+```{r}
+#| panel: fill
+
+plotlyOutput("distPlotRSV_dwh")
+
+```
 
 ### Trends in positive tests
 
@@ -220,13 +293,33 @@ plotlyOutput("distPlotRSV3")
 ```
 
 
-### Trends in Google searches
+
+### Current national map (ED)
+
 ```{r}
 #| panel: fill
 
+i=length(dates)-1
+d1 <- open_dataset('./Data/NSSP_detailed.parquet') %>%
+  filter(county!='All' & week_end==dates[i] ) %>%
+  mutate(
+         percent_visits_rsv=if_else(percent_visits_rsv>1,1,percent_visits_rsv) ,
+         
+         
+         percent_visits_combined=if_else(percent_visits_combined>10,10,percent_visits_combined) ) %>%
+  collect()
+
+p1 <- usmap::plot_usmap(regions='counties', data=d1,values='percent_visits_rsv' )   +
+   labs(title = paste0('RSV ED visits ', dates[i])) + 
+    theme(panel.background = element_rect(color = "white", fill = "white")) +
+    scale_fill_stepsn('RSV', breaks= seq(0,1, by=0.1), limits = c(0,1),
+                      colors=viridis_pal()(10),
+                      guide = guide_colorsteps(even.steps = FALSE))
+
+print(p1)
 ```
 
-### Positive tests (all regions)
+### Regional trends (NREVSS)
 
 ```{r}
 heat1 <- rsv1_tests %>%
@@ -241,7 +334,7 @@ heat1 <- rsv1_tests %>%
          hhs_abbr=x)
 
 # by each district
-ggplot(heat1, aes(date, x, fill = scaled_cases))+
+p2 <- ggplot(heat1, aes(date, x, fill = scaled_cases))+
   geom_tile()+ 
   scale_fill_distiller(name = "PCR Positives", 
                        palette = "Blues", 
@@ -251,6 +344,16 @@ ggplot(heat1, aes(date, x, fill = scaled_cases))+
   labs(x = "Date", y = "HHS Region", title ="RSV detections NREVSS")+
    guides(fill="none")+
   theme_minimal()
+p2
+```
+
+
+### Trends in Google searches
+
+```{r}
+#| panel: fill
+
+print('TODO')
 ```
 
 :::
@@ -276,12 +379,9 @@ plotlyOutput("distPlot1")
 ```
 
 ### Trends in deaths
-
 :::
 
 ------------------------------------------------------------------------
-
-
 
 ## Documentation
 

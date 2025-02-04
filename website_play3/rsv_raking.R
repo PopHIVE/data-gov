@@ -4,6 +4,8 @@ library(arrow)
 library(tidycensus)
 library(reshape2)
 library(mipfp)
+library(rstan)
+
 
 pop <- read.csv('https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/RSV%20Infections%20Data/CDC_Vintage%202020%20Bridged-Race%20Postcensal%20Population%20Estimates_v2020_y1020_All%20Counties.csv') %>%
   dplyr::select(State, Characteristic, Level,Postcensal.Population_2020)
@@ -128,6 +130,12 @@ joint_dist_count <- fit$x.hat
 joint_counts_age_state <- fit$x.hat
 
 
+#use MLE function in mipfp
+
+ObtainModelEstimates(seed=123,tgt.list.2d, target_list,na.target = TRUE )
+
+###########################################################
+###########################################################
 ## How about doing this with optim?
 # Initialize numerical parameter vectors
 
@@ -179,44 +187,48 @@ optim_result
 
 age_mu <- optim_result$par[1:length(age_marginal)]
 state_mu <- optim_result$par[(length(age_marginal) + 1):(length(age_marginal) + length(state_marginal))]
-joint_age_state_beta <- exp(outer(age_mu, state_mu))  
+joint_age_state_beta_optim <- exp(outer(age_mu, state_mu))  
 
-check.rows <- apply(joint_age_state_beta,1,sum)
+check.rows <- apply(joint_age_state_beta_optim,1,sum)
 plot(check.rows,age_marginal)
 abline(a=0, b=1)
 
 
-check.cols <-  apply(joint_age_state_beta,2,sum)
+check.cols <-  apply(joint_age_state_beta_optim,2,sum)
 plot(check.cols,state_marginal)
 abline(a=0, b=1)
 
+#compare optim results with mipfp results
+plot(joint_counts_age_state,joint_age_state_beta_optim)+
+  abline(a=0, b=1)
 
 ########################################
 ########################################
 
+#STAN
+N_ages <- length(age_marginal)   # Number of age groups
+state_marginal_nomiss <- state_marginal[!is.na(state_marginal)]
+N_states <- length(state_marginal_nomiss)   # Number of state groups
+age_state_prior <- matrix(runif(N_ages * N_states, 0.1, 1), N_ages, N_states) # Prior joint distribution
 
-
-
-
-
-
-
-#now add in 3rd dimension: race/ethnicity
-# Define the marginal distributions
-state_marginal <- d1_state_pop_prop$N_state_rsv
-age_marginal <- d1_age_pop_prop$N_age_rsv
-race_marginal <- d1_race_pop_prop$N_race_rsv
-
-# Create a matrix for the initial joint distribution with uniform values
-initial_joint_dist.3d <- array(1,c(length(age_marginal),  length(state_marginal), length(race_marginal)) )
-
-# storing the margins in a list
-target_list.3d <- list(
-  age_marginal,
-  state_marginal,
-  race_marginal
+# Prepare data for Stan
+stan_data <- list(
+  N_ages = N_ages,
+  N_states = N_states,
+  age_state_prior = age_state_prior,
+  age_marginal = round(age_marginal/1000),
+  state_marginal = round(state_marginal_nomiss/1000)
 )
-tgt.list.3d.dim <- list(1,2,3)
 
-fit.3d <- mipfp::Ipfp(initial_joint_dist.3d,target_list.3d, tgt.list.3d.dim,na.target = TRUE)
+# Compile and fit the model
+fit <- stan(file = "latent_joint_model.stan", data = stan_data, iter = 2000, chains = 4)
+
+# Print summary
+print(fit, pars = c("beta_age", "beta_state", "sigma"))
+print(fit, pars = c("lambda"))
+
+plot(fit, plotfun = "trace", pars = c("beta_age"), inc_warmup = FALSE)
+plot(fit, plotfun = "trace", pars = c("beta_state"), inc_warmup = FALSE)
+
+
 
