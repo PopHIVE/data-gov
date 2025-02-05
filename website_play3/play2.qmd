@@ -5,9 +5,10 @@ format:
   html:
     embed-resources: true
     page-layout: full
+    toc: true
+    toc-expand: true
     smooth-scroll: true
     theme: cosmo
-    fontcolor: white
 css: styles.css
 server: shiny
 ---
@@ -1138,4 +1139,4 @@ plotlyOutput("opioid_bar_graph_2022")
 
 ### Notes on data sources
 
------------------------------------------------------------------------- todo todo
+ todo todo
