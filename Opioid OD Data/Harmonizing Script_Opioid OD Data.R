@@ -13,6 +13,7 @@
 ## SET UP THE ENVIRONMENT
 
 library("readxl")
+library("readr")
 library("tidyr")
 library("dplyr")
 library("stringr")
@@ -889,9 +890,9 @@ sudors_final[sudors_final$Setting %in% "IP", "Setting"] <- "Medical Facility - I
 
 # -----------------------------
 # Align "Underlying Cause of Death" nomenclature.
-unique(hcup_final$Underlying_Cause)
-unique(wonder_raw$Underlying_Cause)
-unique(sudors_final$Underlying_Cause)
+unique(hcup_final$`Underlying Cause of Death`)
+unique(wonder_raw$`Underlying Cause of Death`)
+unique(sudors_final$`Underlying Cause of Death`)
 
 # All nomenclature is the same between the sets. One thing to review is
 # the interpretation of the AHRQ dataset for underlying causes of deaths.
@@ -910,6 +911,7 @@ sudors_final <- rename(sudors_final, `Underlying Cause of Death` = Underlying_Ca
 
 
 # -----------------------------
+# Align Drug nomenclature.
 unique(hcup_final$Drug)
 unique(wonder_raw$Drug)
 unique(sudors_final$Drug)
@@ -924,7 +926,7 @@ sudors_final[sudors_final$Drug %in% "Opioids", "Drug"] <- "All Opioids"
 sudors_final[sudors_final$Drug %in% "RX Opioids", "Drug"] <- "Prescription Opioids"
 
 # "All Opioids + Benzodiazepines/Cocaine" and "Opioids + Depressant/Stimulant"
-# are loosely asssociated. SUDORS combines multiple kinds of depressants, including
+# are loosely associated. SUDORS combines multiple kinds of depressants, including
 # Benzodiazepines, and stimulants, including Cocaine. Without an exhaustive
 # search of ICD-10 codes that could be batched with "All Opioids" in the CDC
 # WONDER tool, these polysubstance were restricted to the most commonly used
@@ -932,15 +934,183 @@ sudors_final[sudors_final$Drug %in% "RX Opioids", "Drug"] <- "Prescription Opioi
 #
 # They will be kept labeled differently, and prompted for plotting together on
 # the Shiny app, or else labeled together with a footnote.
-sudors_final[sudors_final$Drug %in% "Opioids + Stimulant", "Drug"] <- "All Opioids + Stimulant"
+sudors_final[sudors_final$Drug %in% "Opioids + Stimulant", "Drug"]  <- "All Opioids + Stimulant"
 sudors_final[sudors_final$Drug %in% "Opioids + Depressant", "Drug"] <- "All Opioids + Depressant"
+
+# SUDORS reports different drug classifications than HCUP and CDC WONDER, that
+# are not always aligned with the ICD-10 codes. The "Drug = All Opioids" in
+# CDC WONDER is matched with HCUP (T40.0 - T40.4, T40.6, F11.0), and is loosely 
+# associated with SUDORS (T40.0 - T40.4, T40.6, not ICD-10 code labeled). For
+# the other drug stratifications, the following labeling scheme is applied:
+#     - Illegally-Made Opioids: T40.0 (Opium), T40.1 (Heroin), T40.4 (Other synthetic narcotics)
+#     -   Prescription Opioids: T40.3 (Methadone)
+#     -   Opioids + Depressant: All Opioids (T40.0 - T40.4, T40.6, F11.0) + T42.4 (Benzodiazepines)
+#     -    Opioids + Stimulant: All Opioids (T40.0 - T40.4, T40.6, F11.0) + T40.5 (Cocaine)
+#     -        Benzodiazepines: T42.4 (Benzodiazepines)
+#     -                Cocaine: T40.5 (Cocaine)
+#     -                Heroine: T40.1 (Heroin)
+#     -          Other opioids: T40.2 (Other opioids), T40.6 (Other and unspecified narcotics)
+
+illegal_opioids <- wonder_raw[str_detect(wonder_raw$Drug, "Opium") | str_detect(wonder_raw$Drug, "Heroin") |
+                                str_detect(wonder_raw$Drug, "Other and unspecified narcotics"), ] %>% 
+  filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+  group_by(State, Year, Quarter, Setting, `Underlying Cause of Death`, Characteristic, Level) %>%
+  summarise_at(vars(Count), sum, na.rm = FALSE) %>%
+  mutate(Drug = "Illegally-Made Opioids")
+
+
+prescription_opioids <- wonder_raw[str_detect(wonder_raw$Drug, "Other opioids") | str_detect(wonder_raw$Drug, "Other and unspecified narcotics"), ] %>% 
+  filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+  group_by(State, Year, Quarter, Setting, `Underlying Cause of Death`, Characteristic, Level) %>%
+  summarise_at(vars(Count), sum, na.rm = FALSE) %>%
+  mutate(Drug = "Prescription Opioids")
+
+
+wonder_final <- bind_rows(wonder_raw, illegal_opioids, prescription_opioids)
+
+
+# Now we'll remove rows associated with some of the categories that do not match
+# with SUDORS.
+wonder_final <- wonder_final[wonder_final$Drug %!in% c("Opium", "Other synthetic narcotics", "Other and unspecified narcotics"), ]
+sudors_final <- sudors_final[sudors_final$Drug %!in% c("All"), ]
+
+# Finally
+wonder_final[wonder_final$Drug %in% "Methadone", "Drug"] <- "Prescription Opioids"
+wonder_final[wonder_final$Drug %in% "All Opioids + Benzodiazepines", "Drug"] <- "All Opioids + Depressant"
+wonder_final[wonder_final$Drug %in% "All Opioids + Cocaine", "Drug"]         <- "All Opioids + Stimulant"
+wonder_final[wonder_final$Drug %in% "Mental and behavioural disorders due to use of opioids, acute intoxication", "Drug"] <- "Opioid Induced Mental and Behavioural Disorders"
+
+
+# Function attempting to generalize aggregation over the CDC WONDER data set that
+# will also retain the level of not available or incomplete values labeling.
+function(dataset, group_by_these, target_groups, new_groups, account_for_gaps = TRUE){
+  # This function is not completed.
+  
+  # -----------------------------
+  # Section to keep outside of the function
+  
+  # Generate a table for all of the possible combinations. Notice that "Characteristic"
+  # does not add new possible combinations with "Level" present, and so it is not
+  # included.
+  entries_to_group <- wonder_raw %>%
+    (\(x) { table(x$State, x$Year, x$Quarter, x$Setting, x$`Underlying Cause of Death`, x$Characteristic, x$Level)  }) () %>% 
+    as.data.frame() %>% `colnames<-`(c("State", "Year", "Quarter", "Setting", "Underlying Cause of Death", "Characteristic", "Level", "Freq")) %>%
+    (\(x) { x[x$Freq %!in% 0, ] }) () %>% 
+    `rownames<-`(NULL)
+  
+  # Now we need some reference tables for the algorithm:
+  # Label which months are associated with which group.
+  target <- list("Drug_1" = c("Opium", "Heroin", "Other and unspecified narcotics"), 
+                 "Drug_2" = c("Other opioids", "Other and unspecified narcotics"))
+  
+  # Denote the new label to be applied to that group.
+  new <- list("Drug_1" = c("Illegally-made opioids"), 
+              "Drug_2" = c("Other opioids"))
+  
+  
+  # -----------------------------
+  # Section still being troubleshot.
+  
+  dataset = wonder_raw
+  group_by_these = entries_to_group
+  account_for_gaps = TRUE
+  target_groups = target
+  new_groups = new
+  
+  # Extract out the reference age groupings and the target one that the final
+  # dataset will have.
+  for(i in 1:length(target_groups)){
+    # Pull the column where the target and new groups are contained.
+    operating_column <- str_split_1(names(target_groups)[i], "_")[1]
+    
+    # Pull the target and new group into a vector format.
+    reference <- target_groups[[i]]
+    goal      <- new_groups[[i]]
+    
+    to_group_df <- (dataset[, operating_column] %in% reference) %>% dataset[., ]
+    
+    aggregated_groups <- list()
+    for(j in 1:nrow(group_by_these)){
+      # -----------------------------
+      # Extract out the rows that constitute one grouping.
+      
+      group_reference <- group_by_these[j, ]
+    
+      locate <- list()
+      # In order to make the columns that are grouped a flexible variable, find
+      # the rows with each match over all available columns.
+      for(k in 1:(ncol(group_reference) - 1) ){
+        locate[[k]] <- str_which( to_group_df[, colnames(group_reference)[colnames(group_reference) %!in% "Freq"][k]], as.character(group_reference[, k]) )
+      }
+    
+      # Keep only the rows where every column identified as match.
+      rows_to_keep <- unlist(locate) %>%
+        (\(x) { as.data.frame(table(x)) }) () %>%
+        (\(x) { x[x$Freq == length(locate), 1] }) () %>%
+        as.numeric()
+    
+      # -----------------------------
+      # Extract out the rows that constitute one groupings
+      subset = to_group_df[rows_to_keep, ] %>% `rownames<-`(NULL)
+      
+      
+      if(nrow(subset) == 0){
+        a <- group_reference %>%
+          select(-Freq) %>%
+          mutate(Count = NA, Population = NA, y = goal,
+                 `Crude Rate` = NA, `Age Adjusted Rate` = NA)
+        
+        colnames(a)[colnames(a) %in% "y"] <- operating_column
+        
+        aggregated_groups[[j]] <- a %>%
+          select(colnames(dataset))
+        
+        
+      } else if(nrow(subset) != length(reference)){
+        
+        
+      } else if(nrow(subset) == length(reference)){
+        
+        
+      }
+      
+      
+      # loop over the target and new list elements
+      
+      # Counts and Population:
+      
+      
+      # If all 7777, 8888, 9999, NA, 0
+      # If any 7777, 8888, 9999, NA make 7777
+      # If account_for_gaps = TRUE AND any missing make 7777
+      # If account_for_gaps = TRUE AND none missing take sum
+      # If account_for_gaps = FALSE take sum
+      
+      # Crude Rate: 
+      
+    }
+   
+    # Print the for loop's progress.
+    setTxtProgressBar(pb, i)
+    
+    # Column-merge the quartered results with the metadata. Add back in the
+    # "Characteristic", "Level", and "Population" columns.
+    final[[i]] <- merge(combination, grouped_counts) %>%
+      rename(Count = y) %>%
+      mutate(Characteristic = "Age", Level = target, Population = sum(subset_df$Population)) %>%
+      select(State, Year, Quarter, Setting, Underlying_Cause, Drug, Characteristic, Level, Count, Population)
+     
+  }
+  
+
+}
 
 
 
 # -----------------------------
 # Align "Characteristic" nomenclature.
 unique(hcup_final$Characteristic)
-unique(wonder_raw$Characteristic)
+unique(wonder_final$Characteristic)
 unique(sudors_final$Characteristic)
 
 # "Characteristic = Total" implies not stratifed.
@@ -951,12 +1121,12 @@ hcup_final[hcup_final$Characteristic %in% "Total", "Characteristic"] <- "Not Str
 # -----------------------------
 # Align "Characteristic = Age" nomenclature.
 hcup_final[hcup_final$Characteristic %in% "Age", "Level"] %>% unique()
-wonder_raw[wonder_raw$Characteristic %in% "Age", "Level"] %>% unique()
+wonder_final[wonder_final$Characteristic %in% "Age", "Level"] %>% unique()
 sudors_final[sudors_final$Characteristic %in% "Age", "Level"] %>% unique()
 
 # Confirm the strings all match exactly.
 unique(hcup_final[hcup_final$Characteristic %in% "Age", "Level"])[unique(hcup_final[hcup_final$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
-unique(wonder_raw[wonder_raw$Characteristic %in% "Age", "Level"])[unique(wonder_raw[wonder_raw$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
+unique(wonder_final[wonder_final$Characteristic %in% "Age", "Level"])[unique(wonder_final[wonder_final$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
 unique(sudors_final[sudors_final$Characteristic %in% "Age", "Level"])[unique(sudors_final[sudors_final$Characteristic %in% "Age", "Level"]) %in% c("<24 Years", "25-44 Years", "45-64 Years", "65+ Years") == FALSE]
 
 
@@ -964,7 +1134,7 @@ unique(sudors_final[sudors_final$Characteristic %in% "Age", "Level"])[unique(sud
 # -----------------------------
 # Align "Characteristic = Sex" nomenclature.
 hcup_final[hcup_final$Characteristic %in% "Sex", "Level"] %>% unique()
-wonder_raw[wonder_raw$Characteristic %in% "Sex", "Level"] %>% unique()
+wonder_final[wonder_final$Characteristic %in% "Sex", "Level"] %>% unique()
 sudors_final[sudors_final$Characteristic %in% "Sex", "Level"] %>% unique()
 
 # Change to "Sex = Male/Female" nomenclature.
@@ -979,7 +1149,7 @@ sudors_final[sudors_final$Characteristic %in% "Sex" & sudors_final$Level %in% "F
 # -----------------------------
 # Align "Characteristic = Not Stratified" nomenclature.
 hcup_final[hcup_final$Characteristic %in% "Not Stratified", "Level"] %>% unique()
-wonder_raw[wonder_raw$Characteristic %in% "Not Stratified", "Level"] %>% unique()
+wonder_final[wonder_final$Characteristic %in% "Not Stratified", "Level"] %>% unique()
 sudors_final[sudors_final$Characteristic %in% "Not Stratified", "Level"] %>% unique()
 
 # The location information was moved to the "Setting" variable. Confirm that
@@ -996,7 +1166,7 @@ hcup_final[hcup_final$Characteristic %in% "Not Stratified" & hcup_final$Level %i
 
 # -----------------------------
 # Align "Characteristic = Race/Ethnicity" nomenclature.
-wonder_raw[wonder_raw$Characteristic %in% "Race/Ethnicity", "Level"] %>% unique()
+wonder_final[wonder_final$Characteristic %in% "Race/Ethnicity", "Level"] %>% unique()
 sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity", "Level"] %>% unique()
 
 # When stratifying by race in the CDC WONDER tool, the following "Single Race 6"
@@ -1024,13 +1194,13 @@ sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity", "Level"] %>% uni
 sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "Black", "Level"] <- "Black or African American"
 sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "American Indian/Alaska Natives", "Level"] <- "American Indian or Alaska Native"
 sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "Native Hawaiian/Pacific Islander", "Level"] <- "Native Hawaiian or Other Pacific Islander"
-wonder_raw[wonder_raw$Characteristic %in% "Race/Ethnicity" & wonder_raw$Level %in% "More than one race", "Level"] <- "Multi-Race, non-Hispanic"
+wonder_final[wonder_final$Characteristic %in% "Race/Ethnicity" & wonder_final$Level %in% "More than one race", "Level"] <- "Multi-Race, non-Hispanic"
 
 # We'll assume that "Hispanic" in the SUDORS set also implies "Hispanic or Latino".
 sudors_final[sudors_final$Characteristic %in% "Race/Ethnicity" & sudors_final$Level %in% "Hispanic", "Level"] <- "Hispanic or Latino"
 
 # Remove the "Not Available" entries.
-wonder_raw <- wonder_raw[!str_detect(wonder_raw$Level, "Not Available"), ] %>% `rownames<-`(NULL)
+wonder_final <- wonder_final[!str_detect(wonder_final$Level, "Not Available"), ] %>% `rownames<-`(NULL)
 
 
 
@@ -1038,10 +1208,10 @@ wonder_raw <- wonder_raw[!str_detect(wonder_raw$Level, "Not Available"), ] %>% `
 # Compile all datasets.
 
 combined <- bind_rows(cbind("Dataset" = rep("AHRQ", nrow(hcup_final)), hcup_final),
-                      cbind("Dataset" = rep("CDC WONDER", nrow(wonder_raw)), wonder_raw), 
+                      cbind("Dataset" = rep("CDC WONDER", nrow(wonder_final)), wonder_final), 
                       cbind("Dataset" = rep("SUDORS", nrow(sudors_final)), sudors_final))
 
-write.csv(combined, "Harmonized Opioid Overdose Datasets_01.23.2025.csv", row.names = FALSE)
+write.csv(combined, "Opioid OD Data/Harmonized Opioid Overdose Datasets_02.05.2025.csv", row.names = FALSE)
 
 
 

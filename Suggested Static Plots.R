@@ -28,7 +28,7 @@ library("sf")
 ## ----------------------------------------------------------------
 ## LOAD THE DATA
 
-opioid_od <- read_csv("Opioid OD Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv") %>%
+opioid_od <- read_csv("Opioid OD Data/Harmonized Opioid Overdose Datasets_02.05.2025.csv") %>%
   as.data.frame()
 
 rsv <- read_csv("RSV Infections Data/Harmonized RSV Infections Datasets_01.30.2025.csv") %>%
@@ -87,7 +87,6 @@ opioid_od %>%
 # 
 # Plot different years of information: 2020, 2021, and 2022.
 
-
 opioid_od %>%
   # Filter the placeholder numerical values.
   filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
@@ -112,9 +111,67 @@ opioid_od %>%
 
 
 # -----------------------------
+# Alternative to the bar graph, the waffle plot.
+
+subset <-  opioid_od %>%
+  # Filter the placeholder numerical values.
+  #filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
+  filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+  
+  filter(Drug %!in% c("Naloxone")) %>%
+  
+  # Change the date named in the plot title.
+  #filter(Year %in% 2020) %>%
+  
+  # Filter the metadata settings.
+  filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
+         `Underlying Cause of Death` %in% "Unintentional",
+         Characteristic %in% "Not Stratified", Level %in% "N/A")
+
+
+
+library(waffle)
+
+w1 <- subset %>%
+  filter(Year %in% 2020) %>%
+  group_by(Dataset, Year) %>%
+  mutate(Percentage = round(Count/sum(Count)*100, digits = 0)) %>%
+  ungroup() %>%
+  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
+  ggplot(aes(fill = Drug, values = Percentage)) +
+    geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
+    facet_wrap(~Dataset+Year) +
+    #scale_fill_manual(name = NULL,
+    #                  values = c("#BA182A", "#FF8288", "#FFDBDD"),
+    #                  labels = c("A", "B", "C")) +
+    coord_equal() +
+    theme_void() + theme(legend.position = "none")
+
+
+w2 <- subset %>%
+  filter(Year %in% 2022) %>%
+  group_by(Dataset, Year) %>%
+  mutate(Percentage = round(Count/sum(Count)*100, digits = 0)) %>%
+  ungroup() %>%
+  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
+  ggplot(aes(fill = Drug, values = Percentage)) +
+    geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
+    facet_wrap(~Dataset+Year) +
+    #scale_fill_manual(name = NULL,
+    #                  values = c("#BA182A", "#FF8288", "#FFDBDD"),
+    #                  labels = c("A", "B", "C")) +
+    coord_equal() +
+    theme_void() + theme(legend.position = "bottom", legend.title = element_blank())
+
+
+iron(w1, w2)
+
+
+
+# -----------------------------
 # US Map plot.
 
-# Code to find mathes between AHRQ and CDC WONDER
+# Code to find matches between AHRQ and CDC WONDER
 #opioid_od[opioid_od$Dataset %in% "AHRQ", "Setting"] %>% unique()
 
 # Generate a side-by-side set of plots showing "Drug = All Opioids" counts
@@ -195,7 +252,6 @@ plot_grid(title, plot_together, ncol = 1, rel_heights = c(1, 1))
 # -----------------------------
 # US Map plot. Interactive.
 
-
 us_geo <- tigris::states(cb = TRUE, resolution = '20m') %>%
   shift_geometry()
 
@@ -242,6 +298,33 @@ map_ahrq <- mapview(st_as_sf(geo_data_ahrq), zcol = "Count", layer.name = "AHRQ"
 
 
 map_wonder|map_ahrq
+
+
+
+
+
+library(leaflet)
+library(leaflet.extras2)
+library(sf)
+library(yyjsonr)
+
+data <- sf::st_as_sf(leaflet::atlStorms2005[1, ])
+data <- st_cast(data, "POINT")
+data$time <- as.POSIXct(
+  seq.POSIXt(Sys.time() - 1000, Sys.time(), length.out = nrow(data))
+)
+
+leaflet() %>%
+  addTiles() %>%
+  addTimeslider(
+    data = data,
+    options = timesliderOptions(
+      position = "topright",
+      timeAttribute = "time",
+      range = TRUE
+    )
+  ) %>%
+  setView(-72, 22, 4)
 
 
 
