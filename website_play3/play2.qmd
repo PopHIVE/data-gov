@@ -1,16 +1,13 @@
 ---
-title: "A"
+title: "Y"
 title-block-banner: "#0c233f"
 format:
   html:
     embed-resources: true
+    page-layout: full
     smooth-scroll: true
     theme: cosmo
-    fontcolor: black
-    toc: false
-    toc-location: left
-    toc-title: Summary
-    toc-depth: 3
+    fontcolor: white
 css: styles.css
 server: shiny
 ---
@@ -29,8 +26,10 @@ library(MMWRweek)
 library(arrow)
 #library(rnaturalearth)
 library(parquetize)
-library(pheatmap)
+library(viridisLite)
 library(tigris)
+library(usmap)
+library(cowplot)
 library(viridis)
 library(sf)
 library(readxl)
@@ -43,6 +42,20 @@ library(ggalluvial)
 #state.hhs.codes$x <- gsub('NA,','',state.hhs.codes$x)
 #state.hhs.codes$x <- gsub(',NA','',state.hhs.codes$x)
 #saveRDS(state.hhs.codes, './hhs_regions.rds')
+
+yale_colors <- c(
+  "#00356B",
+  "#286DC0",
+  "#63AAFF",
+  "#C4DDFC",
+  "#DDDDDD"
+)
+
+yale_gradient <- c("#DDDDDD",
+                   "#C4DDFC",
+                   "#63AAFF",
+                   "#286DC0",
+                   "#00356B") # Adjust order for your desired gradient
 
 
 #datasets for use in the global environment
@@ -204,29 +217,83 @@ all.sts <- unique(ipd1$st)
 
 # pneumococcal serotype by state
 b2019 <- read.csv('./Data/pneumococcus/jiac058_suppl_supplementary_table_s2.csv') %>%
-  group_by(State, sero, LT5) %>%
+  group_by(State, sero) %>%
   summarize(N_cases=n()) %>%
   mutate(sero=as.factor(sero)) %>%
-  ungroup() %>%
-  group_by(State, sero) %>%
-  summarize(N_cases=sum(N_cases)) %>%
   ungroup() %>%
     group_by(State, sero) %>%
     mutate(mean_cases=max(N_cases,na.rm=T)
          ) %>%
-  filter(mean_cases>=10) %>%
-  ungroup() %>%
-  group_by(sero) %>%
-  mutate(  n=n()) %>%
-  filter(n>=5) %>%
-  ungroup() %>%
   group_by(State) %>%
-  mutate(         pct = N_cases/sum(N_cases),
-         pct_round = round(100*pct)) %>%
+  mutate(         pct = N_cases/sum(N_cases, na.rm=T)*100) %>%
   ungroup() %>%
-  tidyr::complete(sero,State , fill=list(pct_round=0))  #fills 0
+  tidyr::complete(sero,State , fill=list(pct=0))  #fills 0
   
+#pediatric vaccine yptake
+#https://data.cdc.gov/Child-Vaccinations/Vaccination-Coverage-among-Young-Children-0-35-Mon/fhky-rtsk/about_data
+
+# csv_to_parquet('./Data/vax/Vaccination_Coverage_among_Young_Children__0-35_Months__20250204.csv',path_to_parquet ='./Data/vax/peds_vax.parquet')
+#this breaks out the age data; also has info on income, race, urbanicity, etc
+vax_age <- open_dataset('./Data/vax/peds_vax.parquet') %>%
+  rename(birth_year = `Birth Year/Birth Cohort`, dim1=`Dimension Type`, age=Dimension,vax_uptake=`Estimate (%)`, samp_size_vax=`Sample Size`) %>%
+  collect() %>%
+  filter(birth_year==2021 & dim1=='Age') %>%
+  dplyr::select(Vaccine,Geography, Dose, dim1, vax_uptake,samp_size_vax, age) %>%
+  filter(age=='35 Months' & Geography %in% state.name &
+      (Vaccine %in% c('≥1 Dose MMR','≥1 Dose Varicella' ) | 
+      (Vaccine=='DTaP' & Dose =='≥4 Doses') | 
+      (Vaccine=='Hep A' & Dose =='≥2 Doses') | 
+      (Vaccine=='Hep B' & Dose =='≥3 Doses') | 
+      (Vaccine=='Hib' & Dose =='Full Series') | 
+      (Vaccine=='PCV' & Dose =='≥4 Doses') 
+                                       ) )
+
+
+vax_urban <- open_dataset('./Data/vax/peds_vax.parquet') %>%
+  rename(birth_year = `Birth Year/Birth Cohort`, dim1=`Dimension Type`, urban=Dimension,vax_uptake=`Estimate (%)`, samp_size_vax=`Sample Size`) %>%
+  collect() %>%
+  filter(birth_year=='2016-2019' & dim1=='Urbanicity') %>%
+  dplyr::select(Vaccine,Geography, Dose, dim1, vax_uptake,samp_size_vax, urban) %>%
+  filter( Geography %in% state.name &
+      (Vaccine %in% c('≥1 Dose MMR','≥1 Dose Varicella' ) | 
+      (Vaccine=='DTaP' & Dose =='≥4 Doses') | 
+      (Vaccine=='Hep A' & Dose =='≥2 Doses') | 
+      (Vaccine=='Hep B' & Dose =='≥3 Doses') | 
+      (Vaccine=='Hib' & Dose =='Full Series') | 
+      (Vaccine=='PCV' & Dose =='≥4 Doses') 
+                                       ) ) %>%
+  mutate(urban= factor(urban, levels= c("Living In a Non-MSA", "Living In a MSA Non-Principal City","Living In a MSA Principal City"), ))
+
+
+
 ```
+
+
+
+```{r opiods}
+#| context: data
+#| include: false
+#| cache: true
+#| cache.extra: !expr file.info("data.csv")$mtime
+
+opioid_path <- "./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv"
+
+df_opioid <- read_csv(opioid_path) |>
+  clean_names() |> 
+  filter(!(count %in% c(7777, 8888, 9999))) |> 
+  filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
+  filter(!(age_adjusted_rate %in% c(7777, 8888, 9999))) |> 
+  # Filter out rows without Quarter
+  filter(!is.na(quarter)) |> 
+  # Create year_quarter column
+  mutate(year_quarter = paste(year, quarter))
+
+# Static
+opioid_od <- read_csv(opioid_path) %>%
+  as.data.frame()
+```
+
+
 
 # Public Health Data Explorer (PHDE)
 
@@ -361,9 +428,323 @@ ggplotly(rsv_ts_comp)
       ggtitle(input$select.st2)
   })
 
+#vaccine urbanicity
+output$vax_urban_plot <- renderPlotly({
 
- 
+   plot_ds <- vax_urban %>% filter(Vaccine==input$select.vax2)
+        fig <- plot_ly(
+          data = plot_ds, 
+          x = ~urban, 
+          y = ~Geography, 
+          z = ~vax_uptake, 
+          type = "heatmap",
+          colorscale = "Viridis",
+          reversescale = TRUE,  # Reverse the color scale
+          zmin = min(plot_ds$vax_uptake, na.rm = TRUE), 
+          zmax = max(plot_ds$vax_uptake, na.rm = TRUE),
+          showscale = TRUE
+        ) %>%
+          colorbar(title = "Uptake") %>%
+          layout(
+            title = "Vaccine Uptake 35 Months",
+            xaxis = list(title = "Vaccine", tickangle = -45),
+            yaxis = list(title = "State")
+          )
+        
+        # Set NA values to gray
+        fig <- fig %>% layout(plot_bgcolor = "gray")
+        
+        
+        fig  # Display the plot
+    })
 
+
+## Opioid
+ df_time_series_interactive <- reactive({
+    df_opioid %>%
+      filter(drug=='All Opioids' & 
+               characteristic=='Age' &
+               state == input$state) |> 
+      group_by(dataset, state, year_quarter, level) %>%
+      summarize(count=sum(count, na.rm = TRUE)) |>
+      ungroup() |> 
+      pivot_wider(names_from = level, values_from = count) |> 
+      mutate(Overall = `25-44 Years` + `45-64 Years` + `65+ Years` + `<24 Years`) |> 
+      pivot_longer(
+        cols = where(is.numeric),
+        names_to = "level",
+        values_to = "count"
+      ) |> 
+      mutate(level = factor(level),
+             level = fct_relevel(level, c("Overall", "65+ Years",
+                                          "45-64 Years", "25-44 Years",
+                                          "<24 Years"))) |> 
+      filter(count > 0) 
+  })
+  
+  output$opioid_time_series_interactive_1 <- renderPlotly({ 
+    # User must provide inputs
+    req(input$state)
+    # Dataset must have rows
+    req(nrow(df_time_series_interactive()) > 0)
+    
+    p1 <- df_time_series_interactive() %>%
+      ggplot(aes(x = year_quarter, y = count, 
+                 group = level, color = level,
+                 text = paste0("Quarter: ", year_quarter, "\n",
+                               "Count: ", scales::comma(count)))) +
+      geom_line() +
+      labs(x = NULL,
+           y = "Count",
+           color = "Age Category") +
+      scale_x_discrete(breaks = c("2016 Q1", "2017 Q1", "2018 Q1",
+                                  "2019 Q1", "2020 Q1", "2021 Q1", 
+                                  "2022 Q1")) +
+      scale_y_continuous(labels = scales::comma) +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      facet_wrap(~dataset) +
+      theme_minimal(base_size = 15) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    
+    ggplotly(p1, tooltip = c("text"))
+  }) 
+  
+  
+  
+  output$opioid_time_series_interactive_2 <- renderPlotly({
+    
+    p <- df_opioid %>%
+      filter(drug=='All Opioids' & 
+               characteristic=='Sex' &
+               state == "US") %>%
+      group_by(dataset, state, year_quarter, level) %>%
+      summarize(count=sum(count, na.rm = TRUE)) %>%
+      ungroup() %>%
+      filter(count > 0) %>%
+      ggplot(aes(x = year_quarter, y = count, 
+                 group = level, color = level,
+                 text = paste0("Quarter: ", year_quarter, "\n",
+                               "Count: ", scales::comma(count)))) +
+      geom_line() +
+      labs(x = NULL,
+           y = "Count",
+           color = NULL,
+           title = "National Opioid Overdose Count") +
+      scale_x_discrete(breaks = c("2016 Q1", "2017 Q1", "2018 Q1",
+                                  "2019 Q1", "2020 Q1", "2021 Q1", 
+                                  "2022 Q1")) +
+      scale_y_continuous(labels = scales::comma) +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      facet_wrap(~dataset) +
+      theme_minimal(base_size = 13) +
+      theme(axis.text.x = element_text(angle = 45,  hjust = 1))
+    
+    ggplotly(p, tooltip = "text")
+  })
+  
+  output$opioid_bar_graph_2020 <- renderPlotly({
+    
+    p <- opioid_od %>%
+      # Filter the placeholder numerical values.
+      filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
+      
+      # Change the date named in the plot title.
+      filter(Year %in% 2020) %>%
+      
+      # Filter the metadata settings.
+      filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
+             `Underlying Cause of Death` %in% "Unintentional",
+             Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      mutate(Drug = if_else(Drug == "Mental and behavioural disorders due to use of opioids, acute intoxication",
+                            "Mental and behavioural disorders",
+                            Drug)) %>%
+      
+      # Plot settings and features.
+      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`,
+                           text = paste0("Drug: ", Drug, "<br>",
+                                         "Age Adjusted Rate: ", `Age Adjusted Rate`))) +
+      geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
+      labs(title = "National Opioid Overdose Rate\nby Types of Opioid and Polysubstance in 2020",
+           subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
+           x = "", y = "Age-Adjusted Rate (per 100,000)") +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      scale_fill_manual(values = yale_colors) + # Apply Yale branding colors
+      theme_minimal(base_size = 13) + 
+      theme(axis.text.x = element_text(angle = 90,  hjust = 1))
+    
+    ggplotly(p, tooltip = "text")
+  })
+  
+  output$opioid_bar_graph_2021 <- renderPlotly({
+    
+    
+    p <- opioid_od %>%
+      # Filter the placeholder numerical values.
+      filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
+      
+      # Change the date named in the plot title.
+      filter(Year %in% 2021) %>%
+      
+      # Filter the metadata settings.
+      filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
+             `Underlying Cause of Death` %in% "Unintentional",
+             Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      mutate(Drug = if_else(Drug == "Mental and behavioural disorders due to use of opioids, acute intoxication",
+                            "Mental and behavioural disorders",
+                            Drug)) %>%
+      
+      # Plot settings and features.
+      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`,
+                           text = paste0("Drug: ", Drug, "<br>",
+                                         "Age Adjusted Rate: ", `Age Adjusted Rate`))) +
+      geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
+      labs(title = "National Opioid Overdose Rate by\nTypes of Opioid and Polysubstance in 2021",
+           subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
+           x = "", y = "Age-Adjusted Rate\n(per 100,000)") +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      scale_fill_manual(values = yale_colors) + # Apply Yale branding colors
+      theme_minimal(base_size = 13) +
+      theme(axis.text.x = element_text(angle = 90,  hjust = 1))
+    
+    ggplotly(p, tooltip = "text")
+  })
+  
+  output$opioid_bar_graph_2022 <- renderPlotly({
+    
+    
+    p <- opioid_od %>%
+      # Filter the placeholder numerical values.
+      filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
+      
+      # Change the date named in the plot title.
+      filter(Year %in% 2022) %>%
+      
+      # Filter the metadata settings.
+      filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
+             `Underlying Cause of Death` %in% "Unintentional",
+             Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      mutate(Drug = if_else(Drug == "Mental and behavioural disorders due to use of opioids, acute intoxication",
+                            "Mental and behavioural disorders",
+                            Drug)) %>%
+      
+      # Plot settings and features.
+      ggplot(data = ., aes(x = Drug, y = `Age Adjusted Rate`,
+                           text = paste0("Drug: ", Drug, "<br>",
+                                         "Age Adjusted Rate: ", `Age Adjusted Rate`))) +
+      geom_bar(stat = "identity", position = "dodge", aes(fill = Dataset, color = Dataset)) +
+      labs(title = "National Opioid Overdose Rate\nby Types of Opioid and Polysubstance in 2022",
+           subtitle = "Underlying Cause of Death: Unintentional Setting: All.",
+           x = "", y = "Age-Adjusted Rate\n(per 100,000)") +
+      scale_color_manual(values = yale_colors) + # Apply Yale branding colors
+      scale_fill_manual(values = yale_colors) + # Apply Yale branding colors
+      theme_minimal(base_size = 13) + 
+      theme(axis.text.x = element_text(angle = 90,  hjust = 1))
+    
+    ggplotly(p, tooltip = "text")
+    
+  })
+  
+  
+  
+  output$ahrq_map <- renderPlotly({
+    
+    
+    # -----------------------------
+    # US Map plot.
+    
+    # Code to find mathes between AHRQ and CDC WONDER
+    #opioid_od[opioid_od$Dataset %in% "AHRQ", "Setting"] %>% unique()
+    
+    # Generate a side-by-side set of plots showing "Drug = All Opioids" counts
+    # by state in 2022. Toggle the setting to show either inpatient or ER.
+    
+    
+    # Counts in AHRQ dataset.
+    ahrq_map_plot <- opioid_od %>%
+      # Filter the placeholder numerical values.
+      filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+      
+      # Switch between the two settings, and change the subtitle name.
+      filter(Setting %in% "Medical Facility - Inpatient") %>%
+      #filter(Setting %in% "Medical Facility - Outpatient or ER") %>%
+      
+      # Filter the metadata settings.
+      filter(Dataset %in% "AHRQ", State %in% datasets::state.name, 
+             Year %in% 2022, Quarter %in% NA,
+             `Underlying Cause of Death` %in% "All", Drug %in% "All Opioids",
+             Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      
+      # plot_usmap() requires specific nomenclature for the column with states.
+      rename(state = State) %>%
+      
+      # Plot settings and features.
+      plot_usmap(data = ., values = "Count", color = "#00356B",) + 
+      scale_fill_gradientn(
+        colors = yale_gradient,   # Use Yale branding colors in gradient
+        name = "Count (2022)", 
+        labels = scales::comma    # Format labels with commas
+      ) + 
+      labs(title = "AHRQ") +
+      theme(legend.position = "",
+            plot.title = element_text(size = 14),  # Increase title size
+            axis.ticks = element_blank(),
+            axis.text = element_blank(),
+            legend.text = element_text(size = 12),               # Adjust legend text
+            legend.title = element_text(size = 14))
+    
+    # Add a custom tooltip with comma formatting
+    ahrq_map_plot <- ahrq_map_plot +
+      aes(text = paste0("State: ", state, "<br>",
+                        "Count: ", scales::comma(Count)))
+    
+    # Convert to plotly
+    ggplotly(ahrq_map_plot, tooltip = "text")
+  })
+  
+  
+  output$wonder_map <- renderPlotly({
+    # Counts in CDC WONDER dataset.
+    wonder_map_plot <- opioid_od %>%
+      # Filter the placeholder numerical values.
+      filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
+      
+      # Switch between the two settings, and change the subtitle name.
+      filter(Setting %in% "Medical Facility - Inpatient") %>%
+      #filter(Setting %in% "Medical Facility - Outpatient or ER") %>%
+      
+      # Filter the metadata settings.
+      filter(Dataset %in% "CDC WONDER", State %in% datasets::state.name, 
+             Year %in% 2022, Quarter %in% NA,
+             `Underlying Cause of Death` %in% "All", Drug %in% "All Opioids",
+             Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+      
+      # plot_usmap() requires specific nomenclature for the column with states.
+      rename(state = State) %>%
+      
+      # Plot settings and features.
+      plot_usmap(data = ., values = "Count", color = "#00356B",) + 
+      scale_fill_gradientn(
+        colors = yale_gradient,   # Use Yale branding colors in gradient
+        name = "Count (2022)", 
+        labels = scales::comma    # Format labels with commas
+      ) + 
+      labs(title = "\ \ \ \ \ \ CDC WONDER") +
+      theme(legend.position = "right",
+            plot.title = element_text(size = 14),  # Increase title size
+            axis.ticks = element_blank(),
+            axis.text = element_blank(),
+            legend.text = element_text(size = 14),               # Adjust legend text
+            legend.title = element_text(size = 16))
+    
+    # Add a custom tooltip with comma formatting
+    wonder_map_plot <- wonder_map_plot +
+      aes(text = paste0("State: ", state, "<br>",
+                        "Count: ", scales::comma(Count)))
+    
+    ggplotly(wonder_map_plot, tooltip = "text")
+    
+  })
+  
 ```
 
 ## Respiratory syncytial virus (RSV) in the United States
@@ -609,7 +990,7 @@ subplot(ggplotly(rr_vt), ggplotly(rr_nvt),  margin = 0.04)
 
 
 ### Geographic variation in serotype frequency
-Data from 2019 CDC publication
+Data from 2019 IPD (Beall et al, JID 2022 10.1093/infdis/jiac058)
 
 ```{r}
 #| panel: sidebar
@@ -656,28 +1037,99 @@ ggplot(uad, aes(x=N_IPD, y=N_SSUAD, label=st)) +
 ```
 
 :::
-
 ------------------------------------------------------------------------
 
-## Opioids in the United States
+## Vaccination
+
+::: panel-tabset
+
+### Uptake by state
+
+```{r}
+fig <- plot_ly(
+  data = vax_age, 
+  x = ~Vaccine, 
+  y = ~Geography, 
+  z = ~vax_uptake, 
+  type = "heatmap",
+  colorscale = "Viridis",
+  reversescale = TRUE  # Reverse the color scale like `direction=-1` in ggplot
+) 
+
+fig <- fig %>%
+  layout(
+    title = "Vaccine Uptake 35 Months",
+    xaxis = list(title = "Vaccine", tickangle = -45),  # Rotate x-axis labels
+    yaxis = list(title = "State")
+  )
+
+fig  # Display the plot
+```
+
+
+### Uptake by urbanicity
 
 ```{r}
 #| panel: sidebar
 
-selectInput("state.select", "State:", 
-            choices=unique(df1$state), selected='US')
+selectInput("select.vax2", "Vaccine:", 
+            choices=unique(vax_urban$Vaccine), selected='PCV')
 ```
 
+Uptake in non-urban, smaller urban, larger urban locations
+```{r}
+#| panel: fill
+#| layout-ncol: 1
+#| height: 1200px
+
+plotlyOutput("vax_urban_plot")
+
+```
+
+
+::: 
+------------------------------------------------------------------------
+
+## Opioids in the United States
+
 ::: panel-tabset
-### Trends in healthcare visits
+### Trends in national healthcare incidents
 
 ```{r}
 #| panel: fill
-plotlyOutput("distPlot1")
+plotlyOutput("opioid_time_series_interactive_2")
 
 ```
 
-### Trends in deaths
+### Map of opioid overdoses
+
+AHRQ hospitalizations
+```{r}
+#| panel: fill
+plotlyOutput("ahrq_map")
+
+```
+
+CDC WONDER
+```{r}
+#| panel: fill
+plotlyOutput("wonder_map")
+
+```
+
+### Type of opioid
+
+```{r}
+#| panel: fill
+plotlyOutput("opioid_bar_graph_2020")
+
+```
+
+```{r}
+#| panel: fill
+plotlyOutput("opioid_bar_graph_2022")
+```
+
 :::
 
 ------------------------------------------------------------------------
