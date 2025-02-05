@@ -77,16 +77,6 @@ yale_gradient <- c("#DDDDDD",
 #| cache: true
 #| cache.extra: !expr file.info("data.csv")$mtime
 
-# Interactive
-df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', show_col_types = FALSE) |>
-  clean_names() |> 
-  dplyr::filter(!(count %in% c(7777, 8888, 9999))) |> 
-  dplyr::filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
-  dplyr::filter(!(age_adjusted_rate %in% c(7777, 8888, 9999))) %>%
-  mutate(qtr=as.numeric((gsub("Q",'', quarter))), 
-         qtr =if_else(is.na(qtr),1,qtr),
-         qdate= year+ qtr/4 -1/4
-         )
 
 #csv_to_parquet('https://raw.githubusercontent.com/ysph-dsde/data-gov/refs/heads/main/RSV%20Infections%20Data/Raw%20Download/NREVSS%20by%20HHS%20Region_Respiratory%20Syncytial%20Virus%20(RSV)%20Surveillance%20Archive_Downloaded%2001.23.2025.csv',path_to_parquet ='./Data/rsv_testing.parquet')
 
@@ -305,6 +295,17 @@ vax_insurance <- open_dataset('./Data/vax/peds_vax.parquet') %>%
 #| include: false
 #| cache: true
 #| cache.extra: !expr file.info("data.csv")$mtime
+
+# Interactive
+df1 <- read_csv('./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv', show_col_types = FALSE) |>
+  clean_names() |> 
+  dplyr::filter(!(count %in% c(7777, 8888, 9999))) |> 
+  dplyr::filter(!(crude_rate %in% c(7777, 8888, 9999))) |> 
+  dplyr::filter(!(age_adjusted_rate %in% c(7777, 8888, 9999))) %>%
+  mutate(qtr=as.numeric((gsub("Q",'', quarter))), 
+         qtr =if_else(is.na(qtr),1,qtr),
+         qdate= year+ qtr/4 -1/4
+         )
 
 opioid_path <- "./Data/Harmonized Opioid Overdose Datasets_01.23.2025.csv"
 
