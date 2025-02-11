@@ -132,8 +132,9 @@ subset <-  opioid_od %>%
          `Underlying Cause of Death` %in% "Unintentional",
          Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
   
-  # Calculate the relative proportion of overdose events for a given Dataset
-  # and Year.
+  # Some random duplicates were detected. Not sure where these might have
+  # been introduced or if the dataset came this way. This script is meant to
+  # quickly deal with these.
   group_by(Dataset, Year, Drug) %>%
   mutate(Count = sum(Count)) %>%
   ungroup() %>%
@@ -148,8 +149,30 @@ subset <-  opioid_od %>%
   ungroup() %>%
   
   # Organize the final table.
-  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL)
+  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
+  as.data.frame()
 
+
+
+# Toggling the "Year \in 2020, 2021, and 2022", not all the same drugs are
+# present in each dataset. With scale_fill_manual() this is proving problematic,
+# as it overwrites the categories.
+subset[subset$Dataset %in% "CDC WONDER" & subset$Year %in% 2022, "Drug"] %>% .[. %!in% subset[subset$Dataset %in% "SUDORS" & subset$Year %in% 2022, "Drug"]]
+subset[subset$Dataset %in% "SUDORS" & subset$Year %in% 2022, "Drug"] %>% .[. %!in% subset[subset$Dataset %in% "CDC WONDER" & subset$Year %in% 2022, "Drug"]]
+
+# Expand the table to include the missing values as NA.
+subset <- subset %>%
+  group_by(Dataset, Year) %>%
+  complete(data.frame("Drug" = sort(unique(subset$Drug))) ) %>%
+  fill(State, Setting, `Underlying Cause of Death`, Characteristic, Level, .direction = "down") %>%
+  ungroup() %>%
+  
+  na_omit(., cols = c("Count", "Percentage")) %>%
+  #mutate_at(c("Count", "Percentage"), ~replace_na(., 0)) %>%
+  
+  # Organize the final table.
+  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
+  as.data.frame()
 
 
 
@@ -172,7 +195,7 @@ waffle_CDC_WONDER <- subset %>%
 # Generate the waffle plots.
 w1 <- waffle_SUDORS %>%
   ggplot(aes(fill = Drug, values = Percentage)) +
-    geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
+    geom_waffle(n_rows = 5, size = 0.33, colour = "white", na.rm = TRUE) +
     facet_wrap(~Dataset+Year) +
     # Add the color scheme specific for the drugs present in the SUDORS subset.
     scale_fill_manual(name = NULL, 
