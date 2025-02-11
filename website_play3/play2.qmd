@@ -65,10 +65,14 @@ yale_gradient <- c("#DDDDDD",
 #   cbind(State = states$name)
 ```
 
+```{r}
+#hhs1 <- readRDS("./Data/hhs_regions.rds")
+```
+
 ```{ojs}
 // Load the datasets
 rsv1_tests = FileAttachment("./Data/rsv_testing.parquet").json();
-key = FileAttachment("./Data/hhs_regions.rds").json();
+key = FileAttachment("./Data/hhs_regions.csv").json();
 ```
 
 ```{ojs}
