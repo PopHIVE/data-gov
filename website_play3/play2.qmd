@@ -1,5 +1,5 @@
 ---
-title: "Y"
+title: "PopHIVE"
 title-block-banner: "#0c233f"
 format:
   html:
@@ -182,7 +182,6 @@ dwh <- cbind.data.frame(dwh,dates2[,c('MMWRyear', 'MMWRweek')]) %>%
           )
 ```
 
-
 ```{r pneumococcus_data}
 #| context: data
 #| include: false
@@ -288,8 +287,6 @@ vax_insurance <- open_dataset('./Data/vax/peds_vax.parquet') %>%
 
 ```
 
-
-
 ```{r opioid_data}
 #| context: data
 #| include: false
@@ -345,11 +342,9 @@ opioid_od <- read_csv(opioid_path) %>%
   as.data.frame()
 ```
 
+# PopHIVE: Population Health Information and Visualization Exchange
 
-
-# Public Health Data Explorer (PHDE)
-
-Welcome to the Public Health Data Explorer, hosted by the Yale School of Public Health. Here you can find visualizations of diverse datasets related to public health outcomes of general interest.
+Welcome to PopHIVE: The Population Health Information and Visualization Exchange, hosted by the Yale School of Public Health. The goal of this initiative is to collect and present timely and informative data on population health from diverse sources, including traditional public health surveillance data, electronic health records, sewage testing, internet search trends, population surveys, and modeled outputs.
 
 ```{r rsv_plots}
 #| context: server
@@ -427,7 +422,6 @@ ggplotly(rsv_ts_comp)
 })
 
 ```
-
 
 ```{r pneumococcus_plots}
 #| context: server 
@@ -524,7 +518,6 @@ output$vax_insurance_plot <- renderPlotly({
         fig  # Display the plot
     })
 ```
-
 
 ```{r opioid_plots}
 #| context: server
@@ -844,8 +837,12 @@ ggplotly(p1)
 
 ## Respiratory syncytial virus (RSV) in the United States
 
+RSV is a leading cause of hospitalizations in infants and also causes a large burden of disease in older adults, which is less recognized due to testing patterns. RSV rates tend to start increasing each year in the southeastern US in early autumn, with waves occurring later to the north and west over several months. Within a location, epidemics tend to start earliest in children and a bit later in adults, reflecting patterns of transmission
+
 ::: panel-tabset
 ### Compare Data
+
+Viral levels in the community can be measured in different ways. This plot shows how relying on data from the emergency department (ED), hospitalizations, and sewage surveillance can yield different estimates of epidemic timing. This could be because of who contributes to the different datasets: different age groups could contribute different aount of information to each line, and the location of the EDs and the location of the sewage sampling  
 
 ```{r}
 #| panel: sidebar
@@ -878,6 +875,8 @@ plotlyOutput("distPlotRSV3")
 
 ### Age patterns in hospitalization
 
+The hospitalization data comes from the RSV-NET, a CDC-supported network of sites around the US that tracks hospitalizations from RSV, influenza, and COVID-19.
+
 ```{r}
 #| panel: sidebar
 
@@ -893,6 +892,8 @@ plotlyOutput("distPlotRSV_hosp_age")
 ```
 
 ### Current national map (ED)
+
+The maps shows the proportion of ED visits in each jurisdiction caused by RSV. Some states have county-level data available, while others have state-level data only. This includes data aggregated across all age groups. Ideally this would be broken out separately for infants and older adults. The data come from the national syndromic surveillance network.
 
 ```{r}
 #| panel: fill
@@ -918,6 +919,8 @@ print(p1)
 ```
 
 ### Regional trends (NREVSS)
+
+This dataset has viral test results from a network of laboratories around the US (NREVSS). The location of the labs doesn't necesarilycover the whole population in a state or region. The CDC only publishes these data at the region level
 
 ```{r}
 heat1 <- rsv1_tests %>%
@@ -947,10 +950,12 @@ p2
 
 ### Trends in Google searches
 
+People searching for information on RSV often correlates well with actual clinical activity for RSV. 
+
 ```{r}
 #| panel: fill
 
-print('TODO')
+print('Coming soon!')
 ```
 :::
 
@@ -958,10 +963,12 @@ print('TODO')
 
 ## Pneumococcal disease in the United States
 
+Pneumococcus is an important bacterial pathogen that causes severe disease like meningitis, blood-stream infections, and pneumonia. It also is a major cause of ear infections in children. Vaccines (PCVs) have been in use in the USA since 2000, with a switch to a new PCV that covered more strains in 2010. The introduction of these vaccines has largely led to the elimination of vaccine-targeted serotypes and smaller increases in disease caused by other serotypes. Some vaccine-targeted serotypes have recently re-emerged (e.g., 19F) for reasons that are still not clear.
+
 ::: panel-tabset
 ### Trends in serotype frequency
 
-This shows trends in Invasive Pneumococcal Disease caused by different serotypes, as reported to the ABCs system at CDC
+This shows trends in Invasive Pneumococcal Disease caused by different serotypes, as reported to the Active Bacterial Core Surevillance system (ABCs) at CDC. This is a network of 10 sites around the US.
 
 ```{r}
 #| panel: sidebar
@@ -978,7 +985,9 @@ plotlyOutput("stPlot")
 ```
 
 ### Change in Invasive pneumococcal Disease 1998-2022
+
 This shows the decreases in serotypes targeted by PCV13 (left) and increases in the occurrence of non-vaccine serotypes (right) since 1998/1999
+
 ```{r}
 #| include: false
 
@@ -1083,9 +1092,9 @@ df_nvt <- df_wide %>%
 subplot(ggplotly(rr_vt), ggplotly(rr_nvt),  margin = 0.04)
 ```
 
-
 ### Geographic variation in serotype frequency
-Data from 2019 IPD (Beall et al, JID 2022 10.1093/infdis/jiac058)
+
+Some serotypes have a simialr distribution across the US, while others (e.g., serotype 4) have distinct geographic patterns. serotype 4 has been largely confined to the western US in recent years and is largely found among people who are homeless. Data from 2019 IPD (Beall et al, JID 2022 10.1093/infdis/jiac058)
 
 ```{r}
 #| panel: sidebar
@@ -1103,7 +1112,7 @@ plotlyOutput("stGeographyPlot")
 
 ### Comparison of invasive pneumococcal disease and pneumonia
 
-This shows the concordance between the serotypes causing invasive pneumococcla disease across the US reported to CDC/AVCs and the serotypes causing pneumococcal pneumonia in Louisville, KY as reported in [Ramirez et al OFID 2025](https://academic.oup.com/ofid/article/12/1/ofae727/7926903)
+Most often, pneumococcal disease is diagnosed by isolating the bacteria from blood or cerebrospinal fluid. It is harder to determine what serotypes cause pneumonia. This study from Louisville, Kentucky found that the serotypes that are the most common causes of severe blood stream infections are also the most common causes of pneumonia.  pneumonia [Ramirez et al OFID 2025](https://academic.oup.com/ofid/article/12/1/ofae727/7926903)
 
 ```{r}
 ipd1 <- readRDS('./Data/pneumococcus/ABCs_st_1998_2021.rds') %>%
@@ -1130,15 +1139,17 @@ ggplot(uad, aes(x=N_IPD, y=N_SSUAD, label=st)) +
   theme_classic() +
   ggtitle('IPD vs pneumonia 50+ years in US')
 ```
-
 :::
+
 ------------------------------------------------------------------------
 
 ## Vaccination
 
-::: panel-tabset
 
+::: panel-tabset
 ### Uptake by state
+
+Vaccination of children across the US, by state and vaccine
 
 ```{r}
 fig <- plot_ly(
@@ -1161,8 +1172,9 @@ fig <- fig %>%
 fig  # Display the plot
 ```
 
-
 ### Uptake by urbanicity
+
+Variation in vaccine uptake based on how urban an area is.
 
 ```{r}
 #| panel: sidebar
@@ -1172,6 +1184,7 @@ selectInput("select.vax2", "Vaccine:",
 ```
 
 Uptake in non-urban, smaller urban, larger urban locations
+
 ```{r}
 #| panel: fill
 #| layout-ncol: 1
@@ -1183,6 +1196,8 @@ plotlyOutput("vax_urban_plot")
 
 ## Uptake by insurance
 
+Variation in vaccine uptake rates based on insurance status
+
 ```{r}
 #| panel: sidebar
 
@@ -1191,6 +1206,7 @@ selectInput("select.vax3", "Vaccine:",
 ```
 
 ### Uptake based on insurance status
+
 ```{r}
 #| panel: fill
 #| layout-ncol: 1
@@ -1199,8 +1215,8 @@ selectInput("select.vax3", "Vaccine:",
 plotlyOutput("vax_insurance_plot")
 
 ```
+:::
 
-::: 
 ------------------------------------------------------------------------
 
 ## Opioids in the United States
@@ -1217,6 +1233,7 @@ plotlyOutput("opioid_time_series_interactive_2")
 ### Map of opioid overdoses
 
 AHRQ hospitalizations
+
 ```{r}
 #| panel: fill
 plotlyOutput("ahrq_map")
@@ -1224,6 +1241,7 @@ plotlyOutput("ahrq_map")
 ```
 
 CDC WONDER
+
 ```{r}
 #| panel: fill
 plotlyOutput("wonder_map")
@@ -1242,7 +1260,6 @@ plotlyOutput("opioid_bar_graph_2020")
 #| panel: fill
 plotlyOutput("opioid_bar_graph_2022")
 ```
-
 :::
 
 ------------------------------------------------------------------------
@@ -1251,4 +1268,4 @@ plotlyOutput("opioid_bar_graph_2022")
 
 ### Notes on data sources
 
- todo todo
+Coming soon!
