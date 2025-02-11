@@ -145,8 +145,12 @@ subset <-  opioid_od %>%
   # Calculate the relative proportion of overdose events for a given Dataset
   # and Year.
   group_by(Dataset, Year) %>%
-  mutate(Percentage = round(Count/sum(Count)*100, digits = 0)) %>%
+  mutate(Percentage = floor(Count/sum(Count)*100)) %>%
   ungroup() %>%
+  
+  # Waffle plots do not accept NA's or 0's. Remove them.
+  mutate_at(c("Percentage"), ~replace_na(., 0)) %>%
+  filter(!Percentage == 0) %>%
   
   # Organize the final table.
   .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
@@ -157,29 +161,29 @@ subset <-  opioid_od %>%
 # Toggling the "Year \in 2020, 2021, and 2022", not all the same drugs are
 # present in each dataset. With scale_fill_manual() this is proving problematic,
 # as it overwrites the categories.
-subset[subset$Dataset %in% "CDC WONDER" & subset$Year %in% 2022, "Drug"] %>% .[. %!in% subset[subset$Dataset %in% "SUDORS" & subset$Year %in% 2022, "Drug"]]
-subset[subset$Dataset %in% "SUDORS" & subset$Year %in% 2022, "Drug"] %>% .[. %!in% subset[subset$Dataset %in% "CDC WONDER" & subset$Year %in% 2022, "Drug"]]
+#subset[subset$Dataset %in% "CDC WONDER" & subset$Year %in% 2022, "Drug"] %>% .[. %!in% subset[subset$Dataset %in% "SUDORS" & subset$Year %in% 2022, "Drug"]]
+#subset[subset$Dataset %in% "SUDORS" & subset$Year %in% 2022, "Drug"] %>% .[. %!in% subset[subset$Dataset %in% "CDC WONDER" & subset$Year %in% 2022, "Drug"]]
 
 # Expand the table to include the missing values as NA.
-subset <- subset %>%
-  group_by(Dataset, Year) %>%
-  complete(data.frame("Drug" = sort(unique(subset$Drug))) ) %>%
-  fill(State, Setting, `Underlying Cause of Death`, Characteristic, Level, .direction = "down") %>%
-  ungroup() %>%
+#subset <- subset %>%
+#  group_by(Dataset, Year) %>%
+#  complete(data.frame("Drug" = sort(unique(subset$Drug))) ) %>%
+#  fill(State, Setting, `Underlying Cause of Death`, Characteristic, Level, .direction = "down") %>%
+#  ungroup() %>%
   
-  na_omit(., cols = c("Count", "Percentage")) %>%
+#  na_omit(., cols = c("Count", "Percentage")) %>%
   #mutate_at(c("Count", "Percentage"), ~replace_na(., 0)) %>%
   
   # Organize the final table.
-  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
-  as.data.frame()
+  #.[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
+#  as.data.frame()
 
 
 
 # Two options for coloring from ColorBrewer.
 coloring <- data.frame("Drug"  = sort(unique(subset$Drug)),
-                       "Color" = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99')
-                       #"Color" = c('#8dd3c7','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffffb3')
+                       "Color" = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99')[1:length(sort(unique(subset$Drug)))]
+                       #"Color" = c('#8dd3c7','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffffb3')[1:length(sort(unique(subset$Drug)))]
                        )
 
 # Subset the data in preparation to plot by Dataset. 
