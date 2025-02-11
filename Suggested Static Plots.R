@@ -19,6 +19,9 @@ library("cowplot")
 library("tigris")
 library("leaflet")
 library("sf")
+library("RColorBrewer")
+library("gridExtra")
+library("waffle")
 
 "%!in%" <- function(x,y)!("%in%"(x,y))
 
@@ -113,58 +116,140 @@ opioid_od %>%
 # -----------------------------
 # Alternative to the bar graph, the waffle plot.
 
+# First subset step to clear the "Count" column and isolate the specific
+# stratification being plotted.
 subset <-  opioid_od %>%
   # Filter the placeholder numerical values.
   #filter(`Age Adjusted Rate` %!in% 7777 & `Age Adjusted Rate` %!in% 8888 & `Age Adjusted Rate` %!in% 9999) %>%
   filter(Count %!in% 7777 & Count %!in% 8888 & Count %!in% 9999) %>%
   
-  filter(Drug %!in% c("Naloxone")) %>%
-  
-  # Change the date named in the plot title.
-  #filter(Year %in% 2020) %>%
+  # Removing the extraneous Drug and Year classes that are not common to the
+  # SUDORS and CDC WONDER dataset.
+  filter(Drug %!in% c("Naloxone"), Year %in% c(2020, 2021, 2022)) %>%
   
   # Filter the metadata settings.
   filter(State %in% "US", Quarter %in% NA, Setting %in% "All",
          `Underlying Cause of Death` %in% "Unintentional",
-         Characteristic %in% "Not Stratified", Level %in% "N/A")
-
-
-
-library(waffle)
-
-w1 <- subset %>%
-  filter(Year %in% 2020) %>%
+         Characteristic %in% "Not Stratified", Level %in% "N/A") %>%
+  
+  # Calculate the relative proportion of overdose events for a given Dataset
+  # and Year.
+  group_by(Dataset, Year, Drug) %>%
+  mutate(Count = sum(Count)) %>%
+  ungroup() %>%
+  
+  select(-`Crude Rate`, -`Age Adjusted Rate`, -Population) %>%
+  distinct() %>%
+  
+  # Calculate the relative proportion of overdose events for a given Dataset
+  # and Year.
   group_by(Dataset, Year) %>%
   mutate(Percentage = round(Count/sum(Count)*100, digits = 0)) %>%
   ungroup() %>%
-  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
+  
+  # Organize the final table.
+  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL)
+
+
+
+
+# Two options for coloring from ColorBrewer.
+coloring <- data.frame("Drug"  = sort(unique(subset$Drug)),
+                       "Color" = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99')
+                       #"Color" = c('#8dd3c7','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffffb3')
+                       )
+
+# Subset the data in preparation to plot by Dataset. 
+# These are done separated from the ggplot() function so that the color scheme
+# line can call the correct HEX code for the drugs present in the subset.
+waffle_SUDORS <- subset %>%
+  filter(Dataset %in% "SUDORS")
+
+waffle_CDC_WONDER <- subset %>%
+  filter(Dataset %in% "CDC WONDER")
+
+
+# Generate the waffle plots.
+w1 <- waffle_SUDORS %>%
   ggplot(aes(fill = Drug, values = Percentage)) +
     geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
     facet_wrap(~Dataset+Year) +
-    #scale_fill_manual(name = NULL,
-    #                  values = c("#BA182A", "#FF8288", "#FFDBDD"),
-    #                  labels = c("A", "B", "C")) +
-    coord_equal() +
-    theme_void() + theme(legend.position = "none")
+    # Add the color scheme specific for the drugs present in the SUDORS subset.
+    scale_fill_manual(name = NULL, 
+                      labels = coloring[coloring$Drug %in% unique(waffle_SUDORS$Drug) , "Drug"],
+                      values = coloring[coloring$Drug %in% unique(waffle_SUDORS$Drug) , "Color"]) +
+    coord_equal() + theme_void() + 
+    theme(legend.position = "bottom")
 
 
-w2 <- subset %>%
-  filter(Year %in% 2022) %>%
-  group_by(Dataset, Year) %>%
-  mutate(Percentage = round(Count/sum(Count)*100, digits = 0)) %>%
-  ungroup() %>%
-  .[with(., order(Dataset, Year, Percentage)), ] %>% `rownames<-`(NULL) %>%
-  ggplot(aes(fill = Drug, values = Percentage)) +
+w2 <- waffle_CDC_WONDER %>%
+  ggplot(aes(fill = Drug, values = Percentage) ) +
     geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
     facet_wrap(~Dataset+Year) +
-    #scale_fill_manual(name = NULL,
-    #                  values = c("#BA182A", "#FF8288", "#FFDBDD"),
-    #                  labels = c("A", "B", "C")) +
-    coord_equal() +
-    theme_void() + theme(legend.position = "bottom", legend.title = element_blank())
+    # Add the color scheme specific for the drugs present in the CDC WONDER subset.
+    scale_fill_manual(name = NULL, 
+                      labels = coloring[coloring$Drug %in% unique(waffle_CDC_WONDER$Drug) , "Drug"],
+                      values = coloring[coloring$Drug %in% unique(waffle_CDC_WONDER$Drug) , "Color"]) +
+    coord_equal() + theme_void() + 
+    theme(legend.position = "bottom", legend.title = element_blank())
 
 
 iron(w1, w2)
+
+
+
+# Subset the data in preparation to plot by Year. 
+# These are done separated from the ggplot() function so that the color scheme
+# line can call the correct HEX code for the drugs present in the subset.
+waffle_2020 <- subset %>%
+  filter(Year %in% 2020)
+
+waffle_2021 <- subset %>%
+  filter(Year %in% 2021)
+
+waffle_2022 <- subset %>%
+  filter(Year %in% 2022)
+
+
+# Generate the waffle plots.
+w1 <- waffle_2020 %>%
+  ggplot(aes(fill = Drug, values = Percentage)) +
+  geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
+  facet_wrap(~Dataset+Year) +
+  # Add the color scheme specific for the drugs present in the SUDORS subset.
+  scale_fill_manual(name = NULL, 
+                    labels = coloring[coloring$Drug %in% unique(waffle_2020$Drug), "Drug"],
+                    values = coloring[coloring$Drug %in% unique(waffle_2020$Drug), "Color"]) +
+  coord_equal() + theme_void() + 
+  theme(legend.position = "bottom")
+
+
+w2 <- waffle_2021 %>%
+  ggplot(aes(fill = Drug, values = Percentage)) +
+  geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
+  facet_wrap(~Dataset+Year) +
+  # Add the color scheme specific for the drugs present in the CDC WONDER subset.
+  scale_fill_manual(name = NULL, 
+                    labels = coloring[coloring$Drug %in% unique(waffle_2021$Drug), "Drug"],
+                    values = coloring[coloring$Drug %in% unique(waffle_2021$Drug), "Color"]) +
+  coord_equal() + theme_void() + 
+  theme(legend.position = "bottom")
+
+
+w3 <- waffle_2022 %>%
+  ggplot(aes(fill = Drug, values = Percentage)) +
+  geom_waffle(n_rows = 5, size = 0.33, colour = "white") +
+  facet_wrap(~Dataset+Year) +
+  # Add the color scheme specific for the drugs present in the CDC WONDER subset.
+  scale_fill_manual(name = NULL, 
+                    labels = coloring[coloring$Drug %in% unique(waffle_2022$Drug), "Drug"],
+                    values = coloring[coloring$Drug %in% unique(waffle_2022$Drug), "Color"]) +
+  coord_equal() + theme_void() + 
+  theme(legend.position = "bottom", legend.title = element_blank())
+
+
+iron(w1, w2, w3)
+
 
 
 
