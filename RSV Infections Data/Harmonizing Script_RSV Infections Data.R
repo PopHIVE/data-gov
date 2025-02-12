@@ -161,6 +161,7 @@ rsv_net[rsv_net$Sex %!in% "All", ] %>% (\(x) { table(x[, "Age Category"], x[, "S
 rsv_net[rsv_net$Race %!in% "All", ] %>% (\(x) { table(x[, "Race"], x[, "Age Category"], x[, "Sex"]) }) ()
 rsv_net[rsv_net$`Age Category` %!in% "All", ] %>% (\(x) { table(x[, "Age Category"], x[, "Race"], x[, "Sex"]) }) ()
 
+
 # We see that indeed each stratification is independent of the others. We will
 # now separate them.
 
@@ -213,6 +214,35 @@ rsv_net$Season <- str_replace(rsv_net$Season, " \\(.+?\\)", "")
 rsv_net <- pivot_wider(rsv_net, names_from = Type, values_from = c(Rate, `Cumulative Rate`)) %>% as.data.frame()
 
 
+# The RSV-NET surveillance season begins week 40 (approximately Oct. 1st) and
+# ends week 39 of the following year (approximately Sep. 30th). We desire the
+# range to start in July and end in June of the following year.
+
+# To label the season where the tests results were recorded, we need to define
+# the span of years available and the boundaries of that season.
+available_years <- year(rsv_net$`Week ending date`) %>% unique() %>% sort()
+
+# Associate a seasons week's boundaries over the span of years available with
+# the new season name that conforms to the RSV-NET nomenclature.
+season_ranges <- data.frame("Season" = str_c((min(available_years)-1):(max(available_years)), 16:25, sep = "-"),
+                            "Start" = str_c(c(min(available_years) - 1, available_years), "-07-01"),
+                            "End" = str_c(c(available_years, max(available_years) + 1), "-06-30"))
+
+# Add the appropriate season label as a new variable.
+rsv_net$Season2 <- sapply(rsv_net$`Week ending date`, function(x) {
+  ifelse(x >= season_ranges[, "Start"] & x <= season_ranges[, "End"], 1, 0) %>% 
+    (\(y) { season_ranges[as.logical(y), "Season"] }) 
+})
+
+# Confirm there are no NA's introduced in the conversion process.
+rsv_net[rsv_net$Season2 %in% NA, ]
+
+# Commit the season changes.
+rsv_net <- rsv_net %>% 
+  select(State, Season2, colnames(rsv_net)[3:9]) %>%
+  rename(Season = Season2)
+
+
 
 
 # -----------------------------
@@ -222,7 +252,7 @@ rsv_net <- pivot_wider(rsv_net, names_from = Type, values_from = c(Rate, `Cumula
 unique(rsv_net$State) %>% .[. %!in% c("US", "District of Columbia", datasets::state.name)]
 
 # But notice also that these are the only entries that reflect the age-adjusted
-# rate. This variable denotes counts and rates accross all participating sites.
+# rate. This variable denotes counts and rates across all participating sites.
 # It will therefor be kept, but renamed to more clearly denote this.
 rsv_net[rsv_net$State %in% "RSV-NET", "Rate_Age adjusted Rate"] %>% unique() %>% head()
 rsv_net[rsv_net$State %!in% "RSV-NET", "Rate_Age adjusted Rate"] %>% unique() %>% head()
@@ -522,7 +552,8 @@ head(nrevss_hhs)
 # NREVSS Lab Data
 
 # The RSV-NET surveillance season begins week 40 (approximately Oct. 1st) and
-# ends week 39 of the following year (approximately Sep. 30th).
+# ends week 39 of the following year (approximately Sep. 30th). We desire to
+# have the season start July 1st through June 30th.
 
 # Format the dates so that it is easier for the program to read.
 nrevss_lab$`Week ending Date` <- as.Date(nrevss_lab$`Week ending Date`, format = "%d%B%Y")
@@ -534,8 +565,8 @@ available_years <- year(nrevss_lab$`Week ending Date`) %>% unique()
 # Associate a seasons week's boundaries over the span of years available with
 # the new season name that conforms to the RSV-NET nomenclature.
 season_ranges <- data.frame("Season" = str_c((min(available_years)-1):(max(available_years)), 10:21, sep = "-"),
-  "Start" = str_c(c(min(available_years) - 1, available_years), "-10-01"),
-  "End" = str_c(c(available_years, max(available_years) + 1), "-09-30"))
+                            "Start" = str_c(c(min(available_years) - 1, available_years), "-07-01"),
+                            "End" = str_c(c(available_years, max(available_years) + 1), "-06-30"))
 
 # Add the appropriate season label as a new variable.
 nrevss_lab$Season <- sapply(nrevss_lab$`Week ending Date`, function(x) {
@@ -593,6 +624,18 @@ for(i in 1:nrow(nrevss_lab)){
     (\(x) { x[, str_detect(colnames(x), as.character(year_observed) )] }) ()
    
 }
+
+
+# Collapse "the `"Diagnostic Test Type" by simply summing the different tests.
+nrevss_lab <- nrevss_lab %>%
+  group_by(Region, `Region Type`, Season, `Week Observed`, Characteristic, Level) %>% 
+  summarise_at(vars(`Tests Administered`, `Positives Detected`, Population), sum, na.rm = FALSE) %>%
+  ungroup() %>% 
+  mutate(`Crude Rate` = NA, `Age-Adjusted Rate` = NA,
+         `Cumulative Crude Rate` = NA, `Cumulative Age-Adjusted Rate` = NA,
+         `Diagnostic Test Type` = "All") %>%
+  select(colnames(nrevss_lab)) %>%
+  as.data.frame()
 
 
 # Calculate the rate per 100,000 persons.
@@ -710,8 +753,8 @@ available_years <- year(nrevss_hhs$`Week Observed`) %>% unique() %>% sort()
 # Associate a seasons week's boundaries over the span of years available with
 # the new season name that conforms to the RSV-NET nomenclature.
 season_ranges <- data.frame("Season" = str_c((min(available_years)-1):(max(available_years)), 20:26, sep = "-"),
-                            "Start" = str_c(c(min(available_years) - 1, available_years), "-10-01"),
-                            "End" = str_c(c(available_years, max(available_years) + 1), "-09-30"))
+                            "Start" = str_c(c(min(available_years) - 1, available_years), "-07-01"),
+                            "End" = str_c(c(available_years, max(available_years) + 1), "-06-30"))
 
 # Add the appropriate season label as a new variable.
 nrevss_hhs$Season <- sapply(nrevss_hhs$`Week Observed`, function(x) {
@@ -814,7 +857,6 @@ head(epic)
 # that the visit was with someone who tested positive for RSV. Because the
 # tests used to confirm a positive infection is not noted, we'll assume any
 # test type is represented.
-
 
 epic <- read_csv("RSV Infections Data/Raw Download/EpicCosmos_Communicable Diseases by State_Between 12.22.2024 and 01.04.2025_ Downloaded 01.23.2025.csv") %>%
   as.data.frame()
@@ -1000,11 +1042,11 @@ nrevss_hhs_new <- calc_seasonal_rates(nrevss_hhs)
 # Positives Detected and Tests Administered
 
 combined <- bind_rows(cbind("Dataset" = rep("RSV-NET", nrow(rsv_net_new)), rsv_net_new),
-                      cbind("Dataset" = rep("NREVSS Lab", nrow(nrevss_lab_new)), nrevss_lab_new), 
-                      cbind("Dataset" = rep("NREVSS HHS", nrow(nrevss_hhs_new)), nrevss_hhs_new),
+                      cbind("Dataset" = rep("NREVSS", nrow(nrevss_lab_new)), nrevss_lab_new), 
+                      cbind("Dataset" = rep("NREVSS", nrow(nrevss_hhs_new)), nrevss_hhs_new),
                       cbind("Dataset" = rep("Epic Cosmos", nrow(epic)), epic))
 
-write.csv(combined, "RSV Infections Data/Harmonized RSV Infections Datasets_01.30.2025.csv", row.names = FALSE)
+write.csv(combined, "RSV Infections Data/Harmonized RSV Infections Datasets_02.11.2025.csv", row.names = FALSE)
 
 
 

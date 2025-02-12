@@ -248,7 +248,7 @@ w1 <- waffle_2020 %>%
                     labels = coloring[coloring$Drug %in% unique(waffle_2020$Drug), "Drug"],
                     values = coloring[coloring$Drug %in% unique(waffle_2020$Drug), "Color"]) +
   coord_equal() + theme_void() + 
-  theme(legend.position = "bottom")
+  theme(legend.position = "none")
 
 
 w2 <- waffle_2021 %>%
@@ -260,7 +260,7 @@ w2 <- waffle_2021 %>%
                     labels = coloring[coloring$Drug %in% unique(waffle_2021$Drug), "Drug"],
                     values = coloring[coloring$Drug %in% unique(waffle_2021$Drug), "Color"]) +
   coord_equal() + theme_void() + 
-  theme(legend.position = "bottom")
+  theme(legend.position = "none")
 
 
 w3 <- waffle_2022 %>%
