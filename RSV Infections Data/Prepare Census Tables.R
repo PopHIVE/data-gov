@@ -24,7 +24,7 @@ library("glue")
 ## ----------------------------------------------------------------
 ## LOAD THE DATA
 
-bridged_pop_raw <- fread("RSV Infections Data/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020_txt.zip", sep = "", header = FALSE) %>%
+bridged_pop_raw <- fread("RSV Infections Data/Reference Files/CDC_Vintage 2020 Bridged-Race Postcensal Population Estimates_v2020_y1020_txt.zip", sep = "", header = FALSE) %>%
   # The file has replaced preceding zeros with spaces. To regain the correct
   # formatting for splitting, these zeros need to be reintroduced.
   `colnames<-`("Joined") %>% sapply(., function(x) str_replace_all(x, "\\s", "0")) %>%
@@ -32,7 +32,7 @@ bridged_pop_raw <- fread("RSV Infections Data/CDC_Vintage 2020 Bridged-Race Post
 
 
 # https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt
-fips_codes <- read_excel("RSV Infections Data/US FIPS Codes.xls", skip = 1) %>%
+fips_codes <- read_excel("RSV Infections Data/Reference Files/US FIPS Codes.xls", skip = 1) %>%
   as.data.frame()
 
 

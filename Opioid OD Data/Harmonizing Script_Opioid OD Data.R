@@ -12,11 +12,13 @@
 ## ----------------------------------------------------------------
 ## SET UP THE ENVIRONMENT
 
-library("readxl")
-library("readr")
-library("tidyr")
-library("dplyr")
-library("stringr")
+suppressPackageStartupMessages({
+  library("readxl")
+  library("readr")
+  library("tidyr")
+  library("dplyr")
+  library("stringr")
+})
 
 "%!in%" <- function(x,y)!("%in%"(x,y))
 
