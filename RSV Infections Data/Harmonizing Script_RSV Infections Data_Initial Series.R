@@ -1043,7 +1043,7 @@ nrevss_hhs_new <- calc_seasonal_rates(nrevss_hhs)
 
 
 # -----------------------------
-# Compile all datasets.
+# COMPILE ALL DATASETS
 
 # Positives Detected and Tests Administered
 
