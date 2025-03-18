@@ -116,6 +116,58 @@ google[str_which(google$Disease, "Bronchiolitis"), c("Characteristic", "Level")]
 
 
 
+
+## ----------------------------------------------------------------
+# GOOGLE TRENDS
+
+#11j30ybfx6 = RSV vaccine
+url2 <- "https://github.com/DISSC-yale/gtrends_collection/raw/refs/heads/main/data/term=%252Fg%252F11j30ybfx6/part-0.parquet" #rsv vaccination category
+
+temp_file2 <- tempfile(fileext = ".parquet")
+download.file(url2, temp_file2, mode = "wb")
+
+g1_vax_state <- read_parquet(temp_file2) %>%
+  filter(location %in% g_states) %>%
+  collect() %>%
+  mutate(date=as.Date(date),
+         date = as.Date(ceiling_date(date, 'week'))-1,
+         stateabb= gsub('US-','', location),
+         state=state.name[match(stateabb,state.abb)],
+         value=round(value,2)) %>%
+  rename(search_volume_vax=value) %>%
+  dplyr::select(state, date, search_volume_vax) %>%
+  distinct() %>%
+  filter(date>='2014-01-01')
+
+
+# Define the GitHub raw URL
+url1 <- "https://github.com/DISSC-yale/gtrends_collection/raw/refs/heads/main/data/term=rsv/part-0.parquet"
+
+
+# Download the file temporarily
+temp_file1 <- tempfile(fileext = ".parquet")
+download.file(url1, temp_file1, mode = "wb")
+
+g_states <- paste('US',state.abb,sep='-')
+# Read the Parquet file
+
+g1_state <- read_parquet(temp_file1) %>%
+  filter(location %in% g_states) %>%
+  collect() %>%
+  mutate(date=as.Date(date),
+         date = as.Date(ceiling_date(date, 'week'))-1,
+         stateabb= gsub('US-','', location),
+         state=state.name[match(stateabb,state.abb)],
+         value=round(value,2)) %>%
+  rename(search_volume=value) %>%
+  dplyr::select(state, date, search_volume) %>%
+  distinct() %>%
+  filter(date>='2014-01-01') %>%
+  full_join(g1_vax_state, by=c('state', 'date') )
+
+
+
+
 ## ----------------------------------------------------------------
 ## WASTEWATER DATA
 
@@ -721,6 +773,9 @@ for(i in 1:nrow(search_space) ){
 
 # Recombine the all sites and states only subsets.
 rsv_net <- bind_rows(all_sites, states_only)
+
+
+
 
 
 
