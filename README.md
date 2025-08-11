@@ -2,7 +2,11 @@
 
 ## Overview
 
-Enclosed is the code used for the first PopHIVE prototype backend and dashboard 1a. This repository includes the legacy code for regularly interacting with APIs and the scripts used to harmonize the three RSV datasets and the three Opioid Overdose datasets visualized in the dashboard. The initial dashboard (1a) can be found here: https://dsde.shinyapps.io/prototype/.
+Enclosed is the code used for the first PopHIVE prototype backend and dashboard 1a. This repository includes the legacy code for regularly interacting with APIs and the scripts used to harmonize the three RSV datasets and the three Opioid Overdose datasets visualized in the dashboard. 
+
+The code was originally copied from a repository in the [YSPH Data Science and Data Equity](https://github.com/ysph-dsde) (YSPH-DSDE) GitHub Organization and was copied into the [PopHIVE](https://github.com/PopHIVE) GitHub Organization Aug 11th, 2025. At the time of transfer, the YSPH-DSDE GitHub Organization codebase was no longer being actively contributed to and had been archived.
+
+The initial dashboard (1a) can be found here: https://dsde.shinyapps.io/prototype/.
 
 **Dates active:** Dec 18th – Feb 6th, 2025
 
@@ -20,6 +24,7 @@ These data and PopHIVE statistical outputs are provided "as is", without warrant
 The PopHIVE statistical outputs are research tools intended for use in the fields of public health and medicine. They are not intended for clinical decision making, are not intended to be used in the diagnosis or treatment of patients and may not be useful or appropriate for any clinical purpose. Users of the PopHIVE statistical outputs should be aware of their responsibilities to ensure the ethical and appropriate use of this technology, including adherence to any applicable legal and regulatory requirements.
 
 The content and data provided with the statistical outputs do not replace the expertise of healthcare professionals. Healthcare professionals should use their professional judgment in evaluating the outputs of the PopHIVE statistical outputs.
+
 
 
 
