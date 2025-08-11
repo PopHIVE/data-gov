@@ -259,6 +259,8 @@ nwss <- nwss[with(nwss, order(Disease, Region, `Week Observed`)), ] %>%
   `rownames<-`(NULL)
 
 
+# Save. This is different enough from the other suveillence programs that
+# it needs to be in a separate table.
 write_parquet(nwss, "RSV Infections Data/Harmonized NWSS Datasets_02.17.2025.gz.parquet", compression = "gzip", compression_level = 5)
 
 
@@ -289,9 +291,84 @@ resp_net_raw[resp_net_raw$Site %!in% "Overall", c("Sex", "Race/Ethnicity", "Age 
 
 
 # -----------------------------
-# IMPORT AND PROCESS COVID-NET
-covid_net_raw <- read_csv("RSV Infections Data/Raw Download/COVID-NET All Seasons_Interactive Dashboard Output_Downloaded 02.17.2025.csv") %>%
+# IMPORT AND PROCESS RSV-NET
+rsv_net_raw <- read_csv("RSV Infections Data/Raw Download/RSV-NET All Seasons_Interactive Dashboard Output_Downloaded 03.28.2025.csv") %>%
   as.data.frame()
+
+
+# All regions represented are a state-level, except for the one representing
+# all participating sites.
+unique(rsv_net_raw$State) %>% .[. %!in% c(datasets::state.name, "District of Columbia")]
+
+# Add most of the missing columns and format.
+rsv_net_raw <- rsv_net_raw %>%
+  mutate(Dataset = "RSV-NET", Disease = "RSV", `Region Type` = "State",
+         `Tests Administered` = NA, `Positives Detected` = NA) %>%
+  rename(Region = State, `Week Observed` = `Week ending date`)
+
+
+# There are duplicated seasons, some specifying rates for specific "Characteristics".
+rsv_net_raw$Season %>% unique() %>% sort()
+
+# Notice that these differ in how the rate is processed: crude or age-adjusted.
+rsv_net_raw[!str_detect(rsv_net_raw$Season, "\\("), "Type"] %>% unique()
+rsv_net_raw[str_detect(rsv_net_raw$Season, "\\("), "Type"] %>% unique()
+
+# To keep these values, we'll simply strip away the part of the string in "Season"
+# that differentiates the rate types.
+rsv_net_raw$Season <- str_replace(rsv_net_raw$Season, " \\(.+?\\)", "")
+
+# Expand out these rates to a wide format.
+rsv_net_raw <- pivot_wider(rsv_net_raw, names_from = Type, values_from = c(Rate, `Cumulative Rate`)) %>% as.data.frame()
+
+
+# Final adjustment of the column names and organization.
+rsv_net <- rsv_net_raw %>%
+  rename(`Crude Rate` = `Rate_Crude Rate`, `Age-Adjusted Rate` = `Rate_Age adjusted Rate`,
+         `Cumulative Crude Rate` = `Cumulative Rate_Crude Rate`,
+         `Cumulative Age-Adjusted Rate` = `Cumulative Rate_Age adjusted Rate`) %>%
+  # "Program" is included in the FluSurv-NET dataset, but not the other two
+  # NET datasets. Further description justifying why this is added is included
+  # in the FluSurv-NET processing section below.
+  mutate(Program = "EIP")
+
+
+# RSV-NET has already been added to the dataset. Even though it would be interesting
+# to keep some overlap, the overlap that shows back-tracked updated to the
+# count, this process has not been built out. For the time being, will only
+# check for the most recently represented week and not retain any cross-over.
+recent_week <- rsv[rsv$Dataset %in% "RSV-NET", "Week Observed"] %>%
+  na.omit() %>% max()
+
+# Keep only the newly represented weeks.
+rsv_net <- rsv_net %>% filter(`Week Observed` > recent_week)
+
+
+
+
+# -----------------------------
+# IMPORT AND PROCESS COVID-NET
+
+# Adding the other two RESP-NET programs to the running list got delayed.
+# Short-gap the oldest download and most recent update.
+covid_net_raw_1 <- read_csv("RSV Infections Data/Raw Download/COVID-NET All Seasons_Interactive Dashboard Output_Downloaded 02.17.2025.csv") %>%
+  as.data.frame()
+covid_net_raw_2 <- read_csv("RSV Infections Data/Raw Download/COVID-NET All Seasons_Interactive Dashboard Output_Downloaded 03.28.2025.csv") %>%
+  as.data.frame()
+
+recent_week <- covid_net_raw_1[, "_WeekendDate"] %>%
+  na.omit() %>% max()
+
+# Keep only the newly represented weeks.
+covid_net_raw_add <- covid_net_raw_2 %>% filter(`_WeekendDate` > recent_week)
+
+# Confirm the column names are the same and haven't drifted.
+all(colnames(covid_net_raw_1) %in% colnames(covid_net_raw_2) &
+  colnames(covid_net_raw_2) %in% colnames(covid_net_raw_1))
+
+# Append these together.
+covid_net_raw <- bind_rows(covid_net_raw_1, covid_net_raw_add)
+
 
 # Add most of the missing columns and format.
 covid_net_raw <- covid_net_raw %>%
@@ -325,12 +402,131 @@ covid_net <- covid_net_raw %>%
 # -----------------------------
 # IMPORT AND PROCESS FluSurv-NET
 
-flu_net_raw <- read_csv("RSV Infections Data/Raw Download/FluSurv-NET All Seasons_Interactive Dashboard Output_Downloaded 02.17.2025.csv", skip = 2) %>%
+# Adding the other two RESP-NET programs to the running list got delayed.
+# Short-gap the oldest download and most recent update.
+flu_net_raw_1 <- read_csv("RSV Infections Data/Raw Download/FluSurv-NET All Seasons_Interactive Dashboard Output_Downloaded 02.17.2025.csv", skip = 2) %>%
   as.data.frame()
+
+flu_net_raw_2 <- read_csv("RSV Infections Data/Raw Download/FluSurv-NET All Seasons_Interactive Dashboard Output_Downloaded 03.28.2025.csv", skip = 2) %>%
+  as.data.frame()
+
 
 # FluSurv-NET included ending notes, which filled one column. We can remove
 # these by excluding the ending rows where the second column is NA.
-flu_net_raw <- flu_net_raw[flu_net_raw$NETWORK %!in% NA, ]
+flu_net_raw_1 <- flu_net_raw_1[flu_net_raw_1$NETWORK %!in% NA, ]
+flu_net_raw_2 <- flu_net_raw_2[flu_net_raw_2$NETWORK %!in% NA, ]
+
+# Notice that two years include an invalid week for the lubridate() package, but
+# a week that is significant in the epidemiological MMWRweek format.
+flu_net_raw_1[flu_net_raw_1$WEEK %in% "53", "YEAR...4"] %>% unique()
+
+# The following code works but is incompatible with the 1-53 week span.
+#as.Date(str_c(flu_net_raw$Year, "-", flu_net_raw$WEEK, "-1"), format = "%Y-%U-%u") %>% floor_date("weeks", week_start = 1) %>% head()
+flu_net_raw_1$`Week Observed` <- MMWRweek2Date(flu_net_raw_1$`YEAR...4`, flu_net_raw_1$WEEK, MMWRday = NULL) %>% 
+  floor_date("weeks", week_start = 1)
+flu_net_raw_2$`Week Observed` <- MMWRweek2Date(flu_net_raw_2$`YEAR...4`, flu_net_raw_2$WEEK, MMWRday = NULL) %>% 
+  floor_date("weeks", week_start = 1)
+
+# Confirm that they did not shift the weeks. The FluSurv-NET documentation
+# says that June 11, 2022 should come up as Week 23 in the year 2022. We see
+# that this checks out.
+MMWRweek2Date(2022, 23, MMWRday = NULL)
+
+
+# For some reason the most recently reported week is months after the date
+# the dataset was downloaded, 2/7/2025.
+recent_week <- flu_net_raw_1[, "Week Observed"] %>%
+  na.omit() %>% max()
+
+# Check what the differences could be prior and after the download date.
+after_download  <- flu_net_raw_1 %>% filter(`Week Observed` >  "2025-02-17")
+before_download <- flu_net_raw_1 %>% filter(`Week Observed` <= "2025-02-17")
+
+# Looks like there are no entries recorded for the dates following the download
+# date, as anticipated. But it looks like there are NULL entries in the recent
+# season too that precede the download date.
+sapply(after_download[, c(10:13)], unique)
+
+sapply(before_download[, c(10:13)], function(x){
+  before_download[x %in% "null", "YEAR...3"] %>% unique() %>% sort()
+})
+
+# Interestingly, it seems there are a lot of "null" outcomes for the age-adjusted
+# columns. If we select for different differentiating columns (CATCHMENT, NETWORK,
+# VIRUS TYPE CATEGORY) or only select for "ACE CATEGORY = Overall" then we
+# don't see a specific pattern to these trends.
+before_download[before_download$`AGE ADJUSTED WEEKLY RATE` %in% "null" & 
+                  before_download$`AGE ADJUSTED CUMULATIVE RATE` %in% "null", "CATCHMENT"] %>%
+  unique()
+
+subset_age <- before_download[before_download$`AGE CATEGORY` %in% "Overall", ]
+sapply(subset_age[, c(10:13)], function(x){
+  subset_age[x %in% "null", c(x, "YEAR...3")] %>% table()
+})
+
+# Most entries have both age-adjusted columns as null.
+before_download %>%
+  filter(`AGE ADJUSTED WEEKLY RATE` == "null", `AGE ADJUSTED CUMULATIVE RATE` == "null") %>%
+  nrow(.) - nrow(before_download)
+
+# We see that there are age-adjusted values only for the "Overall" instantiations
+# for age and sex, but not for race. This implies that age-adjustment was only
+# applied to overall categories, which is expected for age, but not for sex.
+subset_any_null <- before_download[before_download$`AGE ADJUSTED WEEKLY RATE` %!in% "null" | before_download$`AGE ADJUSTED CUMULATIVE RATE` %!in% "null", ]
+sapply(subset_any_null[, c(6:8)], unique)
+
+# Anyways, nothing here indicates that age-adjusted columns need to be processed.
+
+# As a sanity check, we want to ensure that there are no other recent entries
+# leading up to the download date that would need to be paired. We see that
+# two years have extensive weeks where no reporting occured: 2020-21 and 2024-25.
+before_download[before_download$`WEEKLY RATE` %in% "null" &
+                  before_download$`CUMULATIVE RATE` %in% "null" &
+                  before_download$`AGE ADJUSTED WEEKLY RATE` %in% "null" & 
+                  before_download$`AGE ADJUSTED CUMULATIVE RATE` %in% "null" &
+                  before_download$YEAR...3 %in% "2024-25", "WEEK"] %>%
+  unique()
+  # Show the quantity that has all values as "null".
+  #nrow(.) - nrow(before_download)
+
+# The weeks where no reports were recorded are within the 
+before_download[before_download$YEAR...4 %in% 2025, "WEEK"] %>% 
+  unique() %>% sort()
+
+# As suspected, there are three weeks that are recent to the download date that
+# have no record at all. We therefore want to prune those as well. We'll set the
+# recent week to "WEEK = 6" in the recent infection season.
+recent_week <- before_download[before_download$YEAR...4 %in% 2025 & 
+                  before_download$WEEK %in% 6, "Week Observed"] %>% unique()
+
+
+# Likely, a similar situation is happening with the second set that was downloaded
+# in 3/28/2025. We will want to prune those for clarity.
+flu_net_raw_2[flu_net_raw_2$`WEEKLY RATE` %in% "null" &
+                flu_net_raw_2$`CUMULATIVE RATE` %in% "null" &
+                flu_net_raw_2$`AGE ADJUSTED WEEKLY RATE` %in% "null" & 
+                flu_net_raw_2$`AGE ADJUSTED CUMULATIVE RATE` %in% "null" &
+                flu_net_raw_2$YEAR...3 %in% "2024-25", "WEEK"] %>%
+  unique()
+
+flu_net_raw_2[flu_net_raw_2$YEAR...4 %in% 2025, "WEEK"] %>% 
+  unique() %>% sort()
+
+# As expected, the recent 5 weeks have all "null" entries. Keep back to "WEEK = 12"
+max_week <- flu_net_raw_2[flu_net_raw_2$YEAR...4 %in% 2025 & 
+                            flu_net_raw_2$WEEK %in% 12, "Week Observed"] %>% unique()
+
+
+flu_net_raw_add_1 <- flu_net_raw_1 %>% filter(`Week Observed` <= recent_week)
+flu_net_raw_add_2 <- flu_net_raw_2 %>% filter(`Week Observed` >  recent_week, `Week Observed` <= max_week)
+
+# Confirm the column names are the same and haven't drifted.
+all(colnames(flu_net_raw_add_1) %in% colnames(flu_net_raw_add_2) &
+      colnames(flu_net_raw_add_2) %in% colnames(flu_net_raw_add_1))
+
+# Append these together.
+flu_net_raw <- bind_rows(flu_net_raw_add_1, flu_net_raw_add_2)
+
 
 # Add most of the missing columns and format.
 flu_net_raw <- flu_net_raw %>%
@@ -344,15 +540,6 @@ flu_net_raw <- flu_net_raw %>%
          Race = `RACE CATEGORY`, Season = YEAR...3, Year = YEAR...4)
 
 
-# Notice that two years include an invalid week for the lubridate() package, but
-# a week that is significant in the epidemiological MMWRweek format.
-flu_net_raw[flu_net_raw$WEEK %in% "53", "Year"] %>% unique()
-
-# The following code works but is incompatible with the 1-53 week span.
-#as.Date(str_c(flu_net_raw$Year, "-", flu_net_raw$WEEK, "-1"), format = "%Y-%U-%u") %>% floor_date("weeks", week_start = 1) %>% head()
-
-flu_net_raw$`Week Observed` <- MMWRweek2Date(flu_net_raw$Year, flu_net_raw$WEEK, MMWRday = NULL) %>% floor_date("weeks", week_start = 1)
-
 # FluSurv-NET reflects results from different surveillance programs. From online
 # documentation, it appears that FluSurv-NET is the only program in RESP-NET that
 # includes results from other surveillance programs, while RSV- and COVID-NET
@@ -360,7 +547,7 @@ flu_net_raw$`Week Observed` <- MMWRweek2Date(flu_net_raw$Year, flu_net_raw$WEEK,
 # https://www.cdc.gov/emerging-infections-program/php/network-activities/index.html
 
 # We do see that sites specifically designated as being in the two surveillance
-# programs are reported int the COVID-NET program. It is possible that EIP
+# programs are reported in the COVID-NET program. It is possible that EIP
 # masks IHSP, but in FluSurv-NET they are kept separate. Without further confirmation
 # it is difficult to know exactly which program is feeding the RSV- and COVID-NET
 # results.
@@ -378,9 +565,9 @@ unique(flu_net_raw[flu_net_raw$Program %in% "IHSP", "Region"]) %>% .[. %in% uniq
 
 # It appears that each programs "Region = Entire Network" is mostly unique from
 # the others. Likely, detected duplicates are incidental. Therefore we will
-# keep them.
-flu_net_raw[flu_net_raw$Region %in% "Entire Network", -c(2)] %>% nrow()/14280
-flu_net_raw[flu_net_raw$Region %in% "Entire Network", -c(2)] %>% distinct() %>% nrow()/14280
+# keep them. NOTE: 14140 comes from the table above for "Entire Network".
+flu_net_raw[flu_net_raw$Region %in% "Entire Network", -c(2)] %>% nrow()/14140
+flu_net_raw[flu_net_raw$Region %in% "Entire Network", -c(2)] %>% distinct() %>% nrow()/14140
 
 
 # Remove unnecessary columns and adjust column names for matching with covid_net.
@@ -388,15 +575,36 @@ flu_net <- flu_net_raw %>%
   select(-Year, -WEEK) %>%
   rename(`Crude Rate` = Rate, `Cumulative Crude Rate` = `Cumulative Rate`)
 
-# Confirm that the column names are the same between both sets.
+# Confirm that the column names are the same between all three sets. If COVID
+# and RSV are the same with FLU then they are the same as each other.
 all(colnames(flu_net) %in% colnames(covid_net)) & all(colnames(covid_net) %in% colnames(flu_net))
+all(colnames(flu_net) %in% colnames(rsv_net)) & all(colnames(rsv_net) %in% colnames(flu_net))
 
 
 # Adjust the column classes.
+sapply(rsv_net, class) %>% data.table(colnames(rsv_net), .)
+
+rsv_net <- rsv_net %>%
+  mutate_at(vars(`Tests Administered`, `Positives Detected`, `Crude Rate`, 
+                 `Age-Adjusted Rate`, `Cumulative Crude Rate`, `Cumulative Age-Adjusted Rate`), 
+            as.numeric)
+
+
+sapply(covid_net, class) %>% data.table(colnames(covid_net), .)
+
 covid_net <- covid_net %>%
   mutate_at(vars(`Tests Administered`, `Positives Detected`, `Crude Rate`, 
                  `Age-Adjusted Rate`, `Cumulative Crude Rate`, `Cumulative Age-Adjusted Rate`), 
             as.numeric)
+
+
+# 
+sapply(flu_net, class) %>% data.table(colnames(flu_net), .)
+
+flu_net$`Age-Adjusted Rate`[flu_net$`Crude Rate` == "null"] <- NA
+flu_net$`Age-Adjusted Rate`[flu_net$`Cumulative Crude Rate` == "null"] <- NA
+flu_net$`Age-Adjusted Rate`[flu_net$`Age-Adjusted Rate` == "null"] <- NA
+flu_net$`Age-Adjusted Rate`[flu_net$`Cumulative Age-Adjusted Rate` == "null"] <- NA
 
 flu_net <- flu_net %>%
   mutate_at(vars(`Tests Administered`, `Positives Detected`, `Crude Rate`, 

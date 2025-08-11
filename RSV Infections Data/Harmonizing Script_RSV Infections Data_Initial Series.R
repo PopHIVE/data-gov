@@ -516,6 +516,20 @@ for(i in 1:nrow(search_space) ){
 }
 
 
+#########
+# NEW CUMSUM METHOD
+new_rows %>%
+  filter(type == "Crude Rate") %>%
+  group_by(season, state, age_category, sex, race) %>%
+  mutate("new_cumSum" = cumsum(rate)) %>% 
+  ungroup() %>%
+  as.data.frame()
+
+
+
+
+
+
 # Add diagnostic test type to conform with the NREVSS dataset.
 rsv_net <- rsv_net %>%
   mutate(`Diagnostic Test Type` = "All") %>%
