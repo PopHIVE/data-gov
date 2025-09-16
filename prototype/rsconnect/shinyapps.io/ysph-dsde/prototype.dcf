@@ -1,0 +1,10 @@
+name: prototype
+title:
+username: ysph-dsde
+account: ysph-dsde
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15466883
+bundleId: 10912217
+url: https://ysph-dsde.shinyapps.io/prototype/
+version: 1
